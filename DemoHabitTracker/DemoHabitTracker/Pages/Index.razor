@@ -13,15 +13,26 @@
                 <Row Gutter="16">
                     <Col Span="8">
                     <Title Level="3">To Do</Title>
+                    <Button Type="primary" OnClick="@(()=>{ _visible = true; })">
+                        <Icon Type="plus" Theme="outline" />
+                    </Button>
+                    <Modal Title="@title"
+                           Visible="@_visible"
+                           OnOk="@HandleOk"
+                           OnCancel="@HandleCancel">
+                        <p>Some contents...</p>
+                        <p>Some contents...</p>
+                        <p>Some contents...</p>
+                    </Modal>
                     @foreach (var activity in UserActivities.Where(i => i.Status == Models.ActivityStatus.Todo))
                     {
-                <div ondrag="@HandleDrag()">
-                    <Card  Bordered="true" Title=@activity.Title>
-                        <Body>
-                            <p>@activity.Description</p>
-                        </Body>
-                    </Card>
-                </div>
+                        <div ondrag="@HandleDrag()">
+                            <Card Bordered="true" Title=@activity.Title>
+                                <Body>
+                                    <p>@activity.Description</p>
+                                </Body>
+                            </Card>
+                        </div>
                     }
 
                     </Col>
@@ -73,6 +84,20 @@
         {
 
         }
+        string title = "BasicModal";
+        bool _visible = false;
 
+        private void HandleOk(MouseEventArgs e)
+        {
+            Console.WriteLine(e);
+            UserActivities.Add(new Activity() { Pkid = , })
+            _visible = false;
+        }
+
+        private void HandleCancel(MouseEventArgs e)
+        {
+            Console.WriteLine(e);
+            _visible = false;
+        }
     }
   

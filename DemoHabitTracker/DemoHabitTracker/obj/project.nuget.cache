@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wZR3vToDj7qck/9CmNsdWqzvoggOQNM6fnfKzeSl96JwddRK2TTiSKitAyeOIOOW1cAbhxiEmzL3zHs8VDxTbA==",
+  "dgSpecHash": "l2tez2xu501uI1SIjMvyvmBJYnEI3mJhWVWeOEZykqeDi9z4O1tcH7Pmb8nx4E3do6lhZpS5EjO9lX/Canfpnw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hp\\source\\repos\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+  "projectFilePath": "C:\\Users\\hp\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hp\\.nuget\\packages\\antdesign\\0.8.0\\antdesign.0.8.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
