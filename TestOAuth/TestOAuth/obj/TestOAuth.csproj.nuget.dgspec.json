@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\source\\repos\\TestOAuth\\TestOAuth\\TestOAuth.csproj": {}
+    "C:\\Users\\hp\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\source\\repos\\TestOAuth\\TestOAuth\\TestOAuth.csproj": {
+    "C:\\Users\\hp\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\source\\repos\\TestOAuth\\TestOAuth\\TestOAuth.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj",
         "projectName": "TestOAuth",
-        "projectPath": "C:\\Users\\hp\\source\\repos\\TestOAuth\\TestOAuth\\TestOAuth.csproj",
+        "projectPath": "C:\\Users\\hp\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\source\\repos\\TestOAuth\\TestOAuth\\obj\\",
+        "outputPath": "C:\\Users\\hp\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -89,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

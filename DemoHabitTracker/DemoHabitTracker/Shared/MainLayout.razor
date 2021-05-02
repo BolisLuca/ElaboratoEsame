@@ -1,0 +1,33 @@
+﻿@inherits LayoutComponentBase
+<AuthorizeView>
+    <Authorized>
+        <Layout>
+            <Header Class="header">
+                <div class="logo" />
+                <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Horizontal" DefaultSelectedKeys=@(new []{"1"})>
+                    <MenuItem Key="1">Today</MenuItem>
+                    <MenuItem Key="2">Calendar</MenuItem>
+
+                    <LoginDisplay />
+
+                </Menu>
+            </Header>
+            <Content Style="padding: 0 50px">
+                @Body
+            </Content>
+            <Footer Style="text-align: center; ">Ant Design ©2018 Created by Ant UED</Footer>
+        </Layout>
+    </Authorized>
+    <NotAuthorized>
+        <p>Please sign in.</p> //Qui ci andranno i componenti che espongono i contenuti del sito, la pagina di presntazione
+        <LoginDisplay></LoginDisplay>
+    </NotAuthorized>
+</AuthorizeView>
+
+            @code
+{
+                private void OnPanelChange(DateTime value, string mode)
+                {
+                    Console.WriteLine($"{value.ToString("YYYY-MM-DD")} {mode}");
+                }
+            }

@@ -1,0 +1,78 @@
+﻿@page "/"
+@using DemoHabitTracker.Data
+@using Microsoft.AspNetCore.Components.Authorization
+@inject HabitTrackerDbContext context;
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+
+
+
+    <Layout Class="site-layout-background" Style="padding: 24px 0;">
+        <Content Style="padding:0 24px; min-height: 280px;">
+            <div style="background-color: #ececec; padding: 20px;">
+                <Row Gutter="16">
+                    <Col Span="8">
+                    <Title Level="3">To Do</Title>
+                    @foreach (var activity in UserActivities.Where(i => i.Status == Models.ActivityStatus.Todo))
+                    {
+                <div ondrag="@HandleDrag()">
+                    <Card  Bordered="true" Title=@activity.Title>
+                        <Body>
+                            <p>@activity.Description</p>
+                        </Body>
+                    </Card>
+                </div>
+                    }
+
+                    </Col>
+                    <Col Span="8">
+                    <Title Level="3">Doing</Title>
+                    @foreach (var activity in UserActivities.Where(i => i.Status == Models.ActivityStatus.Doing))
+                    {
+                        <Card Bordered="true" Title=@activity.Title>
+                            <Body>
+                                <p>@activity.Description</p>
+                            </Body>
+                        </Card>
+                    }
+                    </Col>
+                    <Col Span="8">
+                    <Title Level="3">Done</Title>
+                    @foreach (var activity in UserActivities.Where(i => i.Status == Models.ActivityStatus.Done))
+                    {
+                        <Card Bordered="true" Title=@activity.Title>
+                            <Body>
+                                <p>@activity.Description</p>
+                            </Body>
+                        </Card>
+                    }
+                    </Col>
+                </Row>
+
+            </div>
+        </Content>
+        <Sider Class="site-layout-background" Width="200">
+            <div class="site-calendar-demo-card">
+                <Calendar FullScreen="@false" />
+            </div>
+        </Sider>
+    </Layout>
+    <Progress Percent=50 Status="@ProgressStatus.Active" />
+    @code{
+        string username;
+        List<Activity> UserActivities;
+
+        protected override async Task OnInitializedAsync()
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            username = authState.User.Identity.Name;
+            UserActivities = context.Activities.Where(i => i.fkUsernName == username).ToList();
+        }
+
+        public async Task HandleDrag()
+        {
+
+        }
+
+    }
+  
