@@ -7,97 +7,198 @@
 
 
 
-    <Layout Class="site-layout-background" Style="padding: 24px 0;">
-        <Content Style="padding:0 24px; min-height: 280px;">
-            <div style="background-color: #ececec; padding: 20px;">
-                <Row Gutter="16">
-                    <Col Span="8">
-                    <Title Level="3">To Do</Title>
-                    <Button Type="primary" OnClick="@(()=>{ _visible = true; })">
-                        <Icon Type="plus" Theme="outline" />
-                    </Button>
-                    <Modal Title="@title"
-                           Visible="@_visible"
-                           OnOk="@HandleOk"
-                           OnCancel="@HandleCancel">
-                        <p>Some contents...</p>
-                        <p>Some contents...</p>
-                        <p>Some contents...</p>
-                    </Modal>
-                    @foreach (var activity in UserActivities.Where(i => i.Status == Models.ActivityStatus.Todo))
-                    {
-                        <div ondrag="@HandleDrag()">
-                            <Card Bordered="true" Title=@activity.Title>
-                                <Body>
-                                    <p>@activity.Description</p>
-                                </Body>
-                            </Card>
-                        </div>
-                    }
+<Layout Class="site-layout-background" Style="padding: 24px 0;">
+    <Content Style="padding:0 24px; min-height: 280px;">
+        <div style="background-color: #ececec; padding: 20px;">
+            <Row Gutter="16">
+                <Col Span="8">
+                <Title Level="3">To Do</Title>
+                <Button Type="primary" OnClick="@(()=>{ _visible = true; })">
+                    <Icon Type="plus" Theme="outline" />
+                </Button>
+                <Modal Title="@title"
+                       Visible="@_visible"
+                       OnOk="@HandleOk"
+                       OnCancel="@HandleCancel">
+                    @using System.Text.Json;
 
-                    </Col>
-                    <Col Span="8">
-                    <Title Level="3">Doing</Title>
-                    @foreach (var activity in UserActivities.Where(i => i.Status == Models.ActivityStatus.Doing))
+                    <Form Model="@model"
+                          LabelColSpan="8"
+                          WrapperColSpan="16"
+                          OnFinish="OnFinish"
+                          OnFinishFailed="OnFinishFailed"
+                          Size="@model.Size">
+                        <FormItem Label="Form Size">
+                            <RadioGroup @bind-Value="@context.Size">
+                                <Radio RadioButton Value="@AntSizeLDSType.Small">Small</Radio>
+                                <Radio RadioButton Value="@AntSizeLDSType.Default">Default</Radio>
+                                <Radio RadioButton Value="@AntSizeLDSType.Large">Large</Radio>
+                            </RadioGroup>
+                        </FormItem>
+
+                        <FormItem Label="Input">
+                            <Input @bind-Value="@context.Input" />
+                        </FormItem>
+                        <FormItem Label="InputArea">
+                            <TextArea @bind-Value="@context.InputArea" />
+                        </FormItem>
+                        <FormItem Label="Cascader">
+                            <Cascader @bind-Value="@context.Cascader" Options="districts" />
+                        </FormItem>
+                        <FormItem Label="DatePicker">
+                            <DatePicker @bind-Value="@context.DatePicker" />
+                        </FormItem>
+                        <FormItem Label="RangePicker">
+                            <RangePicker @bind-Value="@context.RangePicker" />
+                        </FormItem>
+                        <FormItem Label="InputNumber">
+                            <AntDesign.InputNumber @bind-Value="@context.Number" />
+                        </FormItem>
+                        <FormItem Label="Switch">
+                            <Switch @bind-Value="@context.Switch" />
+                        </FormItem>
+                        <FormItem Label="Radio">
+                            <RadioGroup @bind-Value="@context.Radio">
+                                <Radio RadioButton Value="@("Hangzhou")">Hangzhou</Radio>
+                                <Radio RadioButton Value="@("Shanghai")">Shanghai</Radio>
+                                <Radio RadioButton Value="@("Beijing")">Beijing</Radio>
+                                <Radio RadioButton Value="@("Chengdu")">Chengdu</Radio>
+                            </RadioGroup>
+                        </FormItem>
+                        <FormItem Label="AutoComplete">
+                            <AutoComplete @bind-Value="@context.AutoComplete" Options="@autoCompleteOptions" Placeholder="Input here" />
+                        </FormItem>
+                        <FormItem WrapperColOffset="8" WrapperColSpan="16">
+                            <Button HtmlType="submit">
+                                Submit
+                            </Button>
+                        </FormItem>
+
+
+                    </Form>
                     {
+
+                </Modal>
+                @foreach (var activity in UserActivities.Where(i => i.Status == Models.ActivityStatus.Todo))
+                {
+                    <div ondrag="@HandleDrag()">
                         <Card Bordered="true" Title=@activity.Title>
                             <Body>
                                 <p>@activity.Description</p>
                             </Body>
                         </Card>
-                    }
-                    </Col>
-                    <Col Span="8">
-                    <Title Level="3">Done</Title>
-                    @foreach (var activity in UserActivities.Where(i => i.Status == Models.ActivityStatus.Done))
-                    {
-                        <Card Bordered="true" Title=@activity.Title>
-                            <Body>
-                                <p>@activity.Description</p>
-                            </Body>
-                        </Card>
-                    }
-                    </Col>
-                </Row>
+                    </div>
+                }
 
-            </div>
-        </Content>
-        <Sider Class="site-layout-background" Width="200">
-            <div class="site-calendar-demo-card">
-                <Calendar FullScreen="@false" />
-            </div>
-        </Sider>
-    </Layout>
-    <Progress Percent=50 Status="@ProgressStatus.Active" />
-    @code{
-        string username;
-        List<Activity> UserActivities;
+                </Col>
+                <Col Span="8">
+                <Title Level="3">Doing</Title>
+                @foreach (var activity in UserActivities.Where(i => i.Status == Models.ActivityStatus.Doing))
+                {
+                    <Card Bordered="true" Title=@activity.Title>
+                        <Body>
+                            <p>@activity.Description</p>
+                        </Body>
+                    </Card>
+                }
+                </Col>
+                <Col Span="8">
+                <Title Level="3">Done</Title>
+                @foreach (var activity in UserActivities.Where(i => i.Status == Models.ActivityStatus.Done))
+                {
+                    <Card Bordered="true" Title=@activity.Title>
+                        <Body>
+                            <p>@activity.Description</p>
+                        </Body>
+                    </Card>
+                }
+                </Col>
+            </Row>
 
-        protected override async Task OnInitializedAsync()
-        {
-            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-            username = authState.User.Identity.Name;
-            UserActivities = context.Activities.Where(i => i.fkUsernName == username).ToList();
-        }
+        </div>
+    </Content>
+    <Sider Class="site-layout-background" Width="200">
+        <div class="site-calendar-demo-card">
+            <Calendar FullScreen="@false" />
+        </div>
+    </Sider>
+</Layout>
+<Progress Percent=50 Status="@ProgressStatus.Active" />
+@code{
+    string username;
+    List<Activity> UserActivities;
 
-        public async Task HandleDrag()
-        {
-
-        }
-        string title = "BasicModal";
-        bool _visible = false;
-
-        private void HandleOk(MouseEventArgs e)
-        {
-            Console.WriteLine(e);
-            UserActivities.Add(new Activity() { Pkid = , })
-            _visible = false;
-        }
-
-        private void HandleCancel(MouseEventArgs e)
-        {
-            Console.WriteLine(e);
-            _visible = false;
-        }
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        username = authState.User.Identity.Name;
+        UserActivities = context.Activities.Where(i => i.fkUsernName == username).ToList();
     }
-  
+
+    public async Task HandleDrag()
+    {
+
+    }
+    string title = "BasicModal";
+    bool _visible = false;
+
+    private void HandleOk(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+       // UserActivities.Add(new Activity() { Pkid = , })
+        _visible = false;
+    }
+
+    private void HandleCancel(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
+    }
+    public class Model
+    {
+        public string Size { get; set; } = AntSizeLDSType.Small;
+        public string Input { get; set; } = "input";
+        public string InputArea { get; set; } = "inputArea";
+        public string Cascader { get; set; } = "11";
+        public DateTime? DatePicker { get; set; } = DateTime.Now;
+        public DateTime?[] RangePicker { get; set; } = new DateTime?[] { DateTime.Now, DateTime.Now.AddDays(10) };
+        public double Number { get; set; } = 1;
+        public bool Switch { get; set; } = true;
+        public string Radio { get; set; } = "Beijing";
+        public string AutoComplete { get; set; }
+    }
+
+    private Model model = new Model();
+
+    private List<CascaderNode> districts = new List<CascaderNode>
+{
+        new CascaderNode()
+        {
+            Value = "1",
+            Label = "Zhejianng",
+            Children = new []
+                    {
+                new CascaderNode {Value = "11", Label = "Hangzhou"},
+                new CascaderNode {Value = "12", Label = "Wenzhou"},
+            }
+        },
+        new CascaderNode()
+        {
+            Value = "2",
+            Label = "Shanghai",
+        }
+    };
+
+    private List<string> autoCompleteOptions = new List<string> { "Primary", "Junior", "Senior", "Undergraduate", "Master", "Doctor" };
+
+    private void OnFinish(EditContext editContext)
+    {
+        Console.WriteLine($"Success:{JsonSerializer.Serialize(model)}");
+    }
+
+    private void OnFinishFailed(EditContext editContext)
+    {
+        Console.WriteLine($"Failed:{JsonSerializer.Serialize(model)}");
+    }
+
+    }

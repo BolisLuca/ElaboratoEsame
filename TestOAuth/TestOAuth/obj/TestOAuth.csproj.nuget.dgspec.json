@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj": {}
+    "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj": {
+    "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj",
+        "projectUniqueName": "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj",
         "projectName": "TestOAuth",
-        "projectPath": "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj",
+        "projectPath": "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj",
         "packagesPath": "C:\\Users\\Bolis.16123\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\obj\\",
+        "outputPath": "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

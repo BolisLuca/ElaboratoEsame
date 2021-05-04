@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0lzYP/O3I6+peERkPbn0C9ranXaeIXBv9Kt1MgQU9Tyuzsqdzh+wJGt4BLxeOgqZp4qtBbLmskO3qND5hHe3aQ==",
+  "dgSpecHash": "h6I1Y7gN2poE1rAiNgq4PB41hlObtqTgybnHFcIy543okI1VbWUo0cX+cFV5yUf4591xm6ZfbKjdjSNEA6Mh7g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj",
+  "projectFilePath": "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bolis.16123\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Bolis.16123\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\5.0.5\\microsoft.aspnetcore.authentication.google.5.0.5.nupkg.sha512",

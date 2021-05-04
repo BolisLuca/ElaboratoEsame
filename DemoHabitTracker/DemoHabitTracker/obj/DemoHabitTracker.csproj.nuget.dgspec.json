@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj": {}
+    "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj": {
+    "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+        "projectUniqueName": "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
         "projectName": "DemoHabitTracker",
-        "projectPath": "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+        "projectPath": "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
         "packagesPath": "C:\\Users\\Bolis.16123\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\obj\\",
+        "outputPath": "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -46,6 +46,10 @@
             "AntDesign": {
               "target": "Package",
               "version": "[0.8.0, )"
+            },
+            "Google.Apis.Auth.AspNetCore3": {
+              "target": "Package",
+              "version": "[1.51.0, )"
             },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",

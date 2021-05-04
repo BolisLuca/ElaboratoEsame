@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g1DcZbKcowTqmRcESU2KAJdWab1yNx7j5Vwrck3QI+aE/93ALgbS8jSSvQ8StBG0O8Fo/vba37gGk5FxDGGGmg==",
+  "dgSpecHash": "Cnxy1eQ1cGFYW6AmkJnTQv3vp717Vm2cmoXxItqfEVvi5qKmgOhsbRXbp6xb6NGcyqNwMDacf6SjBYcITUPvrQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\Google\\TestCalendar\\WebApplication7\\WebApplication7.csproj",
+  "projectFilePath": "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\Google\\TestCalendar\\WebApplication7\\WebApplication7.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bolis.16123\\.nuget\\packages\\google.apis\\1.51.0\\google.apis.1.51.0.nupkg.sha512",
     "C:\\Users\\Bolis.16123\\.nuget\\packages\\google.apis.auth\\1.51.0\\google.apis.auth.1.51.0.nupkg.sha512",
