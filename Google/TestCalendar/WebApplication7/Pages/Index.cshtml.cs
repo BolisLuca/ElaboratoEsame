@@ -1,84 +1,59 @@
-﻿using Google.Apis.Auth.OAuth2;
+﻿using Google.Apis.Auth.AspNetCore3;
+using Google.Apis.Auth.OAuth2;
 using Google.Apis.Calendar.v3;
 using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
-using Google.Apis.Util.Store;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System;
 using System.IO;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Calendar.v3;
+using Google.Apis.Calendar.v3.Data;
+using Google.Apis.Services;
+using Google.Apis.Util.Store;
 
 namespace WebApplication7.Pages
 {
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+        private readonly IGoogleAuthProvider _auth;
         public static string[] Scopes = { CalendarService.Scope.CalendarEvents };
         public static string ApplicationName = "Google Calendar API .NET Quickstart";
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public readonly List<Event> events1;
+        public IndexModel(ILogger<IndexModel> logger, IGoogleAuthProvider auth)
         {
             _logger = logger;
+            _auth = auth;
         }
 
-        public void OnGet()
+        
+        public async System.Threading.Tasks.Task OnGetAsync()
         {
+            
+            GoogleCredential cred = await _auth.GetCredentialAsync();
 
-            UserCredential credential;
-
-            using (var stream =
-                new FileStream("credentials.json", FileMode.Open, FileAccess.Read))
-            {
-                // The file token.json stores the user's access and refresh tokens, and is created
-                // automatically when the authorization flow completes for the first time.
-                string credPath = "token.json";
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.Load(stream).Secrets,
-                    Scopes,
-                    "user",
-                    CancellationToken.None,
-                    new FileDataStore(credPath, true)).Result;
-                Console.WriteLine("Credential file saved to: " + credPath);
-            }
-
-            // Create Google Calendar API service.
-            var service = new CalendarService(new BaseClientService.Initializer()
-            {
-                HttpClientInitializer = credential,
-                ApplicationName = ApplicationName,
-            });
-
-            // Define parameters of request.
-            EventsResource.ListRequest request = service.Events.List("primary");
+            CalendarService Service = new CalendarService(new BaseClientService.Initializer() { HttpClientInitializer = cred, ApplicationName = ApplicationName });
+            EventsResource.ListRequest request = Service.Events.List("primary");
             request.TimeMin = DateTime.Now;
-            request.ShowDeleted = false;
-            request.SingleEvents = true;
-            request.MaxResults = 10;
-            request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
-
-            // List events.
+            request.MaxResults = 2500;
             Events events = request.Execute();
-            Console.WriteLine("Upcoming events:");
+
             if (events.Items != null && events.Items.Count > 0)
             {
-                foreach (var eventItem in events.Items)
+                foreach (Event eventItem in events.Items)
                 {
-                    string when = eventItem.Start.DateTime.ToString();
-                    if (String.IsNullOrEmpty(when))
+                    if (eventItem.Start == null && eventItem.Status == "cancelled")
                     {
-                        when = eventItem.Start.Date;
+                        events1.Add(eventItem);
                     }
-                    Console.WriteLine("{0} ({1})", eventItem.Summary, when);
                 }
-            }
-            else
-            {
-                Console.WriteLine("No upcoming events found.");
             }
         }
     }

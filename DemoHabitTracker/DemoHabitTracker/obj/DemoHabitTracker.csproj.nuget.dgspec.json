@@ -1,27 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj": {}
+    "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj": {
+    "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+        "projectUniqueName": "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
         "projectName": "DemoHabitTracker",
-        "projectPath": "C:\\Users\\hp\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\obj\\",
+        "projectPath": "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+        "packagesPath": "C:\\Users\\Bolis.16123\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Bolis.16123\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -89,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -13,91 +13,91 @@ namespace DemoHabitTracker.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\hp\Source\Repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 1 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\hp\Source\Repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 2 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\hp\Source\Repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 4 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\hp\Source\Repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 5 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\hp\Source\Repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 6 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\hp\Source\Repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 7 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\hp\Source\Repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 8 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\hp\Source\Repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 9 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\hp\Source\Repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 10 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\hp\Source\Repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 11 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\hp\Source\Repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 12 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using AntDesign;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\hp\Source\Repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 2 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
 using DemoHabitTracker.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\hp\Source\Repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 3 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
@@ -112,7 +112,7 @@ using Microsoft.AspNetCore.Components.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 61 "C:\Users\hp\Source\Repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 72 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
           
         string username;
         List<Activity> UserActivities;
@@ -128,7 +128,21 @@ using Microsoft.AspNetCore.Components.Authorization;
         {
 
         }
+        string title = "BasicModal";
+        bool _visible = false;
 
+        private void HandleOk(MouseEventArgs e)
+        {
+            Console.WriteLine(e);
+            UserActivities.Add(new Activity() { Pkid = , })
+            _visible = false;
+        }
+
+        private void HandleCancel(MouseEventArgs e)
+        {
+            Console.WriteLine(e);
+            _visible = false;
+        }
     
 
 #line default
