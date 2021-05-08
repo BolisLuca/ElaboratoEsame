@@ -22,6 +22,20 @@
           "buildMultiTargeting/AntDesign.props": {}
         }
       },
+      "blazor-dragdrop/2.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.7",
+          "Microsoft.AspNetCore.Components.Web": "3.1.7",
+          "Microsoft.CSharp": "4.7.0"
+        },
+        "compile": {
+          "lib/net5.0/Plk.Blazor.DragDrop.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Plk.Blazor.DragDrop.dll": {}
+        }
+      },
       "Google.Apis/1.51.0": {
         "type": "package",
         "dependencies": {
@@ -2707,6 +2721,18 @@
         "staticwebassets/less/upload/style/entry.less",
         "staticwebassets/less/upload/style/index.less",
         "staticwebassets/less/upload/style/rtl.less"
+      ]
+    },
+    "blazor-dragdrop/2.3.0": {
+      "sha512": "y2uUW0Q2Jpht8t07TA6NVluKnduQhzC9f8I9zI5U6OY2jYc3IJIADmIKwP9QYPqcBDqt/OAXvxJ3OgiCPas1NQ==",
+      "type": "package",
+      "path": "blazor-dragdrop/2.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazor-dragdrop.2.3.0.nupkg.sha512",
+        "blazor-dragdrop.nuspec",
+        "lib/net5.0/Plk.Blazor.DragDrop.dll"
       ]
     },
     "Google.Apis/1.51.0": {
@@ -8305,28 +8331,33 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.5",
       "Microsoft.AspNetCore.Identity.UI >= 5.0.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.5",
-      "Microsoft.EntityFrameworkCore.Tools >= 5.0.5"
+      "Microsoft.EntityFrameworkCore.Tools >= 5.0.5",
+      "blazor-dragdrop >= 2.3.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bolis.16123\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\hp\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+      "projectUniqueName": "C:\\Users\\hp\\Source\\Repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
       "projectName": "DemoHabitTracker",
-      "projectPath": "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
-      "packagesPath": "C:\\Users\\Bolis.16123\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\obj\\",
+      "projectPath": "C:\\Users\\hp\\Source\\Repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+      "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hp\\Source\\Repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Bolis.16123\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -8378,6 +8409,10 @@
           "Microsoft.EntityFrameworkCore.Tools": {
             "target": "Package",
             "version": "[5.0.5, )"
+          },
+          "blazor-dragdrop": {
+            "target": "Package",
+            "version": "[2.3.0, )"
           }
         },
         "imports": [
@@ -8398,7 +8433,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

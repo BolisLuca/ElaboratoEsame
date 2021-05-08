@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using Plk.Blazor.DragDrop;
 namespace DemoHabitTracker
 {
     public class Startup
@@ -35,6 +35,7 @@ namespace DemoHabitTracker
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddAntDesign();
+            services.AddBlazorDragDrop();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();

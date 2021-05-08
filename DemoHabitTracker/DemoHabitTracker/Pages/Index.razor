@@ -1,7 +1,7 @@
 ﻿@page "/"
 @using DemoHabitTracker.Data
 @using Microsoft.AspNetCore.Components.Authorization
-@inject HabitTrackerDbContext context;
+@inject HabitTrackerDbContext HabitTrackercontext
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
 
@@ -11,107 +11,114 @@
     <Content Style="padding:0 24px; min-height: 280px;">
         <div style="background-color: #ececec; padding: 20px;">
             <Row Gutter="16">
+
                 <Col Span="8">
-                <Title Level="3">To Do</Title>
-                <Button Type="primary" OnClick="@(()=>{ _visible = true; })">
-                    <Icon Type="plus" Theme="outline" />
-                </Button>
-                <Modal Title="@title"
-                       Visible="@_visible"
-                       OnOk="@HandleOk"
-                       OnCancel="@HandleCancel">
-                    @using System.Text.Json;
+                <Title Level="3">
+                    To Do <Button Type="primary" OnClick="@(()=>{ _visible = true; })">
+                        <Icon Type="plus" Theme="outline" />
+                    </Button>
+                    <Modal Title="@title"
+                           Visible="@_visible"
+                           OnOk="@HandleOk"
+                           OnCancel="@HandleCancel">
+                        @using System.Text.Json;
 
-                    <Form Model="@model"
-                          LabelColSpan="8"
-                          WrapperColSpan="16"
-                          OnFinish="OnFinish"
-                          OnFinishFailed="OnFinishFailed"
-                          Size="@model.Size">
-                        <FormItem Label="Form Size">
-                            <RadioGroup @bind-Value="@context.Size">
-                                <Radio RadioButton Value="@AntSizeLDSType.Small">Small</Radio>
-                                <Radio RadioButton Value="@AntSizeLDSType.Default">Default</Radio>
-                                <Radio RadioButton Value="@AntSizeLDSType.Large">Large</Radio>
-                            </RadioGroup>
-                        </FormItem>
+                        <Form Model="@model"
+                              LabelColSpan="8"
+                              WrapperColSpan="16"
+                              OnFinish="OnFinish"
+                              OnFinishFailed="OnFinishFailed"
+                              Size="@model.Size">
+                            <FormItem Label="Form Size">
+                                <RadioGroup @bind-Value="@context.Size">
+                                    <Radio RadioButton Value="@AntSizeLDSType.Small">Small</Radio>
+                                    <Radio RadioButton Value="@AntSizeLDSType.Default">Default</Radio>
+                                    <Radio RadioButton Value="@AntSizeLDSType.Large">Large</Radio>
+                                </RadioGroup>
+                            </FormItem>
 
-                        <FormItem Label="Input">
-                            <Input @bind-Value="@context.Input" />
-                        </FormItem>
-                        <FormItem Label="InputArea">
-                            <TextArea @bind-Value="@context.InputArea" />
-                        </FormItem>
-                        <FormItem Label="Cascader">
-                            <Cascader @bind-Value="@context.Cascader" Options="districts" />
-                        </FormItem>
-                        <FormItem Label="DatePicker">
-                            <DatePicker @bind-Value="@context.DatePicker" />
-                        </FormItem>
-                        <FormItem Label="RangePicker">
-                            <RangePicker @bind-Value="@context.RangePicker" />
-                        </FormItem>
-                        <FormItem Label="InputNumber">
-                            <AntDesign.InputNumber @bind-Value="@context.Number" />
-                        </FormItem>
-                        <FormItem Label="Switch">
-                            <Switch @bind-Value="@context.Switch" />
-                        </FormItem>
-                        <FormItem Label="Radio">
-                            <RadioGroup @bind-Value="@context.Radio">
-                                <Radio RadioButton Value="@("Hangzhou")">Hangzhou</Radio>
-                                <Radio RadioButton Value="@("Shanghai")">Shanghai</Radio>
-                                <Radio RadioButton Value="@("Beijing")">Beijing</Radio>
-                                <Radio RadioButton Value="@("Chengdu")">Chengdu</Radio>
-                            </RadioGroup>
-                        </FormItem>
-                        <FormItem Label="AutoComplete">
-                            <AutoComplete @bind-Value="@context.AutoComplete" Options="@autoCompleteOptions" Placeholder="Input here" />
-                        </FormItem>
-                        <FormItem WrapperColOffset="8" WrapperColSpan="16">
-                            <Button HtmlType="submit">
-                                Submit
-                            </Button>
-                        </FormItem>
+                            <FormItem Label="Input">
+                                <Input @bind-Value="@context.Input" />
+                            </FormItem>
+                            <FormItem Label="InputArea">
+                                <TextArea @bind-Value="@context.InputArea" />
+                            </FormItem>
+                            <FormItem Label="Cascader">
+                                <Cascader @bind-Value="@context.Cascader" Options="districts" />
+                            </FormItem>
+                            <FormItem Label="DatePicker">
+                                <DatePicker @bind-Value="@context.DatePicker" />
+                            </FormItem>
+                            <FormItem Label="RangePicker">
+                                <RangePicker @bind-Value="@context.RangePicker" />
+                            </FormItem>
+                            <FormItem Label="InputNumber">
+                                <AntDesign.InputNumber @bind-Value="@context.Number" />
+                            </FormItem>
+                            <FormItem Label="Switch">
+                                <Switch @bind-Value="@context.Switch" />
+                            </FormItem>
+                            <FormItem Label="Radio">
+                                <RadioGroup @bind-Value="@context.Radio">
+                                    <Radio RadioButton Value="@("Hangzhou")">Hangzhou</Radio>
+                                    <Radio RadioButton Value="@("Shanghai")">Shanghai</Radio>
+                                    <Radio RadioButton Value="@("Beijing")">Beijing</Radio>
+                                    <Radio RadioButton Value="@("Chengdu")">Chengdu</Radio>
+                                </RadioGroup>
+                            </FormItem>
+                            <FormItem Label="AutoComplete">
+                                <AutoComplete @bind-Value="@context.AutoComplete" Options="@autoCompleteOptions" Placeholder="Input here" />
+                            </FormItem>
+                            <FormItem WrapperColOffset="8" WrapperColSpan="16">
+                                <Button HtmlType="submit">
+                                    Submit
+                                </Button>
+                            </FormItem>
 
 
-                    </Form>
-                    {
+                        </Form>
 
-                </Modal>
-                @foreach (var activity in UserActivities.Where(i => i.Status == Models.ActivityStatus.Todo))
-                {
-                    <div ondrag="@HandleDrag()">
-                        <Card Bordered="true" Title=@activity.Title>
+
+                    </Modal>
+                </Title>
+                
+                <Dropzone Items="UserActivities.Where(i => i.Status == Models.ActivityStatus.Todo).ToList()" Accepts='(d, t)=>!d.Pkid.Contains("No_visibile")' TItem="Activity" OnItemDrop="@((item) => { item.Status = ActivityStatus.Todo;  HabitTrackercontext.SaveChanges(); })">
+                    
+                        <Card Bordered="true" Title=@context.Title>
                             <Body>
-                                <p>@activity.Description</p>
+                                <p>@context.Description</p>
                             </Body>
                         </Card>
-                    </div>
-                }
-
+                    
+                </Dropzone>
                 </Col>
                 <Col Span="8">
                 <Title Level="3">Doing</Title>
-                @foreach (var activity in UserActivities.Where(i => i.Status == Models.ActivityStatus.Doing))
-                {
-                    <Card Bordered="true" Title=@activity.Title>
-                        <Body>
-                            <p>@activity.Description</p>
-                        </Body>
-                    </Card>
-                }
+                <Dropzone Items="UserActivities.Where(i => i.Status == Models.ActivityStatus.Doing).ToList()" Accepts='(d, t)=>!d.Pkid.Contains("No_visibile")' TItem="Activity" OnItemDrop="@((item) => { item.Status = ActivityStatus.Doing; HabitTrackercontext.SaveChanges(); })">
+
+                    
+                        <Card Bordered="true" Title=@context.Title>
+                            <Body>
+                                <p>@context.Description</p>
+                            </Body>
+                        </Card>
+                        
+
+                    </Dropzone>
                 </Col>
                 <Col Span="8">
                 <Title Level="3">Done</Title>
-                @foreach (var activity in UserActivities.Where(i => i.Status == Models.ActivityStatus.Done))
-                {
-                    <Card Bordered="true" Title=@activity.Title>
-                        <Body>
-                            <p>@activity.Description</p>
-                        </Body>
-                    </Card>
-                }
+                <Dropzone Items="UserActivities.Where(i => i.Status == Models.ActivityStatus.Done).ToList()" Accepts='(d, t)=>!d.Pkid.Contains("No_visibile")' TItem="Activity" OnItemDrop="@((item) => { item.Status = ActivityStatus.Done; HabitTrackercontext.SaveChanges(); })">
+                    
+                    
+                        <Card Bordered="true" Title=@context.Title>
+                            <Body>
+                                <p>@context.Description</p>
+                            </Body>
+                        </Card>
+                    
+                    
+                </Dropzone>
                 </Col>
             </Row>
 
@@ -128,24 +135,30 @@
     string username;
     List<Activity> UserActivities;
 
+    public List<Activity> ToDoActivities { get; set; }
+    public List<Activity> DoingActivities { get; set; }
+    public List<Activity> DoneActivities { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         username = authState.User.Identity.Name;
-        UserActivities = context.Activities.Where(i => i.fkUsernName == username).ToList();
+        UserActivities = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).ToList();
+        ToDoActivities = UserActivities.Where(i => i.Status == Models.ActivityStatus.Todo).ToList();
+        DoingActivities = UserActivities.Where(i => i.Status == Models.ActivityStatus.Doing).ToList();
+        DoneActivities = UserActivities.Where(i => i.Status == Models.ActivityStatus.Done).ToList();
+        UserActivities.Add(new Activity() { Pkid = "No_visibile1", Status = ActivityStatus.Todo, Description = UserActivities.Where(i=> i.Status == ActivityStatus.Todo).Count()+"/"+ UserActivities.Count() });
+        UserActivities.Add(new Activity() { Pkid = "No_visibile2", Status = ActivityStatus.Doing, Description = UserActivities.Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + UserActivities.Count() });
+        UserActivities.Add(new Activity() { Pkid = "No_visibile3",Status = ActivityStatus.Done, Description = UserActivities.Where(i => i.Status == ActivityStatus.Done).Count() + "/" + UserActivities.Count() });
     }
 
-    public async Task HandleDrag()
-    {
-
-    }
     string title = "BasicModal";
     bool _visible = false;
 
     private void HandleOk(MouseEventArgs e)
     {
         Console.WriteLine(e);
-       // UserActivities.Add(new Activity() { Pkid = , })
+        // UserActivities.Add(new Activity() { Pkid = , })
         _visible = false;
     }
 
@@ -154,6 +167,7 @@
         Console.WriteLine(e);
         _visible = false;
     }
+
     public class Model
     {
         public string Size { get; set; } = AntSizeLDSType.Small;

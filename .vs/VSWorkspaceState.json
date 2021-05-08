@@ -1,11 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\DemoHabitTracker",
-    "\\Google",
-    "\\Google\\TestCalendar",
-    "\\TestOAuth"
+    "\\DemoHabitTracker"
   ],
-  "SelectedNode": "\\TestOAuth\\TestOAuth.sln",
+  "SelectedNode": "\\DemoHabitTracker\\DemoHabitTracker.sln",
   "PreviewInSolutionExplorer": false
 }

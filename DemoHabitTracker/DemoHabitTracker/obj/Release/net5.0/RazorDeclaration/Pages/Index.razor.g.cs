@@ -13,92 +13,106 @@ namespace DemoHabitTracker.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 1 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 2 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 4 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 5 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 6 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 7 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 8 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 9 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 10 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 11 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 12 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
 using AntDesign;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 13 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+using Plk.Blazor.DragDrop;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
 using DemoHabitTracker.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 3 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
 using Microsoft.AspNetCore.Components.Authorization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 24 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+using System.Text.Json;
 
 #line default
 #line hidden
@@ -112,44 +126,98 @@ using Microsoft.AspNetCore.Components.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 72 "C:\Users\Bolis.16123\source\repos\BolisLuca\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
-          
-        string username;
-        List<Activity> UserActivities;
+#line 134 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+      
+    string username;
+    List<Activity> UserActivities;
 
-        protected override async Task OnInitializedAsync()
+    public List<Activity> ToDoActivities { get; set; }
+    public List<Activity> DoingActivities { get; set; }
+    public List<Activity> DoneActivities { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        username = authState.User.Identity.Name;
+        UserActivities = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).ToList();
+        ToDoActivities = UserActivities.Where(i => i.Status == Models.ActivityStatus.Todo).ToList();
+        DoingActivities = UserActivities.Where(i => i.Status == Models.ActivityStatus.Doing).ToList();
+        DoneActivities = UserActivities.Where(i => i.Status == Models.ActivityStatus.Done).ToList();
+        UserActivities.Add(new Activity() { Pkid = "No_visibile", Status = ActivityStatus.Todo });
+        UserActivities.Add(new Activity() { Pkid = "No_visibile", Status = ActivityStatus.Doing });
+        UserActivities.Add(new Activity() { Pkid = "No_visibile", Status = ActivityStatus.Done});
+    }
+
+    string title = "BasicModal";
+    bool _visible = false;
+
+    private void HandleOk(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        // UserActivities.Add(new Activity() { Pkid = , })
+        _visible = false;
+    }
+
+    private void HandleCancel(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
+    }
+
+    public class Model
+    {
+        public string Size { get; set; } = AntSizeLDSType.Small;
+        public string Input { get; set; } = "input";
+        public string InputArea { get; set; } = "inputArea";
+        public string Cascader { get; set; } = "11";
+        public DateTime? DatePicker { get; set; } = DateTime.Now;
+        public DateTime?[] RangePicker { get; set; } = new DateTime?[] { DateTime.Now, DateTime.Now.AddDays(10) };
+        public double Number { get; set; } = 1;
+        public bool Switch { get; set; } = true;
+        public string Radio { get; set; } = "Beijing";
+        public string AutoComplete { get; set; }
+    }
+
+    private Model model = new Model();
+
+    private List<CascaderNode> districts = new List<CascaderNode>
+{
+        new CascaderNode()
         {
-            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-            username = authState.User.Identity.Name;
-            UserActivities = context.Activities.Where(i => i.fkUsernName == username).ToList();
-        }
-
-        public async Task HandleDrag()
+            Value = "1",
+            Label = "Zhejianng",
+            Children = new []
+                    {
+                new CascaderNode {Value = "11", Label = "Hangzhou"},
+                new CascaderNode {Value = "12", Label = "Wenzhou"},
+            }
+        },
+        new CascaderNode()
         {
-
+            Value = "2",
+            Label = "Shanghai",
         }
-        string title = "BasicModal";
-        bool _visible = false;
+    };
 
-        private void HandleOk(MouseEventArgs e)
-        {
-            Console.WriteLine(e);
-            UserActivities.Add(new Activity() { Pkid = , })
-            _visible = false;
-        }
+    private List<string> autoCompleteOptions = new List<string> { "Primary", "Junior", "Senior", "Undergraduate", "Master", "Doctor" };
 
-        private void HandleCancel(MouseEventArgs e)
-        {
-            Console.WriteLine(e);
-            _visible = false;
-        }
+    private void OnFinish(EditContext editContext)
+    {
+        Console.WriteLine($"Success:{JsonSerializer.Serialize(model)}");
+    }
+
+    private void OnFinishFailed(EditContext editContext)
+    {
+        Console.WriteLine($"Failed:{JsonSerializer.Serialize(model)}");
+    }
+
     
 
 #line default
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HabitTrackerDbContext context { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HabitTrackerDbContext HabitTrackercontext { get; set; }
     }
 }
 #pragma warning restore 1591
