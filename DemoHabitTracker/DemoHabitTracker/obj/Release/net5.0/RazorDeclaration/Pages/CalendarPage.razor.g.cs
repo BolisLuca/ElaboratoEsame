@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace DemoHabitTracker.Shared
+namespace DemoHabitTracker.Pages
 {
     #line hidden
     using System;
@@ -103,7 +103,8 @@ using Plk.Blazor.DragDrop;
 #line default
 #line hidden
 #nullable disable
-    public partial class MainLayout : LayoutComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/Calendar")]
+    public partial class CalendarPage : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -111,27 +112,25 @@ using Plk.Blazor.DragDrop;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 29 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Shared\MainLayout.razor"
+#line 9 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\CalendarPage.razor"
  
+    private DateTime selectedValue = new DateTime(2017, 1, 25);
+    private DateTime value = new DateTime(2017, 1, 25);
+
+    private void OnSelect(DateTime value)
+    {
+        this.value = value;
+        selectedValue = value;
+    }
+
     private void OnPanelChange(DateTime value, string mode)
     {
-        Console.WriteLine($"{value.ToString("YYYY-MM-DD")} {mode}");
+        this.value = value;
     }
-
-    private void GoToIndex()
-    {
-        NavigationManager.NavigateTo("/");
-    }
-    private void GoToCalendar()
-    {
-        NavigationManager.NavigateTo("/Calendar");
-    }
-
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

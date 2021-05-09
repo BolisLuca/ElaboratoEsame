@@ -111,17 +111,27 @@ using Plk.Blazor.DragDrop;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Shared\MainLayout.razor"
+#line 29 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Shared\MainLayout.razor"
  
-                private void OnPanelChange(DateTime value, string mode)
-                {
-                    Console.WriteLine($"{value.ToString("YYYY-MM-DD")} {mode}");
-                }
-            
+    private void OnPanelChange(DateTime value, string mode)
+    {
+        Console.WriteLine($"{value.ToString("YYYY-MM-DD")} {mode}");
+    }
+
+    private void GoToIndex()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+    private void GoToCalendar()
+    {
+        NavigationManager.NavigateTo("/Calendar");
+    }
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

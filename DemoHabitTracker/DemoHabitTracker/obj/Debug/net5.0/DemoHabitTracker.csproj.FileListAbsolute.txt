@@ -406,7 +406,6 @@ C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\De
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
-C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\DemoHabitTracker.RazorComponent.output.cache
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\RazorDeclaration\DemoHabitTracker.dll
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\DemoHabitTracker.TagHelpers.input.cache
@@ -420,7 +419,6 @@ C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\De
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
-C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\LogOut.cshtml.g.cs
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\Razor\Pages\Error.cshtml.g.cs
@@ -430,7 +428,6 @@ C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\De
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\staticwebassets\DemoHabitTracker.StaticWebAssets.Manifest.cache
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\staticwebassets\DemoHabitTracker.StaticWebAssets.xml
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
-C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\scopedcss\bundle\DemoHabitTracker.styles.css
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\scopedcss\projectbundle\DemoHabitTracker.bundle.scp.css
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\DemoHabitTracker.RazorTargetAssemblyInfo.cache
@@ -441,3 +438,5 @@ C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\De
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\ref\DemoHabitTracker.dll
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\DemoHabitTracker.pdb
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\DemoHabitTracker.genruntimeconfig.cache
+C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\RazorDeclaration\Pages\CalendarPage.razor.g.cs
+C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\Razor\Pages\CalendarPage.razor.g.cs

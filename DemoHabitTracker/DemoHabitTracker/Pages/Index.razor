@@ -1,6 +1,7 @@
 ﻿@page "/"
 @using DemoHabitTracker.Data
 @using Microsoft.AspNetCore.Components.Authorization
+@using System.Text.Json
 @inject HabitTrackerDbContext HabitTrackercontext
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
@@ -21,58 +22,27 @@
                            Visible="@_visible"
                            OnOk="@HandleOk"
                            OnCancel="@HandleCancel">
-                        @using System.Text.Json;
 
-                        <Form Model="@model"
+
+                        <Form Model="@activity"
                               LabelColSpan="8"
                               WrapperColSpan="16"
                               OnFinish="OnFinish"
                               OnFinishFailed="OnFinishFailed"
-                              Size="@model.Size">
-                            <FormItem Label="Form Size">
-                                <RadioGroup @bind-Value="@context.Size">
-                                    <Radio RadioButton Value="@AntSizeLDSType.Small">Small</Radio>
-                                    <Radio RadioButton Value="@AntSizeLDSType.Default">Default</Radio>
-                                    <Radio RadioButton Value="@AntSizeLDSType.Large">Large</Radio>
-                                </RadioGroup>
+                              Size="@AntSizeLDSType.Default">
+
+                            <FormItem Label="Title">
+                                <Input @bind-Value="@context.Title" />
+                            </FormItem>
+                            <FormItem Label="Description">
+                                <TextArea @bind-Value="@context.Description" />
                             </FormItem>
 
-                            <FormItem Label="Input">
-                                <Input @bind-Value="@context.Input" />
+                            <FormItem Label="Date">
+                                <DatePicker @bind-Value="@context.Data" DefaultPickerValue="DateTime.Today" />
                             </FormItem>
-                            <FormItem Label="InputArea">
-                                <TextArea @bind-Value="@context.InputArea" />
-                            </FormItem>
-                            <FormItem Label="Cascader">
-                                <Cascader @bind-Value="@context.Cascader" Options="districts" />
-                            </FormItem>
-                            <FormItem Label="DatePicker">
-                                <DatePicker @bind-Value="@context.DatePicker" />
-                            </FormItem>
-                            <FormItem Label="RangePicker">
-                                <RangePicker @bind-Value="@context.RangePicker" />
-                            </FormItem>
-                            <FormItem Label="InputNumber">
-                                <AntDesign.InputNumber @bind-Value="@context.Number" />
-                            </FormItem>
-                            <FormItem Label="Switch">
-                                <Switch @bind-Value="@context.Switch" />
-                            </FormItem>
-                            <FormItem Label="Radio">
-                                <RadioGroup @bind-Value="@context.Radio">
-                                    <Radio RadioButton Value="@("Hangzhou")">Hangzhou</Radio>
-                                    <Radio RadioButton Value="@("Shanghai")">Shanghai</Radio>
-                                    <Radio RadioButton Value="@("Beijing")">Beijing</Radio>
-                                    <Radio RadioButton Value="@("Chengdu")">Chengdu</Radio>
-                                </RadioGroup>
-                            </FormItem>
-                            <FormItem Label="AutoComplete">
-                                <AutoComplete @bind-Value="@context.AutoComplete" Options="@autoCompleteOptions" Placeholder="Input here" />
-                            </FormItem>
-                            <FormItem WrapperColOffset="8" WrapperColSpan="16">
-                                <Button HtmlType="submit">
-                                    Submit
-                                </Button>
+                            <FormItem Label="Tomatoes">
+                                <Rate Character="@Character1" DefaultValue="3" />
                             </FormItem>
 
 
@@ -81,43 +51,43 @@
 
                     </Modal>
                 </Title>
-                
-                <Dropzone Items="UserActivities.Where(i => i.Status == Models.ActivityStatus.Todo).ToList()" Accepts='(d, t)=>!d.Pkid.Contains("No_visibile")' TItem="Activity" OnItemDrop="@((item) => { item.Status = ActivityStatus.Todo;  HabitTrackercontext.SaveChanges(); })">
-                    
-                        <Card Bordered="true" Title=@context.Title>
-                            <Body>
-                                <p>@context.Description</p>
-                            </Body>
-                        </Card>
-                    
+
+                <Dropzone Items="UserActivities.Where(i => i.Status == Models.ActivityStatus.Todo).ToList()" Accepts='(d, t)=>!d.Pkid.Contains("no_drag")' TItem="Activity" OnItemDrop="@((item) => { item.Status = ActivityStatus.Todo;  HabitTrackercontext.SaveChanges(); UpdateUserActivities(); })">
+
+                    <Card Bordered="true" Title=@context.Title>
+                        <Body>
+                            <p>@context.Description</p>
+                        </Body>
+                    </Card>
+
                 </Dropzone>
                 </Col>
                 <Col Span="8">
                 <Title Level="3">Doing</Title>
-                <Dropzone Items="UserActivities.Where(i => i.Status == Models.ActivityStatus.Doing).ToList()" Accepts='(d, t)=>!d.Pkid.Contains("No_visibile")' TItem="Activity" OnItemDrop="@((item) => { item.Status = ActivityStatus.Doing; HabitTrackercontext.SaveChanges(); })">
+                <Dropzone Items="UserActivities.Where(i => i.Status == Models.ActivityStatus.Doing).ToList()" Accepts='(d, t)=>!d.Pkid.Contains("no_drag")' TItem="Activity" OnItemDrop="@((item) => { item.Status = ActivityStatus.Doing; HabitTrackercontext.SaveChanges();UpdateUserActivities();  })">
 
-                    
-                        <Card Bordered="true" Title=@context.Title>
-                            <Body>
-                                <p>@context.Description</p>
-                            </Body>
-                        </Card>
-                        
 
-                    </Dropzone>
+                    <Card Bordered="true" Title=@context.Title>
+                        <Body>
+                            <p>@context.Description</p>
+                        </Body>
+                    </Card>
+
+
+                </Dropzone>
                 </Col>
                 <Col Span="8">
                 <Title Level="3">Done</Title>
-                <Dropzone Items="UserActivities.Where(i => i.Status == Models.ActivityStatus.Done).ToList()" Accepts='(d, t)=>!d.Pkid.Contains("No_visibile")' TItem="Activity" OnItemDrop="@((item) => { item.Status = ActivityStatus.Done; HabitTrackercontext.SaveChanges(); })">
-                    
-                    
-                        <Card Bordered="true" Title=@context.Title>
-                            <Body>
-                                <p>@context.Description</p>
-                            </Body>
-                        </Card>
-                    
-                    
+                <Dropzone Items="UserActivities.Where(i => i.Status == Models.ActivityStatus.Done).ToList()" Accepts='(d, t)=>!d.Pkid.Contains("no_drag")' TItem="Activity" OnItemDrop="@((item) => { item.Status = ActivityStatus.Done; HabitTrackercontext.SaveChanges();UpdateUserActivities();  })">
+
+
+                    <Card Bordered="true" Title=@context.Title>
+                        <Body>
+                            <p>@context.Description</p>
+                        </Body>
+                    </Card>
+
+
                 </Dropzone>
                 </Col>
             </Row>
@@ -130,35 +100,34 @@
         </div>
     </Sider>
 </Layout>
-<Progress Percent=50 Status="@ProgressStatus.Active" />
+<Progress Percent="(HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Done).Count()/HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count())*100" Status="@ProgressStatus.Active" />
 @code{
     string username;
     List<Activity> UserActivities;
-
-    public List<Activity> ToDoActivities { get; set; }
-    public List<Activity> DoingActivities { get; set; }
-    public List<Activity> DoneActivities { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         username = authState.User.Identity.Name;
-        UserActivities = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).ToList();
-        ToDoActivities = UserActivities.Where(i => i.Status == Models.ActivityStatus.Todo).ToList();
-        DoingActivities = UserActivities.Where(i => i.Status == Models.ActivityStatus.Doing).ToList();
-        DoneActivities = UserActivities.Where(i => i.Status == Models.ActivityStatus.Done).ToList();
-        UserActivities.Add(new Activity() { Pkid = "No_visibile1", Status = ActivityStatus.Todo, Description = UserActivities.Where(i=> i.Status == ActivityStatus.Todo).Count()+"/"+ UserActivities.Count() });
-        UserActivities.Add(new Activity() { Pkid = "No_visibile2", Status = ActivityStatus.Doing, Description = UserActivities.Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + UserActivities.Count() });
-        UserActivities.Add(new Activity() { Pkid = "No_visibile3",Status = ActivityStatus.Done, Description = UserActivities.Where(i => i.Status == ActivityStatus.Done).Count() + "/" + UserActivities.Count() });
+        UpdateUserActivities();
     }
 
-    string title = "BasicModal";
+    private void UpdateUserActivities()
+    {
+        UserActivities = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).ToList();
+        UserActivities.Add(new Activity() { Pkid = "no_drag1", Status = ActivityStatus.Todo, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count() });
+        UserActivities.Add(new Activity() { Pkid = "no_drag2", Status = ActivityStatus.Doing, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count() });
+        UserActivities.Add(new Activity() { Pkid = "no_drag3", Status = ActivityStatus.Done, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count() });
+    }
+    string title = "New Activity";
     bool _visible = false;
 
-    private void HandleOk(MouseEventArgs e)
+    private async Task HandleOk(MouseEventArgs e)
     {
         Console.WriteLine(e);
-        // UserActivities.Add(new Activity() { Pkid = , })
+        await HabitTrackercontext.Activities.AddAsync(new Activity() { Pkid= username+ HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count(), Title= activity.Title, Description= activity.Description, Data= activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo ,fkUsernName = username });
+        await HabitTrackercontext.SaveChangesAsync();
+        UpdateUserActivities();
         _visible = false;
     }
 
@@ -167,52 +136,32 @@
         Console.WriteLine(e);
         _visible = false;
     }
-
-    public class Model
+    private void UpdateFooter()
     {
-        public string Size { get; set; } = AntSizeLDSType.Small;
-        public string Input { get; set; } = "input";
-        public string InputArea { get; set; } = "inputArea";
-        public string Cascader { get; set; } = "11";
-        public DateTime? DatePicker { get; set; } = DateTime.Now;
-        public DateTime?[] RangePicker { get; set; } = new DateTime?[] { DateTime.Now, DateTime.Now.AddDays(10) };
-        public double Number { get; set; } = 1;
-        public bool Switch { get; set; } = true;
-        public string Radio { get; set; } = "Beijing";
-        public string AutoComplete { get; set; }
+        UserActivities.Where(i => i.Pkid == "no_drag1").FirstOrDefault().Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count();
+        UserActivities.Where(i => i.Pkid == "no_drag2").FirstOrDefault().Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count();
+        UserActivities.Where(i => i.Pkid == "no_drag3").FirstOrDefault().Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count();
     }
 
-    private Model model = new Model();
+    private Activity activity = new Activity();
 
-    private List<CascaderNode> districts = new List<CascaderNode>
-{
-        new CascaderNode()
-        {
-            Value = "1",
-            Label = "Zhejianng",
-            Children = new []
-                    {
-                new CascaderNode {Value = "11", Label = "Hangzhou"},
-                new CascaderNode {Value = "12", Label = "Wenzhou"},
-            }
-        },
-        new CascaderNode()
-        {
-            Value = "2",
-            Label = "Shanghai",
-        }
-    };
 
     private List<string> autoCompleteOptions = new List<string> { "Primary", "Junior", "Senior", "Undergraduate", "Master", "Doctor" };
 
     private void OnFinish(EditContext editContext)
     {
-        Console.WriteLine($"Success:{JsonSerializer.Serialize(model)}");
+
     }
 
     private void OnFinishFailed(EditContext editContext)
     {
-        Console.WriteLine($"Failed:{JsonSerializer.Serialize(model)}");
-    }
 
     }
+
+    RenderFragment<RateItemRenderContext> Character1 = (builder) =>
+    @<Template>
+        O
+    </Template>;
+
+
+}

@@ -1,12 +1,13 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
 <AuthorizeView>
     <Authorized>
         <Layout>
             <Header Class="header">
                 <div class="logo" />
                 <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Horizontal" DefaultSelectedKeys=@(new []{"1"})>
-                    <MenuItem Key="1">Today</MenuItem>
-                    <MenuItem Key="2">Calendar</MenuItem>
+                    <MenuItem OnClick="GoToIndex" Key="1">Today</MenuItem>
+                    <MenuItem OnClick="GoToCalendar" Key="2">Calendar</MenuItem>
 
                     <LoginDisplay />
 
@@ -24,10 +25,20 @@
     </NotAuthorized>
 </AuthorizeView>
 
-            @code
+@code
 {
-                private void OnPanelChange(DateTime value, string mode)
-                {
-                    Console.WriteLine($"{value.ToString("YYYY-MM-DD")} {mode}");
-                }
-            }
+    private void OnPanelChange(DateTime value, string mode)
+    {
+        Console.WriteLine($"{value.ToString("YYYY-MM-DD")} {mode}");
+    }
+
+    private void GoToIndex()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+    private void GoToCalendar()
+    {
+        NavigationManager.NavigateTo("/Calendar");
+    }
+
+}

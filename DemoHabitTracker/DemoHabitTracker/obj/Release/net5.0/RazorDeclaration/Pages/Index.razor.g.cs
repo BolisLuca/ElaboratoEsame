@@ -111,7 +111,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 24 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 4 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
 using System.Text.Json;
 
 #line default
@@ -126,35 +126,34 @@ using System.Text.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 134 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 104 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
       
     string username;
     List<Activity> UserActivities;
-
-    public List<Activity> ToDoActivities { get; set; }
-    public List<Activity> DoingActivities { get; set; }
-    public List<Activity> DoneActivities { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         username = authState.User.Identity.Name;
-        UserActivities = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).ToList();
-        ToDoActivities = UserActivities.Where(i => i.Status == Models.ActivityStatus.Todo).ToList();
-        DoingActivities = UserActivities.Where(i => i.Status == Models.ActivityStatus.Doing).ToList();
-        DoneActivities = UserActivities.Where(i => i.Status == Models.ActivityStatus.Done).ToList();
-        UserActivities.Add(new Activity() { Pkid = "No_visibile", Status = ActivityStatus.Todo });
-        UserActivities.Add(new Activity() { Pkid = "No_visibile", Status = ActivityStatus.Doing });
-        UserActivities.Add(new Activity() { Pkid = "No_visibile", Status = ActivityStatus.Done});
+        UpdateUserActivities();
     }
 
-    string title = "BasicModal";
+    private void UpdateUserActivities()
+    {
+        UserActivities = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).ToList();
+        UserActivities.Add(new Activity() { Pkid = "no_drag1", Status = ActivityStatus.Todo, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count() });
+        UserActivities.Add(new Activity() { Pkid = "no_drag2", Status = ActivityStatus.Doing, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count() });
+        UserActivities.Add(new Activity() { Pkid = "no_drag3", Status = ActivityStatus.Done, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count() });
+    }
+    string title = "New Activity";
     bool _visible = false;
 
-    private void HandleOk(MouseEventArgs e)
+    private async Task HandleOk(MouseEventArgs e)
     {
         Console.WriteLine(e);
-        // UserActivities.Add(new Activity() { Pkid = , })
+        await HabitTrackercontext.Activities.AddAsync(new Activity() { Pkid= username+ HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count(), Title= activity.Title, Description= activity.Description, Data= activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo ,fkUsernName = username });
+        await HabitTrackercontext.SaveChangesAsync();
+        UpdateUserActivities();
         _visible = false;
     }
 
@@ -163,55 +162,42 @@ using System.Text.Json;
         Console.WriteLine(e);
         _visible = false;
     }
-
-    public class Model
+    private void UpdateFooter()
     {
-        public string Size { get; set; } = AntSizeLDSType.Small;
-        public string Input { get; set; } = "input";
-        public string InputArea { get; set; } = "inputArea";
-        public string Cascader { get; set; } = "11";
-        public DateTime? DatePicker { get; set; } = DateTime.Now;
-        public DateTime?[] RangePicker { get; set; } = new DateTime?[] { DateTime.Now, DateTime.Now.AddDays(10) };
-        public double Number { get; set; } = 1;
-        public bool Switch { get; set; } = true;
-        public string Radio { get; set; } = "Beijing";
-        public string AutoComplete { get; set; }
+        UserActivities.Where(i => i.Pkid == "no_drag1").FirstOrDefault().Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count();
+        UserActivities.Where(i => i.Pkid == "no_drag2").FirstOrDefault().Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count();
+        UserActivities.Where(i => i.Pkid == "no_drag3").FirstOrDefault().Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count();
     }
 
-    private Model model = new Model();
+    private Activity activity = new Activity();
 
-    private List<CascaderNode> districts = new List<CascaderNode>
-{
-        new CascaderNode()
-        {
-            Value = "1",
-            Label = "Zhejianng",
-            Children = new []
-                    {
-                new CascaderNode {Value = "11", Label = "Hangzhou"},
-                new CascaderNode {Value = "12", Label = "Wenzhou"},
-            }
-        },
-        new CascaderNode()
-        {
-            Value = "2",
-            Label = "Shanghai",
-        }
-    };
 
     private List<string> autoCompleteOptions = new List<string> { "Primary", "Junior", "Senior", "Undergraduate", "Master", "Doctor" };
 
     private void OnFinish(EditContext editContext)
     {
-        Console.WriteLine($"Success:{JsonSerializer.Serialize(model)}");
+
     }
 
     private void OnFinishFailed(EditContext editContext)
     {
-        Console.WriteLine($"Failed:{JsonSerializer.Serialize(model)}");
+
     }
 
+    RenderFragment<RateItemRenderContext> Character1 = (builder) =>
     
+
+#line default
+#line hidden
+#nullable disable
+        (__builder2) => {
+            __builder2.AddMarkupContent(0, "<Template>\r\n        O\r\n    </Template>");
+        }
+#nullable restore
+#line 164 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+               ;
+
+
 
 #line default
 #line hidden
