@@ -97,7 +97,7 @@ using Plk.Blazor.DragDrop;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 14 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Data;
 
 #line default
@@ -126,10 +126,10 @@ using System.Text.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 104 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 103 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
       
     string username;
-    List<Activity> UserActivities;
+    public List<Activity> UserActivities;
 
     protected override async Task OnInitializedAsync()
     {
@@ -140,10 +140,10 @@ using System.Text.Json;
 
     private void UpdateUserActivities()
     {
-        UserActivities = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).ToList();
-        UserActivities.Add(new Activity() { Pkid = "no_drag1", Status = ActivityStatus.Todo, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count() });
-        UserActivities.Add(new Activity() { Pkid = "no_drag2", Status = ActivityStatus.Doing, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count() });
-        UserActivities.Add(new Activity() { Pkid = "no_drag3", Status = ActivityStatus.Done, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count() });
+        UserActivities = HabitTrackercontext.Activities.Where(i=> i.Data == DateTime.Today).Where(i => i.fkUsernName == username).ToList();
+        UserActivities.Add(new Activity() { Pkid = "no_drag1", Status = ActivityStatus.Todo, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
+        UserActivities.Add(new Activity() { Pkid = "no_drag2", Status = ActivityStatus.Doing, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
+        UserActivities.Add(new Activity() { Pkid = "no_drag3", Status = ActivityStatus.Done, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i=>i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
     }
     string title = "New Activity";
     bool _visible = false;
@@ -152,7 +152,7 @@ using System.Text.Json;
     {
         Console.WriteLine(e);
         await HabitTrackercontext.Activities.AddAsync(new Activity() { Pkid= username+ HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count(), Title= activity.Title, Description= activity.Description, Data= activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo ,fkUsernName = username });
-        await HabitTrackercontext.SaveChangesAsync();
+        HabitTrackercontext.SaveChanges();
         UpdateUserActivities();
         _visible = false;
     }
@@ -162,17 +162,8 @@ using System.Text.Json;
         Console.WriteLine(e);
         _visible = false;
     }
-    private void UpdateFooter()
-    {
-        UserActivities.Where(i => i.Pkid == "no_drag1").FirstOrDefault().Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count();
-        UserActivities.Where(i => i.Pkid == "no_drag2").FirstOrDefault().Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count();
-        UserActivities.Where(i => i.Pkid == "no_drag3").FirstOrDefault().Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count();
-    }
 
     private Activity activity = new Activity();
-
-
-    private List<string> autoCompleteOptions = new List<string> { "Primary", "Junior", "Senior", "Undergraduate", "Master", "Doctor" };
 
     private void OnFinish(EditContext editContext)
     {
@@ -194,7 +185,7 @@ using System.Text.Json;
             __builder2.AddMarkupContent(0, "<Template>\r\n        O\r\n    </Template>");
         }
 #nullable restore
-#line 164 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 154 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                ;
 
 

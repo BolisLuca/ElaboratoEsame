@@ -1,23 +1,54 @@
-﻿@page "/Calendar" 
+﻿@page "/Calendar"
+@inject HabitTrackerDbContext HabitTrackercontext
+@inject AuthenticationStateProvider AuthenticationStateProvider
+<Row>
+    <Col Span="18" Offset="3">
+    <Calendar  DefaultValue="DateTime.Today" DateCellRender="DateCellRender"  Value="@value" OnSelect="OnSelect" OnPanelChange="OnPanelChange" />
+    </Col>
+</Row>
 
-<div>
-    <Alert Message=@($"You selected date: {selectedValue.ToString("yyyy-MM-dd")}") />
-    <Calendar Value="@value" OnSelect="OnSelect" OnPanelChange="OnPanelChange" />
-</div>
 
 @code
 {
-    private DateTime selectedValue = new DateTime(2017, 1, 25);
-    private DateTime value = new DateTime(2017, 1, 25);
+    string username;
+    public List<Activity> UserActivities;
 
-    private void OnSelect(DateTime value)
+    protected override async Task OnInitializedAsync()
     {
-        this.value = value;
-        selectedValue = value;
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        username = authState.User.Identity.Name;
+        UserActivities = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).ToList();
     }
 
-    private void OnPanelChange(DateTime value, string mode)
+    private RenderFragment DateCellRender(DateTime value)
     {
-        this.value = value;
-    }
+        var DailyActivities = UserActivities.Where(i => i.Data == value).ToList();
+
+        return@<Template>
+        <ul class="events">
+            @foreach (var activity in DailyActivities)
+            {
+                <li key="@activity.Pkid">
+                    @if (activity.Status == ActivityStatus.Done) { <Icon Type="check" Theme="outline" Style="color:green" />} else { <Icon Type="close" Theme="outline" Style="color:red" />}<Badge Text="@activity.Title" />
+                </li>
+            }
+        </ul>
+    </Template>;
+}
+
+
+private DateTime selectedValue = DateTime.Today;
+private DateTime value = DateTime.Today;
+
+private void OnSelect(DateTime value)
+{
+this.value = value;
+selectedValue = value;
+}
+
+private void OnPanelChange(DateTime value, string mode)
+{
+this.value = value;
+}
+
 }

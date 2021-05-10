@@ -126,7 +126,7 @@ using System.Text.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 104 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 102 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
       
     string username;
     List<Activity> UserActivities;
@@ -194,7 +194,7 @@ using System.Text.Json;
             __builder2.AddMarkupContent(0, "<Template>\r\n        O\r\n    </Template>");
         }
 #nullable restore
-#line 164 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 162 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
                ;
 
 

@@ -16,3 +16,25 @@
 }
 
 
+.events[b-1cyqms2v47] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .events .ant-badge-status[b-1cyqms2v47] {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+        text-overflow: ellipsis;
+        font-size: 12px;
+    }
+
+.notes-month[b-1cyqms2v47] {
+    text-align: center;
+    font-size: 28px;
+}
+
+    .notes-month section[b-1cyqms2v47] {
+        font-size: 28px;
+    }
