@@ -126,7 +126,7 @@ using System.Text.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 103 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 147 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
       
     string username;
     public List<Activity> UserActivities;
@@ -140,40 +140,45 @@ using System.Text.Json;
 
     private void UpdateUserActivities()
     {
-        UserActivities = HabitTrackercontext.Activities.Where(i=> i.Data == DateTime.Today).Where(i => i.fkUsernName == username).ToList();
+        UserActivities = HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).ToList();
         UserActivities.Add(new Activity() { Pkid = "no_drag1", Status = ActivityStatus.Todo, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
         UserActivities.Add(new Activity() { Pkid = "no_drag2", Status = ActivityStatus.Doing, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
-        UserActivities.Add(new Activity() { Pkid = "no_drag3", Status = ActivityStatus.Done, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i=>i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
+        UserActivities.Add(new Activity() { Pkid = "no_drag3", Status = ActivityStatus.Done, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i => i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
     }
+
     string title = "New Activity";
     bool _visible = false;
 
     private async Task HandleOk(MouseEventArgs e)
     {
-        Console.WriteLine(e);
-        await HabitTrackercontext.Activities.AddAsync(new Activity() { Pkid= username+ HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count(), Title= activity.Title, Description= activity.Description, Data= activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo ,fkUsernName = username });
-        HabitTrackercontext.SaveChanges();
-        UpdateUserActivities();
-        _visible = false;
+        if (_edit)
+        {
+
+            HabitTrackercontext.SaveChanges();
+            UpdateUserActivities();
+            _visible = false;
+            _edit = false;
+
+        }
+        else
+        {
+            await HabitTrackercontext.Activities.AddAsync(new Activity() { Pkid = username + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count(), Title = activity.Title, Description = activity.Description, Data = activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo, fkUsernName = username });
+            HabitTrackercontext.SaveChanges();
+            UpdateUserActivities();
+            _visible = false;
+            _edit = false;
+        }
+
     }
 
     private void HandleCancel(MouseEventArgs e)
     {
-        Console.WriteLine(e);
         _visible = false;
     }
 
     private Activity activity = new Activity();
 
-    private void OnFinish(EditContext editContext)
-    {
 
-    }
-
-    private void OnFinishFailed(EditContext editContext)
-    {
-
-    }
 
     RenderFragment<RateItemRenderContext> Character1 = (builder) =>
     
@@ -185,10 +190,40 @@ using System.Text.Json;
             __builder2.AddMarkupContent(0, "<Template>\r\n        O\r\n    </Template>");
         }
 #nullable restore
-#line 154 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 203 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                ;
 
+RenderFragment actionEdit(Action clickAction) =>
 
+#line default
+#line hidden
+#nullable disable
+        (__builder2) => {
+            __builder2.OpenElement(1, "Icon");
+            __builder2.AddAttribute(2, "Type", "edit");
+            __builder2.AddAttribute(3, "OnClick", 
+#nullable restore
+#line 205 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+                                                                             clickAction
+
+#line default
+#line hidden
+#nullable disable
+            );
+            __builder2.CloseElement();
+        }
+#nullable restore
+#line 205 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+                                                                                            ;
+
+    void OnClick(Activity SelectedActivity)
+    {
+        activity= SelectedActivity;
+        _visible = true;
+        _edit = true;
+    }
+
+    bool _edit = false;
 
 #line default
 #line hidden

@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace DemoHabitTracker
+namespace DemoHabitTracker.Pages
 {
     #line hidden
     using System;
@@ -110,13 +110,52 @@ using DemoHabitTracker.Data;
 #line default
 #line hidden
 #nullable disable
-    public partial class _Imports : System.Object
+    [Microsoft.AspNetCore.Components.RouteAttribute("/Scoreboard")]
+    public partial class Scoreboard : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected void Execute()
+        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 43 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Scoreboard.razor"
+      
+            string name = "gamma@gamma.it";
+            bool switchValue { get; set; }
+            private List<UserScore> Scores;
+
+            protected override async Task OnInitializedAsync()
+            {
+                Scores = HabitTrackercontext.UserScores.OrderByDescending(i => i.Score).ToList();
+            }
+            RenderFragment avatar =
+
+#line default
+#line hidden
+#nullable disable
+        (__builder2) => {
+            __builder2.AddMarkupContent(0, "<Avatar Src=\"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png\"></Avatar>");
+        }
+#nullable restore
+#line 52 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Scoreboard.razor"
+                                                                                                                            ;
+
+
+
+public void ItemClick(UserScore item)
+{
+    Console.WriteLine($"item was clicked: {item.fkUserName}");
+}
+
+
+
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HabitTrackerDbContext HabitTrackercontext { get; set; }
     }
 }
 #pragma warning restore 1591

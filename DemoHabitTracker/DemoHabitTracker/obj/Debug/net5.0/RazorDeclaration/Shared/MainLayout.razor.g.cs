@@ -133,7 +133,10 @@ using DemoHabitTracker.Data;
     {
         NavigationManager.NavigateTo("/Calendar");
     }
-
+    private void GoToScoreboard()
+    {
+        NavigationManager.NavigateTo("/Scoreboard");
+    }
 
 #line default
 #line hidden

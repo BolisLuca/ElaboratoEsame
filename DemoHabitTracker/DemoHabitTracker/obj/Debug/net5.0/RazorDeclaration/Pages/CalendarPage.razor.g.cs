@@ -119,7 +119,7 @@ using DemoHabitTracker.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 12 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+#line 50 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
  
     string username;
     public List<Activity> UserActivities;
@@ -147,7 +147,7 @@ using DemoHabitTracker.Data;
             __builder2.AddAttribute(3, "class", "events");
             __builder2.AddMarkupContent(4, "\r\n");
 #nullable restore
-#line 29 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+#line 67 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
              foreach (var activity in DailyActivities)
             {
 
@@ -158,7 +158,7 @@ using DemoHabitTracker.Data;
             __builder2.OpenElement(6, "li");
             __builder2.AddAttribute(7, "key", 
 #nullable restore
-#line 31 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+#line 69 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
                           activity.Pkid
 
 #line default
@@ -167,24 +167,27 @@ using DemoHabitTracker.Data;
             );
             __builder2.AddMarkupContent(8, "\r\n");
 #nullable restore
-#line 32 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
-                     if (activity.Status == ActivityStatus.Done) {
+#line 70 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+                     if (activity.Status == ActivityStatus.Done)
+                    {
 
 #line default
 #line hidden
 #nullable disable
-            __builder2.AddMarkupContent(9, " <Icon Type=\"check\" Theme=\"outline\" Style=\"color:green\"></Icon>");
+            __builder2.AddMarkupContent(9, "<Icon Type=\"check\" Theme=\"outline\" Style=\"color:green\"></Icon>");
 #nullable restore
-#line 32 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
-                                                                                                                            } else {
+#line 71 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+                                                                              }
+                    else
+                    {
 
 #line default
 #line hidden
 #nullable disable
             __builder2.AddMarkupContent(10, " <Icon Type=\"close\" Theme=\"outline\" Style=\"color:red\"></Icon>");
 #nullable restore
-#line 32 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
-                                                                                                                                                                                            }
+#line 73 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+                                                                             }
 
 #line default
 #line hidden
@@ -192,8 +195,8 @@ using DemoHabitTracker.Data;
             __builder2.OpenElement(11, "Badge");
             __builder2.AddAttribute(12, "Text", 
 #nullable restore
-#line 32 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
-                                                                                                                                                                                                           activity.Title
+#line 73 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+                                                                                            activity.Title
 
 #line default
 #line hidden
@@ -204,7 +207,7 @@ using DemoHabitTracker.Data;
             __builder2.CloseElement();
             __builder2.AddMarkupContent(14, "\r\n");
 #nullable restore
-#line 34 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+#line 75 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
             }
 
 #line default
@@ -216,24 +219,66 @@ using DemoHabitTracker.Data;
             __builder2.CloseElement();
         }
 #nullable restore
-#line 36 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+#line 77 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
                ;
 }
 
 
-private DateTime selectedValue = DateTime.Today;
 private DateTime value = DateTime.Today;
 
 private void OnSelect(DateTime value)
 {
-this.value = value;
-selectedValue = value;
+        _visible = true;
+        activity.Data = value;
 }
 
 private void OnPanelChange(DateTime value, string mode)
 {
 this.value = value;
 }
+
+
+string title = "New Activity";
+bool _visible = false;
+
+private async Task HandleOk(MouseEventArgs e)
+{
+Console.WriteLine(e);
+await HabitTrackercontext.Activities.AddAsync(new Activity() { Pkid = username + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count(), Title = activity.Title, Description = activity.Description, Data = activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo, fkUsernName = username });
+HabitTrackercontext.SaveChanges();
+_visible = false;
+}
+
+private void HandleCancel(MouseEventArgs e)
+{
+Console.WriteLine(e);
+_visible = false;
+}
+
+private Activity activity = new Activity();
+
+private void OnFinish(EditContext editContext)
+{
+
+}
+
+private void OnFinishFailed(EditContext editContext)
+{
+
+}
+
+RenderFragment<RateItemRenderContext> Character1 = (builder) =>
+
+#line default
+#line hidden
+#nullable disable
+        (__builder2) => {
+            __builder2.AddMarkupContent(17, "<Template>\r\n    O\r\n</Template>");
+        }
+#nullable restore
+#line 127 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+           ;
+
 
 
 #line default

@@ -10,7 +10,8 @@ namespace DemoHabitTracker.Models
 
         [Required, StringLength(30)]
         public string Title { get; set; }
-        [Required, StringLength(50)]
+
+        [StringLength(50)]
         public string Description { get; set; }
         [Required]
         public ActivityStatus Status { get; set; }

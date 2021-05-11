@@ -440,3 +440,5 @@ C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\De
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\DemoHabitTracker.genruntimeconfig.cache
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\RazorDeclaration\Pages\CalendarPage.razor.g.cs
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\Razor\Pages\CalendarPage.razor.g.cs
+C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\RazorDeclaration\Pages\Scoreboard.razor.g.cs
+C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\Razor\Pages\Scoreboard.razor.g.cs

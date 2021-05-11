@@ -13,105 +13,105 @@ namespace DemoHabitTracker.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 1 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 2 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 4 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 5 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 6 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 7 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 8 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 9 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 10 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 11 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 12 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using AntDesign;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 13 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Plk.Blazor.DragDrop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 14 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 3 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 4 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
 using System.Text.Json;
 
 #line default
@@ -126,10 +126,10 @@ using System.Text.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 102 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 112 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
       
     string username;
-    List<Activity> UserActivities;
+    public List<Activity> UserActivities;
 
     protected override async Task OnInitializedAsync()
     {
@@ -140,10 +140,10 @@ using System.Text.Json;
 
     private void UpdateUserActivities()
     {
-        UserActivities = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).ToList();
-        UserActivities.Add(new Activity() { Pkid = "no_drag1", Status = ActivityStatus.Todo, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count() });
-        UserActivities.Add(new Activity() { Pkid = "no_drag2", Status = ActivityStatus.Doing, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count() });
-        UserActivities.Add(new Activity() { Pkid = "no_drag3", Status = ActivityStatus.Done, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count() });
+        UserActivities = HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).ToList();
+        UserActivities.Add(new Activity() { Pkid = "no_drag1", Status = ActivityStatus.Todo, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
+        UserActivities.Add(new Activity() { Pkid = "no_drag2", Status = ActivityStatus.Doing, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
+        UserActivities.Add(new Activity() { Pkid = "no_drag3", Status = ActivityStatus.Done, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i => i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
     }
     string title = "New Activity";
     bool _visible = false;
@@ -151,8 +151,8 @@ using System.Text.Json;
     private async Task HandleOk(MouseEventArgs e)
     {
         Console.WriteLine(e);
-        await HabitTrackercontext.Activities.AddAsync(new Activity() { Pkid= username+ HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count(), Title= activity.Title, Description= activity.Description, Data= activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo ,fkUsernName = username });
-        await HabitTrackercontext.SaveChangesAsync();
+        await HabitTrackercontext.Activities.AddAsync(new Activity() { Pkid = username + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count(), Title = activity.Title, Description = activity.Description, Data = activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo, fkUsernName = username });
+        HabitTrackercontext.SaveChanges();
         UpdateUserActivities();
         _visible = false;
     }
@@ -162,17 +162,8 @@ using System.Text.Json;
         Console.WriteLine(e);
         _visible = false;
     }
-    private void UpdateFooter()
-    {
-        UserActivities.Where(i => i.Pkid == "no_drag1").FirstOrDefault().Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count();
-        UserActivities.Where(i => i.Pkid == "no_drag2").FirstOrDefault().Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count();
-        UserActivities.Where(i => i.Pkid == "no_drag3").FirstOrDefault().Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count();
-    }
 
     private Activity activity = new Activity();
-
-
-    private List<string> autoCompleteOptions = new List<string> { "Primary", "Junior", "Senior", "Undergraduate", "Master", "Doctor" };
 
     private void OnFinish(EditContext editContext)
     {
@@ -194,7 +185,7 @@ using System.Text.Json;
             __builder2.AddMarkupContent(0, "<Template>\r\n        O\r\n    </Template>");
         }
 #nullable restore
-#line 162 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 163 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                ;
 
 

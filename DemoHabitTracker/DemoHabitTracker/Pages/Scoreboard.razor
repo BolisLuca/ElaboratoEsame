@@ -1,0 +1,63 @@
+﻿@page "/Scoreboard"
+
+
+@inject HabitTrackerDbContext HabitTrackercontext
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<br />
+<br />
+<Row>
+    <Col Span="18">
+    <h1>Scoreboard</h1>
+    </Col>
+    <Col Span="6">
+    <div>
+        <Row>
+            <p>Now  </p>
+            <Switch Checked="switchValue" OnChange="()=> { if (switchValue) { Scores = new List<UserScore>();     } else { Scores = HabitTrackercontext.UserScores.OrderByDescending(i => i.Score).ToList(); Scores.Add(new UserScore() { fkUserName = name, Score = 3, MaxScore = 15 }); } }"/>
+            <p>  Max</p>
+        </Row>
+    </div>
+    </Col>
+</Row>
+<AntList DataSource="Scores" TItem="UserScore" OnItemClick="ItemClick">
+    <ListItem>
+        <ListItemMeta Avatar="avatar">
+            <TitleTemplate>
+                <a href="https://ng.ant.design">@context.fkUserName</a>
+            </TitleTemplate>
+        </ListItemMeta>
+        @if (switchValue)
+        {
+            <div>@context.Score</div>
+        }
+        else
+        {
+            <div>@context.MaxScore </div>
+        }
+
+    </ListItem>
+</AntList>
+
+
+@code{
+            string name = "gamma@gamma.it";
+            bool switchValue { get; set; }
+            private List<UserScore> Scores;
+
+            protected override async Task OnInitializedAsync()
+            {
+                Scores = HabitTrackercontext.UserScores.OrderByDescending(i => i.Score).ToList();
+            }
+            RenderFragment avatar =@<Avatar Src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></Avatar>;
+
+
+
+public void ItemClick(UserScore item)
+{
+    Console.WriteLine($"item was clicked: {item.fkUserName}");
+}
+
+
+
+}

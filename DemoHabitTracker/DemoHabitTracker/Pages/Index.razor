@@ -25,8 +25,6 @@
                     <Form Model="@activity"
                           LabelColSpan="8"
                           WrapperColSpan="16"
-                          OnFinish="OnFinish"
-                          OnFinishFailed="OnFinishFailed"
                           Size="@AntSizeLDSType.Default">
 
                         <FormItem Label="Title">
@@ -37,7 +35,7 @@
                         </FormItem>
 
                         <FormItem Label="Date">
-                            <DatePicker @bind-Value="@context.Data" DefaultValue="DateTime.Today"  DefaultPickerValue="DateTime.Today" />
+                            <DatePicker @bind-Value="@context.Data" DefaultValue="DateTime.Today" DefaultPickerValue="DateTime.Today" />
                         </FormItem>
                         <FormItem Label="Tomatoes">
                             <Rate Character="@Character1" DefaultValue="3" />
@@ -52,11 +50,24 @@
 
             <Dropzone Items="UserActivities.Where(i => i.Status == Models.ActivityStatus.Todo).ToList()" Accepts='(d, t)=>!d.Pkid.Contains("no_drag")' TItem="Activity" OnItemDrop="@((item) => { item.Status = ActivityStatus.Todo;  HabitTrackercontext.SaveChanges(); UpdateUserActivities(); })">
 
-                <Card Bordered="true" Title=@context.Title>
-                    <Body>
-                        <p>@context.Description</p>
-                    </Body>
-                </Card>
+                @if (!context.Pkid.Contains("no_drag"))
+                {
+                    <Card Bordered="true" Title=@context.Title Actions="@(new[] {
+                actionEdit(()=> OnClick(context))})">
+                        <Body>
+                            <p>@context.Description</p>
+                        </Body>
+                    </Card>
+                }
+                else
+                {
+                    <Card Bordered="true" Title=@context.Title>
+                        <Body>
+                            <p>@context.Description</p>
+                        </Body>
+                    </Card>
+                }
+
 
             </Dropzone>
             </Col>
@@ -64,12 +75,24 @@
             <Title Level="3">Doing</Title>
             <Dropzone Items="UserActivities.Where(i => i.Status == Models.ActivityStatus.Doing).ToList()" Accepts='(d, t)=>!d.Pkid.Contains("no_drag")' TItem="Activity" OnItemDrop="@((item) => { item.Status = ActivityStatus.Doing; HabitTrackercontext.SaveChanges();UpdateUserActivities();  })">
 
+                @if (!context.Pkid.Contains("no_drag"))
+                {
+                    <Card Bordered="true" Title=@context.Title Actions="@(new[] {
+                actionEdit(()=> OnClick(context))})">
+                        <Body>
+                            <p>@context.Description</p>
+                        </Body>
+                    </Card>
+                }
+                else
+                {
+                    <Card Bordered="true" Title=@context.Title>
+                        <Body>
+                            <p>@context.Description</p>
+                        </Body>
+                    </Card>
+                }
 
-                <Card Bordered="true" Title=@context.Title>
-                    <Body>
-                        <p>@context.Description</p>
-                    </Body>
-                </Card>
 
 
             </Dropzone>
@@ -79,11 +102,23 @@
             <Dropzone Items="UserActivities.Where(i => i.Status == Models.ActivityStatus.Done).ToList()" Accepts='(d, t)=>!d.Pkid.Contains("no_drag")' TItem="Activity" OnItemDrop="@((item) => { item.Status = ActivityStatus.Done; HabitTrackercontext.SaveChanges();UpdateUserActivities();  })">
 
 
-                <Card Bordered="true" Title=@context.Title>
-                    <Body>
-                        <p>@context.Description</p>
-                    </Body>
-                </Card>
+                @if (!context.Pkid.Contains("no_drag"))
+                {
+                    <Card Bordered="true" Title=@context.Title Actions="@(new[] {
+                actionEdit(()=> OnClick(context))})">
+                        <Body>
+                            <p>@context.Description</p>
+                        </Body>
+                    </Card>
+                }
+                else
+                {
+                    <Card Bordered="true" Title=@context.Title>
+                        <Body>
+                            <p>@context.Description</p>
+                        </Body>
+                    </Card>
+                }
 
 
             </Dropzone>
@@ -98,8 +133,17 @@
     </div>
     </Col>
 </Row>
-<Progress Percent="(Math.Floor(((double)HabitTrackercontext.Activities.Where(i=> i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Done).Count()/ (double)HabitTrackercontext.Activities.Where(i=> i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count()*100)) )  " Status="@ProgressStatus.Active" />
-<p> </p>
+@if (HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() == 0)
+{
+    <Progress Percent="0" Status="@ProgressStatus.Active" />
+
+}
+else
+{
+    <Progress Percent="(Math.Floor(((double)HabitTrackercontext.Activities.Where(i=> i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Where(i => i.Status == ActivityStatus.Done).Count()/ (double)HabitTrackercontext.Activities.Where(i=> i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count()*100)) )  " Status="@ProgressStatus.Active" />
+
+}
+
 @code{
     string username;
     public List<Activity> UserActivities;
@@ -113,45 +157,59 @@
 
     private void UpdateUserActivities()
     {
-        UserActivities = HabitTrackercontext.Activities.Where(i=> i.Data == DateTime.Today).Where(i => i.fkUsernName == username).ToList();
+        UserActivities = HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).ToList();
         UserActivities.Add(new Activity() { Pkid = "no_drag1", Status = ActivityStatus.Todo, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
         UserActivities.Add(new Activity() { Pkid = "no_drag2", Status = ActivityStatus.Doing, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
-        UserActivities.Add(new Activity() { Pkid = "no_drag3", Status = ActivityStatus.Done, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i=>i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
+        UserActivities.Add(new Activity() { Pkid = "no_drag3", Status = ActivityStatus.Done, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i => i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
     }
+
     string title = "New Activity";
     bool _visible = false;
 
     private async Task HandleOk(MouseEventArgs e)
     {
-        Console.WriteLine(e);
-        await HabitTrackercontext.Activities.AddAsync(new Activity() { Pkid= username+ HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count(), Title= activity.Title, Description= activity.Description, Data= activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo ,fkUsernName = username });
-        HabitTrackercontext.SaveChanges();
-        UpdateUserActivities();
-        _visible = false;
+        if (_edit)
+        {
+
+            HabitTrackercontext.SaveChanges();
+            UpdateUserActivities();
+            _visible = false;
+            _edit = false;
+
+        }
+        else
+        {
+            await HabitTrackercontext.Activities.AddAsync(new Activity() { Pkid = username + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count(), Title = activity.Title, Description = activity.Description, Data = activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo, fkUsernName = username });
+            HabitTrackercontext.SaveChanges();
+            UpdateUserActivities();
+            _visible = false;
+            _edit = false;
+        }
+
     }
 
     private void HandleCancel(MouseEventArgs e)
     {
-        Console.WriteLine(e);
         _visible = false;
     }
 
     private Activity activity = new Activity();
 
-    private void OnFinish(EditContext editContext)
-    {
 
-    }
-
-    private void OnFinishFailed(EditContext editContext)
-    {
-
-    }
 
     RenderFragment<RateItemRenderContext> Character1 = (builder) =>
     @<Template>
         O
     </Template>;
 
+RenderFragment actionEdit(Action clickAction) =>@<Icon Type="edit" OnClick="@clickAction" />;
 
+    void OnClick(Activity SelectedActivity)
+    {
+        activity= SelectedActivity;
+        _visible = true;
+        _edit = true;
+    }
+
+    bool _edit = false;
 }

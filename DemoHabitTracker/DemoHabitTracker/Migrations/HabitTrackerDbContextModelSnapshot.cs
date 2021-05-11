@@ -28,7 +28,6 @@ namespace DemoHabitTracker.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -53,6 +52,22 @@ namespace DemoHabitTracker.Migrations
                     b.HasKey("Pkid");
 
                     b.ToTable("Activities");
+                });
+
+            modelBuilder.Entity("DemoHabitTracker.Models.UserScore", b =>
+                {
+                    b.Property<string>("fkUserName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("MaxScore")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Score")
+                        .HasColumnType("int");
+
+                    b.HasKey("fkUserName");
+
+                    b.ToTable("UserScores");
                 });
 #pragma warning restore 612, 618
         }

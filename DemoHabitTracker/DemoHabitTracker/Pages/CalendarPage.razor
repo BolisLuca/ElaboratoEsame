@@ -1,12 +1,50 @@
 ﻿@page "/Calendar"
 @inject HabitTrackerDbContext HabitTrackercontext
 @inject AuthenticationStateProvider AuthenticationStateProvider
+
+<br />
 <Row>
-    <Col Span="18" Offset="3">
-    <Calendar  DefaultValue="DateTime.Today" DateCellRender="DateCellRender"  Value="@value" OnSelect="OnSelect" OnPanelChange="OnPanelChange" />
+    <Col Span="12" Offset="6">
+    <Title Level="1">Don't Break The Chain!</Title>
     </Col>
 </Row>
+<Row>
+    <Col Span="18" Offset="3">
+    <Calendar DefaultValue="DateTime.Today" DateCellRender="DateCellRender" Value="@value" OnSelect="OnSelect" OnPanelChange="OnPanelChange" />
+    </Col>
+</Row>
+<Modal Title="@title"
+       Visible="@_visible"
+       OnOk="@HandleOk"
+       OnCancel="@HandleCancel">
 
+
+    <Form Model="@activity"
+          LabelColSpan="8"
+          WrapperColSpan="16"
+          OnFinish="OnFinish"
+          OnFinishFailed="OnFinishFailed"
+          Size="@AntSizeLDSType.Default">
+
+        <FormItem Label="Title">
+            <Input @bind-Value="@context.Title" />
+        </FormItem>
+        <FormItem Label="Description">
+            <TextArea @bind-Value="@context.Description" />
+        </FormItem>
+
+        <FormItem Label="Date">
+            <DatePicker @bind-Value="@context.Data" DefaultValue="DateTime.Today" DefaultPickerValue="DateTime.Today" />
+        </FormItem>
+        <FormItem Label="Tomatoes">
+            <Rate Character="@Character1" DefaultValue="3" />
+        </FormItem>
+
+
+    </Form>
+
+
+</Modal>
 
 @code
 {
@@ -29,7 +67,10 @@
             @foreach (var activity in DailyActivities)
             {
                 <li key="@activity.Pkid">
-                    @if (activity.Status == ActivityStatus.Done) { <Icon Type="check" Theme="outline" Style="color:green" />} else { <Icon Type="close" Theme="outline" Style="color:red" />}<Badge Text="@activity.Title" />
+                    @if (activity.Status == ActivityStatus.Done)
+                    {<Icon Type="check" Theme="outline" Style="color:green" />}
+                    else
+                    { <Icon Type="close" Theme="outline" Style="color:red" />}<Badge Text="@activity.Title" />
                 </li>
             }
         </ul>
@@ -37,18 +78,53 @@
 }
 
 
-private DateTime selectedValue = DateTime.Today;
 private DateTime value = DateTime.Today;
 
 private void OnSelect(DateTime value)
 {
-this.value = value;
-selectedValue = value;
+        _visible = true;
+        activity.Data = value;
 }
 
 private void OnPanelChange(DateTime value, string mode)
 {
 this.value = value;
 }
+
+
+string title = "New Activity";
+bool _visible = false;
+
+private async Task HandleOk(MouseEventArgs e)
+{
+Console.WriteLine(e);
+await HabitTrackercontext.Activities.AddAsync(new Activity() { Pkid = username + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count(), Title = activity.Title, Description = activity.Description, Data = activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo, fkUsernName = username });
+HabitTrackercontext.SaveChanges();
+_visible = false;
+}
+
+private void HandleCancel(MouseEventArgs e)
+{
+Console.WriteLine(e);
+_visible = false;
+}
+
+private Activity activity = new Activity();
+
+private void OnFinish(EditContext editContext)
+{
+
+}
+
+private void OnFinishFailed(EditContext editContext)
+{
+
+}
+
+RenderFragment<RateItemRenderContext> Character1 = (builder) =>
+@<Template>
+    O
+</Template>;
+
 
 }

@@ -8,7 +8,7 @@
                 <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Horizontal" DefaultSelectedKeys=@(new []{"1"})>
                     <MenuItem OnClick="GoToIndex" Key="1">Today</MenuItem>
                     <MenuItem OnClick="GoToCalendar" Key="2">Calendar</MenuItem>
-
+                    <MenuItem OnClick="GoToScoreboard" Key="3">Scoreboard</MenuItem>
                     <LoginDisplay />
 
                 </Menu>
@@ -40,5 +40,8 @@
     {
         NavigationManager.NavigateTo("/Calendar");
     }
-
+    private void GoToScoreboard()
+    {
+        NavigationManager.NavigateTo("/Scoreboard");
+    }
 }

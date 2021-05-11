@@ -109,10 +109,28 @@ namespace DemoHabitTracker.Data
                         }
                         );
 
-                    context.SaveChanges();
                 }
+                if (!(context.UserScores.Any()))
+                {
+                    context.UserScores.AddRange(
+                        new UserScore()
+                        {
+                            fkUserName = "beta@beta.it",
+                            MaxScore = 10,
+                            Score = 1
+                        },
 
+                        new UserScore()
+                        {
+                            fkUserName = "alpha@alpha.it",
+                            MaxScore = 15,
+                            Score = 0
+                        }
+                        );
+                }
+                context.SaveChanges();
             }
+            
         }
 
     }
