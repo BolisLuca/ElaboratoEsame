@@ -69,7 +69,7 @@ namespace DemoHabitTracker.Data
                     context.Activities.AddRange( //Attività(pkid, titolo, descrizione, stato, data, Tomato_richiesti, fkAttivitàparent, fkemailUtente) 
                         new Activity
                         {
-                            Pkid = "1",
+                            Pkid = 1,
                             Title = "Studiare",
                             Description = "",
                             Status = ActivityStatus.Todo,
@@ -79,7 +79,7 @@ namespace DemoHabitTracker.Data
                         },
                         new Activity
                         {
-                            Pkid = "2",
+                            Pkid = 2,
                             Title = "Leggere",
                             Description = "Da pag. 100 a 105",
                             Status = ActivityStatus.Todo,
@@ -89,7 +89,7 @@ namespace DemoHabitTracker.Data
                         },
                         new Activity
                         {
-                            Pkid = "3",
+                            Pkid = 3,
                             Title = "Studiare",
                             Description = "",
                             Status = ActivityStatus.Todo,
@@ -99,7 +99,7 @@ namespace DemoHabitTracker.Data
                         },
                         new Activity
                         {
-                            Pkid = "4",
+                            Pkid = 4,
                             Title = "Tagliare il prato",
                             Description = "",
                             Status = ActivityStatus.Todo,
@@ -130,7 +130,7 @@ namespace DemoHabitTracker.Data
                 }
                 context.SaveChanges();
             }
-            
+
         }
 
     }

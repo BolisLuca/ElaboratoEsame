@@ -98,7 +98,7 @@ bool _visible = false;
 private async Task HandleOk(MouseEventArgs e)
 {
 Console.WriteLine(e);
-await HabitTrackercontext.Activities.AddAsync(new Activity() { Pkid = username + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count(), Title = activity.Title, Description = activity.Description, Data = activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo, fkUsernName = username });
+await HabitTrackercontext.Activities.AddAsync(new Activity() { Title = activity.Title, Description = activity.Description, Data = activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo, fkUsernName = username });
 HabitTrackercontext.SaveChanges();
 _visible = false;
 }

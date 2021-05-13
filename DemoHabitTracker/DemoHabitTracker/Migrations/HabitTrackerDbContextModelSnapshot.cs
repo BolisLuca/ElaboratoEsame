@@ -21,8 +21,10 @@ namespace DemoHabitTracker.Migrations
 
             modelBuilder.Entity("DemoHabitTracker.Models.Activity", b =>
                 {
-                    b.Property<string>("Pkid")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Pkid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
@@ -46,8 +48,8 @@ namespace DemoHabitTracker.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("fkparentActivity")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("fkparentActivity")
+                        .HasColumnType("int");
 
                     b.HasKey("Pkid");
 

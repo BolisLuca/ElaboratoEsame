@@ -104,15 +104,15 @@ using DemoHabitTracker.Data;
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 2 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
-using System.Text.Json;
+#line 3 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+using System.Timers;
 
 #line default
 #line hidden
@@ -126,56 +126,55 @@ using System.Text.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 112 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 156 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
       
     string username;
-    public List<Activity> UserActivities;
+    [CascadingParameter(Name = "KanbanUserActivities")] List<Activity> UserActivitiesKanbanShowing { get; set; }
+    [CascadingParameter(Name = "UserActivities")] List<Activity> UserActivities { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    bool dataisloaded = false;
+
+    private async Task UpdateColoumnFooter()
     {
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        username = authState.User.Identity.Name;
-        UpdateUserActivities();
+        UserActivitiesKanbanShowing.Where(i => i.Pkid == 0 && i.Status == ActivityStatus.Todo).FirstOrDefault().Description = UserActivities.Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + UserActivities.Count();
+        UserActivitiesKanbanShowing.Where(i => i.Pkid == 0 && i.Status == ActivityStatus.Doing).FirstOrDefault().Description = UserActivities.Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + UserActivities.Count();
+        UserActivitiesKanbanShowing.Where(i => i.Pkid == 0 && i.Status == ActivityStatus.Done).FirstOrDefault().Description = UserActivities.Where(i => i.Status == ActivityStatus.Done).Count() + "/" + UserActivities.Count();
+
     }
 
-    private void UpdateUserActivities()
-    {
-        UserActivities = HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).ToList();
-        UserActivities.Add(new Activity() { Pkid = "no_drag1", Status = ActivityStatus.Todo, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
-        UserActivities.Add(new Activity() { Pkid = "no_drag2", Status = ActivityStatus.Doing, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
-        UserActivities.Add(new Activity() { Pkid = "no_drag3", Status = ActivityStatus.Done, Description = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Where(i => i.Data == DateTime.Today).Where(i => i.Status == ActivityStatus.Done).Count() + "/" + HabitTrackercontext.Activities.Where(i => i.Data == DateTime.Today).Where(i => i.fkUsernName == username).Count() });
-    }
     string title = "New Activity";
-    bool _visible = false;
+    bool _ModalVisible = false;
 
     private async Task HandleOk(MouseEventArgs e)
     {
-        Console.WriteLine(e);
-        await HabitTrackercontext.Activities.AddAsync(new Activity() { Pkid = username + HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).Count(), Title = activity.Title, Description = activity.Description, Data = activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo, fkUsernName = username });
-        HabitTrackercontext.SaveChanges();
-        UpdateUserActivities();
-        _visible = false;
+        if (_edit)
+        {
+            await habitTrackerservice.UpdateActivityAsync(activity);
+            await UpdateColoumnFooter();
+        }
+        else
+        {
+           
+            activity.Status = ActivityStatus.Todo;
+            activity.fkUsernName = username;
+            await habitTrackerservice.AddActivityAsync(activity);
+            await UpdateColoumnFooter();
+        }
+        _ModalVisible = false;
+        _edit = false;
     }
 
     private void HandleCancel(MouseEventArgs e)
     {
-        Console.WriteLine(e);
-        _visible = false;
+        _ModalVisible = false;
+
     }
 
     private Activity activity = new Activity();
 
-    private void OnFinish(EditContext editContext)
-    {
 
-    }
 
-    private void OnFinishFailed(EditContext editContext)
-    {
-
-    }
-
-    RenderFragment<RateItemRenderContext> Character1 = (builder) =>
+    RenderFragment<RateItemRenderContext> TomatoCharacter = (builder) =>
     
 
 #line default
@@ -185,16 +184,156 @@ using System.Text.Json;
             __builder2.AddMarkupContent(0, "<Template>\r\n        O\r\n    </Template>");
         }
 #nullable restore
-#line 163 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 206 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                ;
 
-
+RenderFragment actionEdit(Action clickAction) =>
 
 #line default
 #line hidden
 #nullable disable
+        (__builder2) => {
+            __builder2.OpenElement(1, "Icon");
+            __builder2.AddAttribute(2, "Type", "edit");
+            __builder2.AddAttribute(3, "OnClick", 
+#nullable restore
+#line 208 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+                                                                             clickAction
+
+#line default
+#line hidden
+#nullable disable
+            );
+            __builder2.CloseElement();
+        }
+#nullable restore
+#line 208 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+                                                                                            ;
+RenderFragment actionDelete(Action clickAction) =>
+
+#line default
+#line hidden
+#nullable disable
+        (__builder2) => {
+            __builder2.OpenElement(4, "Icon");
+            __builder2.AddAttribute(5, "Type", "delete");
+            __builder2.AddAttribute(6, "OnClick", 
+#nullable restore
+#line 209 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+                                                                                 clickAction
+
+#line default
+#line hidden
+#nullable disable
+            );
+            __builder2.CloseElement();
+        }
+#nullable restore
+#line 209 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+                                                                                                ;
+
+void OnClick(Activity SelectedActivity)
+{
+activity = SelectedActivity;
+_ModalVisible = true;
+_edit = true;
+}
+
+
+bool _edit = false;
+
+private void OnClickDelete(Activity SelectedAtivity)
+{
+activity = SelectedAtivity;
+ShowDeleteConfirm();
+
+}
+
+
+Func<ModalClosingEventArgs, Task> onOk = (e) =>
+{
+return Task.CompletedTask;
+};
+Func<ModalClosingEventArgs, Task> onCancel = (e) =>
+{
+return Task.CompletedTask;
+};
+RenderFragment icon = 
+
+#line default
+#line hidden
+#nullable disable
+        (__builder2) => {
+            __builder2.AddMarkupContent(7, "<Icon Type=\"exclamation-circle\" Theme=\"outline\"></Icon>");
+        }
+#nullable restore
+#line 237 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+                                                                              ;
+private void ShowDeleteConfirm()
+{
+_modalService.Confirm(new ConfirmOptions()
+{
+Title = "Are you sure delete this task?",
+Icon = icon,
+Content = "Some descriptions",
+OnOk = onOk,
+OnCancel = onCancel,
+OkType = "danger",
+});
+}
+
+
+//Notification
+RenderFragment customIcon = 
+
+#line default
+#line hidden
+#nullable disable
+        (__builder2) => {
+            __builder2.AddMarkupContent(8, "<Icon Type=\"smile\" Theme=\"outline\" Style=\"color:#108ee9;\"></Icon>");
+        }
+#nullable restore
+#line 253 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+                                                                                              ;
+
+RenderFragment notificationContent =
+
+#line default
+#line hidden
+#nullable disable
+        (__builder2) => {
+            __builder2.AddMarkupContent(9, "<Progress Type=\"ProgressType.Circle\" Percent=\"timer.Interval\" Size=\"ProgressSize.Small\"></Progress>");
+        }
+#nullable restore
+#line 255 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+                                                                                                                         ;
+public static Timer timer;
+
+private async Task HandleNotification()
+{
+timer = new Timer(1000); //1500000
+timer.Start();
+//timer. += OnClick();
+await _notice.Open(new NotificationConfig()
+{
+Message = "title",
+Description = notificationContent
+});
+}
+private Dictionary<string, string> _gradients = new()
+{
+            { "0%", "#108ee9" },
+            { "100%", "#87d068" }
+        };
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NotificationService _notice { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MessageService _message { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ModalService _modalService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HabitTrackerDbContext HabitTrackercontext { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HabitTrackerService habitTrackerservice { get; set; }
     }
 }
 #pragma warning restore 1591
