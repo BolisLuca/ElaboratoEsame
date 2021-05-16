@@ -42,8 +42,22 @@
         int i = 0;
         foreach (var habit in habits)
         {
-            var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() };
-            dataRose.Add(obj);
+            if(habit.RepeatValue != HabitRepeatValue.Never)
+            {
+                if(habit.RepeatValue == HabitRepeatValue.Weekly)
+                {
+                    var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() *4 };
+                    dataRose.Add(obj);
+
+                }
+                else
+                {
+                    var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() };
+                    dataRose.Add(obj);
+
+                }
+
+            }
 
         }
 
@@ -63,8 +77,8 @@
 
     #region Rose
     List<object> dataRose;
-    
-   
+
+
     readonly RoseConfig configRose = new RoseConfig
     {
         ForceFit = true,

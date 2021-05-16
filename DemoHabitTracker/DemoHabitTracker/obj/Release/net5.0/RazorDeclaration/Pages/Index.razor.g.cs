@@ -351,6 +351,7 @@ RenderFragment notificationContent =
             Message = "Tomato Timer",
             Description = timerValue,
         });
+
     }
     private Func<double, string> _fortmat1 = (p) => $"{p}";
     string timerValue;
@@ -378,7 +379,7 @@ RenderFragment notificationContent =
             __builder2.AddMarkupContent(9, "<Icon Type=\"smile\" Theme=\"outline\" Style=\"color:#108ee9;\"></Icon>");
         }
 #nullable restore
-#line 339 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 340 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
                                                                                                          ;
 
 

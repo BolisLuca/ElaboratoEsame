@@ -133,7 +133,7 @@ using Title = AntDesign.Charts.Title;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 31 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
+#line 30 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
       
     string username;
     List<Habit> habits;
@@ -149,8 +149,22 @@ using Title = AntDesign.Charts.Title;
         int i = 0;
         foreach (var habit in habits)
         {
-            var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() };
-            dataRose.Add(obj);
+            if(habit.RepeatValue != HabitRepeatValue.Never)
+            {
+                if(habit.RepeatValue == HabitRepeatValue.Weekly)
+                {
+                    var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() *4 };
+                    dataRose.Add(obj);
+
+                }
+                else
+                {
+                    var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() };
+                    dataRose.Add(obj);
+
+                }
+
+            }
 
         }
 
@@ -167,61 +181,10 @@ using Title = AntDesign.Charts.Title;
         }
     }
 
-    #region 示例1
-
-    readonly object uvData = new object[]
-{
-        new {time = "2019-03", value = 350},
-        new {time = "2019-04", value = 900},
-        new {time = "2019-05", value = 300},
-        new {time = "2019-06", value = 450},
-        new {time = "2019-07", value = 470}
-                        };
-
-    readonly object transformData = new object[]
-    {
-        new {time = "2019-04", count = 600},
-        new {time = "2019-05", count = 400},
-        new {time = "2019-06", count = 380},
-        new {time = "2019-07", count = 220}
-                            };
 
     #region Rose
     List<object> dataRose;
-    List<object> dataDaybyDay;
-    readonly object[] data1 =
-    {
-        new
-        {
-            type = "分类一",
-            value = 27
-        },
-        new
-        {
-            type = "分类二",
-            value = 25
-        },
-        new
-        {
-            type = "分类三",
-            value = 18
-        },
-        new
-        {
-            type = "分类四",
-            value = 15
-        },
-        new
-        {
-            type = "分类五",
-            value = 10
-        },
-        new
-        {
-            type = "其它",
-            value = 5
-        }
-    };
+
 
     readonly RoseConfig configRose = new RoseConfig
     {
@@ -251,33 +214,15 @@ using Title = AntDesign.Charts.Title;
 #line hidden
 #nullable disable
 #nullable restore
-#line 142 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
+#line 104 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
                                               
         }
     };
 
-    #endregion 示例1
-    #endregion 示例1
+    #endregion Rose
+    List<object> dataDaybyDay;
 
-    #region 示例2
-
-    readonly object uvData2 = new object[]
-    {
-        new {time = "2019-03", value = 350},
-        new {time = "2019-04", value = 900},
-        new {time = "2019-05", value = 300},
-        new {time = "2019-06", value = 450},
-        new {time = "2019-07", value = 470}
-                            };
-
-    readonly object transformData2 = new object[]
-    {
-        new {time = "2019-03", count = 800},
-        new {time = "2019-04", count = 600},
-        new {time = "2019-05", count = 400},
-        new {time = "2019-06", count = 380},
-        new {time = "2019-07", count = 220}
-                            };
+ 
 
     readonly ColumnLineConfig config2 = new ColumnLineConfig
     {
@@ -312,114 +257,6 @@ using Title = AntDesign.Charts.Title;
 
     };
 
-    #endregion 示例2
-
-    #region 示例3
-
-    readonly object uvData3 = new object[]
-    {
-        new {time = "2019-03", value = 350},
-        new {time = "2019-04", value = 900},
-        new {time = "2019-05", value = 300},
-        new {time = "2019-06", value = 450},
-        new {time = "2019-07", value = 470}
-                            };
-
-    readonly object transformData3 = new object[]
-    {
-        new {time = "2019-03", count = 800},
-        new {time = "2019-04", count = 600},
-        new {time = "2019-05", count = 400},
-        new {time = "2019-06", count = 380},
-        new {time = "2019-07", count = 220}
-                            };
-
-    readonly ColumnLineConfig config3 = new ColumnLineConfig
-    {
-        Title = new Title
-        {
-            Visible = true,
-            Text = "柱线混合图"
-        },
-        Description = new Description
-        {
-            Visible = true,
-            Text = "关闭双Y轴颜色映射"
-        },
-        XField = "time",
-        YField = new[] { "value", "count" },
-        YAxis = new ComboYAxis
-        {
-            LeftConfig = new ComboYAxisConfig
-            {
-                ColorMapping = false,
-            },
-            RightConfig = new ComboYAxisConfig
-            {
-                ColorMapping = false,
-            }
-        }
-
-    };
-
-    #endregion 示例3
-
-    #region 示例4
-
-    readonly object uvData4 = new object[]
-{
-        new {time = "2019-03", value = 350},
-        new {time = "2019-04", value = 900},
-        new {time = "2019-05", value = 300},
-        new {time = "2019-06", value = 450},
-        new {time = "2019-07", value = 470}
-                        };
-
-    readonly object transformData4 = new object[]
-    {
-          new { time =  "2019-03", count =  800, name =  "a" },
-          new { time =  "2019-04", count =  600, name =  "a" },
-          new { time =  "2019-05", count =  400, name =  "a" },
-          new { time =  "2019-06", count =  380, name =  "a" },
-          new { time =  "2019-07", count =  220, name =  "a" },
-          new { time =  "2019-03", count =  750, name =  "b" },
-          new { time =  "2019-04", count =  650, name =  "b" },
-          new { time =  "2019-05", count =  450, name =  "b" },
-          new { time =  "2019-06", count =  400, name =  "b" },
-          new { time =  "2019-07", count =  320, name =  "b" },
-          new { time =  "2019-03", count =  900, name =  "c" },
-          new { time =  "2019-04", count =  600, name =  "c" },
-          new { time =  "2019-05", count =  450, name =  "c" },
-          new { time =  "2019-06", count =  300, name =  "c" },
-          new { time =  "2019-07", count =  200, name =  "c" },
-                            };
-
-    readonly ColumnLineConfig config4 = new ColumnLineConfig
-    {
-        Title = new Title
-        {
-            Visible = true,
-            Text = "柱线混合图",
-            AlignTo = "middle"
-        },
-        Description = new Description
-        {
-            Visible = true,
-            Text = "配置多折线",
-            AlignTo = "middle"
-        },
-        XField = "time",
-        YField = new[] { "value", "count" },
-        ColumnConfig = new ColumnConfig
-        {
-            Color = "#586bce"
-        },
-        LineSeriesField = "name"
-
-    };
-
-    #endregion 示例4
-
     LineConfig configDaybyDay = new LineConfig
     {
         Title = new Title
@@ -451,7 +288,7 @@ using Title = AntDesign.Charts.Title;
 #line hidden
 #nullable disable
 #nullable restore
-#line 335 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
+#line 171 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
                               
     };
 
