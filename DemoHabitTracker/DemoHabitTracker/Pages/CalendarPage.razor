@@ -1,5 +1,5 @@
 ﻿@page "/Calendar"
-@inject HabitTrackerDbContext HabitTrackercontext
+@inject HabitTrackerService habitTrackerservice
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
 <br />
@@ -12,18 +12,15 @@
     <Col Span="18" Offset="3">
     <Calendar DefaultValue="DateTime.Today" DateCellRender="DateCellRender" Value="@value" OnSelect="OnSelect" OnPanelChange="OnPanelChange" />
     </Col>
-</Row>
-<Modal Title="@title"
-       Visible="@_visible"
-       OnOk="@HandleOk"
-       OnCancel="@HandleCancel">
+</Row> <Modal Title="@title"
+       Visible="@_ModalVisible"
+       OnOk="@ModalHandleOk"
+       OnCancel="@ModalHandleCancel">
 
 
-    <Form Model="@activity"
+    <Form Model="@habit"
           LabelColSpan="8"
           WrapperColSpan="16"
-          OnFinish="OnFinish"
-          OnFinishFailed="OnFinishFailed"
           Size="@AntSizeLDSType.Default">
 
         <FormItem Label="Title">
@@ -32,12 +29,22 @@
         <FormItem Label="Description">
             <TextArea @bind-Value="@context.Description" />
         </FormItem>
-
-        <FormItem Label="Date">
-            <DatePicker @bind-Value="@context.Data" DefaultValue="DateTime.Today" DefaultPickerValue="DateTime.Today" />
+        <FormItem Label="Repeat">
+            <Select @bind-Value="@context.RepeatValue"
+                    DefaultValue="@(HabitRepeatValue.Daily)"
+                    Style="width: 120px;"
+                    TItemValue="HabitRepeatValue"
+                    TItem="string">
+                <SelectOptions>
+                    <SelectOption TItemValue="HabitRepeatValue" TItem="string" Value="@(HabitRepeatValue.Never)" Label="Never" />
+                    <SelectOption TItemValue="HabitRepeatValue" TItem="string" Value="@(HabitRepeatValue.Daily)" Label="Daily" />
+                    <SelectOption TItemValue="HabitRepeatValue" TItem="string" Value="@(HabitRepeatValue.Weekly)" Label="Weekly" />
+                    <SelectOption TItemValue="HabitRepeatValue" TItem="string" Value="@(HabitRepeatValue.Monthly)" Label="Monthly" />
+                </SelectOptions>
+            </Select>
         </FormItem>
         <FormItem Label="Tomatoes">
-            <Rate Character="@Character1" DefaultValue="3" />
+            <Rate @bind-Value="ntomatoes" Character="@TomatoCharacter" DefaultValue="3" />
         </FormItem>
 
 
@@ -45,83 +52,102 @@
 
 
 </Modal>
-
 @code
 {
     string username;
-    public List<Activity> UserActivities;
+    private List<HabitOccasion> UserActivities { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         username = authState.User.Identity.Name;
-        UserActivities = HabitTrackercontext.Activities.Where(i => i.fkUsernName == username).ToList();
+        UserActivities = habitTrackerservice.GetAllUserOccasions(username);
     }
 
     private RenderFragment DateCellRender(DateTime value)
     {
-        var DailyActivities = UserActivities.Where(i => i.Data == value).ToList();
+        var DailyActivities = UserActivities.Where(i => i.ScheduledDate == value).ToList();
 
         return@<Template>
-        <ul class="events">
-            @foreach (var activity in DailyActivities)
-            {
-                <li key="@activity.Pkid">
-                    @if (activity.Status == ActivityStatus.Done)
-                    {<Icon Type="check" Theme="outline" Style="color:green" />}
+                   <ul class="events">
+                       @foreach (var activity in DailyActivities)
+                       {
+                           if (activity.ScheduledDate <= DateTime.Today)
+                           {
+                               <li key="@activity.HabitId">
+                                   @if (activity.Status == ActivityStatus.Done)
+                                   {<Icon Type="check" Theme="outline" Style="color:green" />}
+                                   else
+                                   { <Icon Type="close" Theme="outline" Style="color:red" />}<Badge Text="@activity.Title" />
+                               </li>
+                    }
                     else
-                    { <Icon Type="close" Theme="outline" Style="color:red" />}<Badge Text="@activity.Title" />
-                </li>
-            }
-        </ul>
+                    {
+                   <li key="@activity.HabitId">
+                       <Badge Text="@activity.Title" />
+                   </li>
+                    }
+
+                       }
+                   </ul>
     </Template>;
-}
+    }
 
 
-private DateTime value = DateTime.Today;
+    private DateTime value = DateTime.Today;
+    string title = "New Habit";
+    bool _ModalVisible = false;
+    decimal ntomatoes;
 
-private void OnSelect(DateTime value)
-{
-        _visible = true;
-        activity.Data = value;
-}
-
-private void OnPanelChange(DateTime value, string mode)
-{
-this.value = value;
-}
+    private void OnSelect(DateTime value)
+    {
+        _ModalVisible = true;
+        startingdate = value;
+        StateHasChanged();
+    }
+    DateTime startingdate;
 
 
-string title = "New Activity";
-bool _visible = false;
+    private void OnPanelChange(DateTime value, string mode)
+    {
+        this.value = value;
+    }
 
-private async Task HandleOk(MouseEventArgs e)
-{
-Console.WriteLine(e);
-await HabitTrackercontext.Activities.AddAsync(new Activity() { Title = activity.Title, Description = activity.Description, Data = activity.Data, Tomato_richiesti = activity.Tomato_richiesti, Status = ActivityStatus.Todo, fkUsernName = username });
-HabitTrackercontext.SaveChanges();
-_visible = false;
-}
+    private async Task ModalHandleOk(MouseEventArgs e)
+    {
+        habit.RequiredTomatoes = int.Parse(ntomatoes.ToString());
+        habit.fkUserName = username;
+        await habitTrackerservice.AddHabitAsync(habit, startingdate);
+        await UpdateUserActivities();
+        habit = new Habit();
 
-private void HandleCancel(MouseEventArgs e)
-{
-Console.WriteLine(e);
-_visible = false;
-}
+        _ModalVisible = false;
+    }
 
-private Activity activity = new Activity();
+    private void ModalHandleCancel(MouseEventArgs e)
+    {
+        _ModalVisible = false;
 
-private void OnFinish(EditContext editContext)
-{
+    }
 
-}
 
-private void OnFinishFailed(EditContext editContext)
-{
+    private Habit habit = new Habit();
 
-}
+    private void OnFinish(EditContext editContext)
+    {
 
-RenderFragment<RateItemRenderContext> Character1 = (builder) =>
+    }
+
+    private void OnFinishFailed(EditContext editContext)
+    {
+
+    }
+
+    private async Task UpdateUserActivities()
+    {
+        UserActivities = habitTrackerservice.GetAllTodaysUserHabits(username);
+    }
+    RenderFragment<RateItemRenderContext> TomatoCharacter = (builder) =>
 @<Template>
     O
 </Template>;

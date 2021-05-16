@@ -121,22 +121,22 @@ using DemoHabitTracker.Data;
 #line 17 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Shared\LoadingScreen.razor"
        
     bool isLoaded;
-    public List<Activity> UserActivities;
-    public List<Activity> UserActivitiesKanbanShowing;
+    public List<HabitOccasion> UserActivities = new List<HabitOccasion>();
+    public List<HabitOccasion> UserActivitiesKanbanShowing;
 
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync() //HabitId Title  Description RepeatValue RequiredTomatoes fkUserName OccasionId ScheduledDate Status 
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var username = authState.User.Identity.Name;
-        UserActivities =  await habitTrackerservice.GetAllTodaysUserActivities(username);
-        UserActivitiesKanbanShowing = new List<Activity>(UserActivities);
-        UserActivitiesKanbanShowing.Add(new Activity() { Pkid = 0, Status = ActivityStatus.Todo, Description = UserActivities.Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + UserActivities.Count() });
-        UserActivitiesKanbanShowing.Add(new Activity() { Pkid = 0, Status = ActivityStatus.Doing, Description = UserActivities.Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + UserActivities.Count() });
-        UserActivitiesKanbanShowing.Add(new Activity() { Pkid = 0, Status = ActivityStatus.Done, Description = UserActivities.Where(i => i.Status == ActivityStatus.Done).Count() + "/" + UserActivities.Count() });
+        UserActivities =  habitTrackerservice.GetAllTodaysUserHabits(username);
+        UserActivitiesKanbanShowing = new List<HabitOccasion>(UserActivities);
+        UserActivitiesKanbanShowing.Add(new HabitOccasion() { HabitId = 0, Status = ActivityStatus.Todo, Description = UserActivities.Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + UserActivities.Count() });
+        UserActivitiesKanbanShowing.Add(new HabitOccasion() { HabitId = 0, Status = ActivityStatus.Doing, Description = UserActivities.Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + UserActivities.Count() });
+        UserActivitiesKanbanShowing.Add(new HabitOccasion() { HabitId = 0, Status = ActivityStatus.Done, Description = UserActivities.Where(i => i.Status == ActivityStatus.Done).Count() + "/" + UserActivities.Count() });
         isLoaded = true;
     }
 

@@ -34,6 +34,7 @@
       "DemoHabitTracker/1.0.0": {
         "dependencies": {
           "AntDesign": "0.8.0",
+          "AntDesign.Charts": "0.2.1",
           "Google.Apis.Auth.AspNetCore3": "1.51.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "5.0.5",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.5",
@@ -339,6 +340,22 @@
         },
         "compile": {
           "lib/net5.0/AntDesign.dll": {}
+        }
+      },
+      "AntDesign.Charts/0.2.1": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0",
+          "OneOf": "2.1.155"
+        },
+        "runtime": {
+          "lib/netstandard2.1/AntDesign.Charts.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/AntDesign.Charts.dll": {}
         }
       },
       "blazor-dragdrop/2.3.0": {
@@ -3560,6 +3577,13 @@
       "sha512": "sha512-b9aBVSGLjV2w/J35ICOIW3VEVMd2Gd5GinfgpSR0btoYlf5BnCPvGoRffrThyoCL9Zui7fY3h6QuinC9Cj4PbA==",
       "path": "antdesign/0.8.0",
       "hashPath": "antdesign.0.8.0.nupkg.sha512"
+    },
+    "AntDesign.Charts/0.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bKbSLrwV4Yrx6UYzblD0/4SS0IINJxm+CtEC7UM8A/vF5XSdYq9lO+JaW7PzySuICad1zcssbYJkqkNxjhkNCg==",
+      "path": "antdesign.charts/0.2.1",
+      "hashPath": "antdesign.charts.0.2.1.nupkg.sha512"
     },
     "blazor-dragdrop/2.3.0": {
       "type": "package",

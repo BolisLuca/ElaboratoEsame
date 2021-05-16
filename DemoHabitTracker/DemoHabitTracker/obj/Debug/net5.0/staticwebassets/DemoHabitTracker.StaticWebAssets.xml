@@ -2,4 +2,5 @@
   <ContentRoot BasePath="/" Path="C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\scopedcss\bundle\" />
   <ContentRoot BasePath="/Identity" Path="C:\Users\hp\.nuget\packages\microsoft.aspnetcore.identity.ui\5.0.5\staticwebassets\V4\" />
   <ContentRoot BasePath="_content/AntDesign" Path="C:\Users\hp\.nuget\packages\antdesign\0.8.0\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/AntDesign.Charts" Path="C:\Users\hp\.nuget\packages\antdesign.charts\0.2.1\build\..\staticwebassets\" />
 </StaticWebAssets>

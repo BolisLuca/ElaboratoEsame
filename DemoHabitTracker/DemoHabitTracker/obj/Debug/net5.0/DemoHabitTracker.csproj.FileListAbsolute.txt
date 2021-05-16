@@ -444,3 +444,6 @@ C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\De
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\Razor\Pages\Scoreboard.razor.g.cs
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\RazorDeclaration\Shared\LoadingScreen.razor.g.cs
 C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\Razor\Shared\LoadingScreen.razor.g.cs
+C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\bin\Debug\net5.0\AntDesign.Charts.dll
+C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\RazorDeclaration\Pages\Report.razor.g.cs
+C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\Razor\Pages\Report.razor.g.cs

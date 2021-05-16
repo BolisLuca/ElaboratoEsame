@@ -137,6 +137,10 @@ using DemoHabitTracker.Data;
     {
         NavigationManager.NavigateTo("/Scoreboard");
     }
+    private void GotoReport()
+    {
+        NavigationManager.NavigateTo("/Report");
+    }
 
 #line default
 #line hidden

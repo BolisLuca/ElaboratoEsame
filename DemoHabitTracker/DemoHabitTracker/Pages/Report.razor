@@ -1,0 +1,160 @@
+﻿@page "/Report"
+@inject HabitTrackerService habitTrackerservice
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@using AntDesign.Charts
+@using Title = AntDesign.Charts.Title
+
+<h3>Report</h3>
+<Tabs>
+    <TabPane Key="1">
+        <Tab>My Habits</Tab>
+        <ChildContent>
+            <Rose Data="dataRose" Config="configRose" />
+        </ChildContent>
+    </TabPane>
+
+    <TabPane Key="2">
+        <Tab>Day by Day</Tab>
+        <ChildContent>
+            <AntDesign.Charts.Line Data="dataDaybyDay" Config="configDaybyDay" />
+        </ChildContent>
+    </TabPane>
+
+    <TabPane Key="3">
+        <Tab>Monthly</Tab>
+        <ChildContent>
+        </ChildContent>
+    </TabPane>
+</Tabs>
+
+@code{
+    string username;
+    List<Habit> habits;
+    List<HabitOccasion> AllHabitOccasions;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        username = authState.User.Identity.Name;
+        habits = await habitTrackerservice.GetAllUserHabits(username);
+        AllHabitOccasions = habitTrackerservice.GetAllUserOccasions(username);
+        dataRose = new List<object>();
+        int i = 0;
+        foreach (var habit in habits)
+        {
+            var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() };
+            dataRose.Add(obj);
+
+        }
+
+        dataDaybyDay = new List<object>();
+        AllHabitOccasions.OrderBy(i => i.ScheduledDate);
+        var firstday = AllHabitOccasions.Min(i => i.ScheduledDate);
+        while (firstday < DateTime.Today)
+        {
+            var objEx = new { date = firstday.ToShortDateString(), type = "Expected", value = AllHabitOccasions.Where(i => i.ScheduledDate == firstday).Count() };
+            var obj = new { date = firstday.ToShortDateString(), type = "Completed", value = AllHabitOccasions.Where(i => i.ScheduledDate == firstday).Where(i=> i.Status == ActivityStatus.Done).Count() };
+            dataDaybyDay.Add(obj);
+            dataDaybyDay.Add(objEx);
+            firstday = firstday.AddDays(1);
+        }
+    }
+
+
+    #region Rose
+    List<object> dataRose;
+    
+   
+    readonly RoseConfig configRose = new RoseConfig
+    {
+        ForceFit = true,
+        Title = new Title
+        {
+            Visible = true,
+            Text = "Habits"
+        },
+        Description = new Description
+        {
+            Visible = true,
+            Text =
+                "Those are all your habits"
+        },
+        Radius = 0.8,
+        RadiusField = "value",
+        CategoryField = "type",
+        ColorField = "type",
+        Label = new RoseLabel
+        {
+            Visible = true,
+            Type = "outer"
+            @*content= (text) => text.value,*@
+        }
+    };
+
+    #endregion Rose
+    List<object> dataDaybyDay;
+
+ 
+
+    readonly ColumnLineConfig config2 = new ColumnLineConfig
+    {
+        Title = new Title
+        {
+            Visible = true,
+            Text = "柱线混合图"
+        },
+        Description = new Description
+        {
+            Visible = true,
+            Text = "自定义图形细节"
+        },
+        XField = "time",
+        YField = new[] { "value", "count" },
+        ColumnConfig = new ColumnConfig
+        {
+            Color = "#586bce"
+        },
+        LineConfig = new LineConfig
+        {
+            Color  = "#29cae4",
+            Point = new LineViewConfigPoint
+            {
+                Visible = true,
+            },
+            Label = new Label
+            {
+                Visible = true,
+            }
+        }
+
+    };
+
+    LineConfig configDaybyDay = new LineConfig
+    {
+        Title = new Title
+        {
+            Visible = true,
+            Text = "Day by Day Analysys"
+        },
+        Description = new Description
+        {
+            Visible = true,
+            Text = "Youa are watching the number of activities you completed every day"
+        },
+        Padding = "auto",
+        ForceFit = true,
+        XField = "date",
+        YField = "value",
+        YAxis = new ValueAxis
+        {
+            Label = new BaseAxisLabel()
+        },
+        Legend = new Legend
+        {
+            Position = "right-top"
+        },
+        SeriesField = "type"
+        @*responsive = true,*@
+    };
+
+}

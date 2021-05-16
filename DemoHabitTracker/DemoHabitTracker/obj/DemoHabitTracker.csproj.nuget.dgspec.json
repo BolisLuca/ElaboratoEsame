@@ -50,6 +50,10 @@
               "target": "Package",
               "version": "[0.8.0, )"
             },
+            "AntDesign.Charts": {
+              "target": "Package",
+              "version": "[0.2.1, )"
+            },
             "Google.Apis.Auth.AspNetCore3": {
               "target": "Package",
               "version": "[1.51.0, )"

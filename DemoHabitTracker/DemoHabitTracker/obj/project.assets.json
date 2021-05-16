@@ -22,6 +22,26 @@
           "buildMultiTargeting/AntDesign.props": {}
         }
       },
+      "AntDesign.Charts/0.2.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.0",
+          "Microsoft.AspNetCore.Components.Web": "3.1.0",
+          "OneOf": "2.1.151"
+        },
+        "compile": {
+          "lib/netstandard2.1/AntDesign.Charts.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/AntDesign.Charts.dll": {}
+        },
+        "build": {
+          "buildTransitive/AntDesign.Charts.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/AntDesign.Charts.props": {}
+        }
+      },
       "blazor-dragdrop/2.3.0": {
         "type": "package",
         "dependencies": {
@@ -2721,6 +2741,24 @@
         "staticwebassets/less/upload/style/entry.less",
         "staticwebassets/less/upload/style/index.less",
         "staticwebassets/less/upload/style/rtl.less"
+      ]
+    },
+    "AntDesign.Charts/0.2.1": {
+      "sha512": "bKbSLrwV4Yrx6UYzblD0/4SS0IINJxm+CtEC7UM8A/vF5XSdYq9lO+JaW7PzySuICad1zcssbYJkqkNxjhkNCg==",
+      "type": "package",
+      "path": "antdesign.charts/0.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "antdesign.charts.0.2.1.nupkg.sha512",
+        "antdesign.charts.nuspec",
+        "build/AntDesign.Charts.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/AntDesign.Charts.props",
+        "buildTransitive/AntDesign.Charts.props",
+        "lib/netstandard2.1/AntDesign.Charts.dll",
+        "staticwebassets/ant-design-charts-blazor.js",
+        "staticwebassets/g2plot.js"
       ]
     },
     "blazor-dragdrop/2.3.0": {
@@ -8326,6 +8364,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "AntDesign >= 0.8.0",
+      "AntDesign.Charts >= 0.2.1",
       "Google.Apis.Auth.AspNetCore3 >= 1.51.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 5.0.5",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.5",
@@ -8343,11 +8382,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hp\\Source\\Repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+      "projectUniqueName": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
       "projectName": "DemoHabitTracker",
-      "projectPath": "C:\\Users\\hp\\Source\\Repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+      "projectPath": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
       "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hp\\Source\\Repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\obj\\",
+      "outputPath": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -8385,6 +8424,10 @@
           "AntDesign": {
             "target": "Package",
             "version": "[0.8.0, )"
+          },
+          "AntDesign.Charts": {
+            "target": "Package",
+            "version": "[0.2.1, )"
           },
           "Google.Apis.Auth.AspNetCore3": {
             "target": "Package",

@@ -18,16 +18,16 @@
 
             <Col Span="8">
             <Title Level="3">
-                To Do <Button Type="primary" OnClick="@(() => { _ModalVisible = true; })">
+                To Do <Button Type="primary" OnClick="@(() => {habit = new Habit(); _ModalVisible = true; })">
                     <Icon Type="plus" Theme="outline" />
                 </Button>
                 <Modal Title="@title"
                        Visible="@_ModalVisible"
-                       OnOk="@HandleOk"
-                       OnCancel="@HandleCancel">
+                       OnOk="@ModalHandleOk"
+                       OnCancel="@ModalHandleCancel">
 
 
-                    <Form Model="@activity"
+                    <Form Model="@habit"
                           LabelColSpan="8"
                           WrapperColSpan="16"
                           Size="@AntSizeLDSType.Default">
@@ -38,12 +38,22 @@
                         <FormItem Label="Description">
                             <TextArea @bind-Value="@context.Description" />
                         </FormItem>
-
-                        <FormItem Label="Date">
-                            <DatePicker @bind-Value="@context.Data" DefaultValue="DateTime.Today" DefaultPickerValue="DateTime.Today" />
+                        <FormItem Label="Repeat">
+                            <Select @bind-Value="@context.RepeatValue"
+                                    DefaultValue="@(HabitRepeatValue.Daily)"
+                                    Style="width: 120px;"
+                                    TItemValue="HabitRepeatValue"
+                                    TItem="string">
+                                <SelectOptions>
+                                    <SelectOption TItemValue="HabitRepeatValue" TItem="string" Value="@(HabitRepeatValue.Never)" Label="Never" />
+                                    <SelectOption TItemValue="HabitRepeatValue" TItem="string" Value="@(HabitRepeatValue.Daily)" Label="Daily" />
+                                    <SelectOption TItemValue="HabitRepeatValue" TItem="string" Value="@(HabitRepeatValue.Weekly)" Label="Weekly" />
+                                    <SelectOption TItemValue="HabitRepeatValue" TItem="string" Value="@(HabitRepeatValue.Monthly)" Label="Monthly" />
+                                </SelectOptions>
+                            </Select>
                         </FormItem>
                         <FormItem Label="Tomatoes">
-                            <Rate Character="@TomatoCharacter" DefaultValue="3" />
+                            <Rate @bind-Value="ntomatoes" Character="@TomatoCharacter" DefaultValue="3"  />
                         </FormItem>
 
 
@@ -52,12 +62,12 @@
 
                 </Modal>
             </Title>
-            <Dropzone Items="UserActivitiesKanbanShowing.Where(i => i.Status == Models.ActivityStatus.Todo).ToList()" Accepts='(d, t) =>  d.Pkid != 0' TItem="Activity" OnItemDrop="@(async (item) => { item.Status = ActivityStatus.Todo; await habitTrackerservice.UpdateActivityAsync(item); await UpdateColoumnFooter(); })">
+            <Dropzone Items="UserActivitiesKanbanShowing.Where(i => i.Status == ActivityStatus.Todo).ToList()" Accepts='(d, t) =>  d.HabitId != 0' TItem="HabitOccasion" OnItemDrop="@(async (item) => { item.Status = ActivityStatus.Todo; await habitTrackerservice.UpdateOccasionStatus(item, ActivityStatus.Todo); await UpdateColoumnFooter(); })">
 
-                @if (context.Pkid != 0)
+                @if (context.HabitId != 0)
                 {
                     <Card Bordered="true" Title=@context.Title Actions="@(new[] {
-                actionEdit(()=> OnClick(context)),  actionDelete(()=> OnClickDelete(context))})">
+                actionEdit(async ()=> await OnClickEdit(context)),  actionDelete(async ()=> await  OnClickDelete(context))})">
                         <Body>
                             <p>@context.Description</p>
                         </Body>
@@ -77,12 +87,12 @@
             </Col>
             <Col Span="8">
             <Title Level="3">Doing</Title>
-            <Dropzone Items="UserActivitiesKanbanShowing.Where(i => i.Status == Models.ActivityStatus.Doing).ToList()" Accepts='(d, t) =>  d.Pkid != 0' TItem="Activity" OnItemDrop="@(async (item) => { item.Status = ActivityStatus.Doing; await habitTrackerservice.UpdateActivityAsync(item); await UpdateColoumnFooter();} )">
+            <Dropzone Items="UserActivitiesKanbanShowing.Where(i => i.Status == ActivityStatus.Doing).ToList()" Accepts='(d, t) =>  d.HabitId != 0' TItem="HabitOccasion" OnItemDrop="@(async (item) => { item.Status = ActivityStatus.Doing; await habitTrackerservice.UpdateOccasionStatus(item, ActivityStatus.Doing); await UpdateColoumnFooter(); HandleNotification(); } )">
 
-                @if (context.Pkid != 0)
+                @if (context.HabitId != 0)
                 {
                     <Card Bordered="true" Title=@context.Title Actions="@(new[] {
-                actionEdit(()=> OnClick(context)), actionDelete(()=> OnClickDelete(context))})">
+                actionEdit(async ()=> await OnClickEdit(context)), actionDelete(async ()=> await OnClickDelete(context))})">
                         <Body>
                             <p>@context.Description</p>
                         </Body>
@@ -103,13 +113,14 @@
             </Col>
             <Col Span="8">
             <Title Level="3">Done</Title>
-            <Dropzone Items="UserActivitiesKanbanShowing.Where(i => i.Status == Models.ActivityStatus.Done).ToList()" Accepts='(d, t) => d.Pkid != 0' TItem="Activity" OnItemDrop="@(async (item) => { item.Status = ActivityStatus.Done; await habitTrackerservice.UpdateActivityAsync(item);  await UpdateColoumnFooter();})">
+            <Dropzone Items="UserActivitiesKanbanShowing.Where(i => i.Status == ActivityStatus.Done).ToList()" Accepts='(d, t) => d.HabitId != 0' TItem="HabitOccasion" OnItemDrop="@(async (item) => { item.Status = ActivityStatus.Done; await habitTrackerservice.UpdateOccasionStatus(item, ActivityStatus.Done);  await UpdateColoumnFooter(); await SendWellDoneNotification();
+                                                                                                                                                                                      })">
 
 
-                @if (context.Pkid != 0)
+                @if (context.HabitId != 0)
                 {
                     <Card Bordered="true" Title=@context.Title Actions="@(new[] {
-                actionEdit(()=> OnClick(context)),  actionDelete(()=> OnClickDelete(context))})">
+                actionEdit(async ()=> await OnClickEdit(context)),  actionDelete(async ()=> await OnClickDelete(context))})">
                         <Body>
                             <p>@context.Description</p>
                         </Body>
@@ -154,105 +165,127 @@ else
 
 
 @code{
-    string username;
-    [CascadingParameter(Name = "KanbanUserActivities")] List<Activity> UserActivitiesKanbanShowing { get; set; }
-    [CascadingParameter(Name = "UserActivities")] List<Activity> UserActivities { get; set; }
+            decimal ntomatoes;
+            string username;
+            [CascadingParameter(Name = "KanbanUserActivities")] List<HabitOccasion> UserActivitiesKanbanShowing { get; set; }
+            [CascadingParameter(Name = "UserActivities")] List<HabitOccasion> UserActivities { get; set; }
 
-    bool dataisloaded = false;
+            bool dataisloaded = false;
+            private Habit habit = new Habit();
+            DateTime startingdate;
+            bool _edit = false;
 
-    protected override async Task OnInitializedAsync()
-    {
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        username = authState.User.Identity.Name;
-    }
+            protected override async Task OnInitializedAsync()
+            {
+                var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+                username = authState.User.Identity.Name;
+                startingdate = DateTime.Today;
+                await UpdateUserActivities();
+            }
 
-    private async Task UpdateUserActivities()
-    {
-        UserActivities = await habitTrackerservice.GetAllTodaysUserActivities(username);
-        UserActivitiesKanbanShowing = new List<Activity>(UserActivities);
-        UserActivitiesKanbanShowing.Add(new Activity() { Pkid = 0, Status = ActivityStatus.Todo, Description = UserActivities.Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + UserActivities.Count() });
-        UserActivitiesKanbanShowing.Add(new Activity() { Pkid = 0, Status = ActivityStatus.Doing, Description = UserActivities.Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + UserActivities.Count() });
-        UserActivitiesKanbanShowing.Add(new Activity() { Pkid = 0, Status = ActivityStatus.Done, Description = UserActivities.Where(i => i.Status == ActivityStatus.Done).Count() + "/" + UserActivities.Count() });
-    }
+            private async Task UpdateUserActivities()
+            {
+                UserActivities = habitTrackerservice.GetAllTodaysUserHabits(username);
+                UserActivitiesKanbanShowing = new List<HabitOccasion>(UserActivities);
+                UserActivitiesKanbanShowing.Add(new HabitOccasion() { HabitId = 0, Status = ActivityStatus.Todo, Description = UserActivities.Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + UserActivities.Count() });
+                UserActivitiesKanbanShowing.Add(new HabitOccasion() { HabitId = 0, Status = ActivityStatus.Doing, Description = UserActivities.Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + UserActivities.Count() });
+                UserActivitiesKanbanShowing.Add(new HabitOccasion() { HabitId = 0, Status = ActivityStatus.Done, Description = UserActivities.Where(i => i.Status == ActivityStatus.Done).Count() + "/" + UserActivities.Count() });
+            }
 
-    private async Task UpdateColoumnFooter()
-    {
-        UserActivitiesKanbanShowing.Where(i => i.Pkid == 0 && i.Status == ActivityStatus.Todo).FirstOrDefault().Description = UserActivities.Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + UserActivities.Count();
-        UserActivitiesKanbanShowing.Where(i => i.Pkid == 0 && i.Status == ActivityStatus.Doing).FirstOrDefault().Description = UserActivities.Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + UserActivities.Count();
-        UserActivitiesKanbanShowing.Where(i => i.Pkid == 0 && i.Status == ActivityStatus.Done).FirstOrDefault().Description = UserActivities.Where(i => i.Status == ActivityStatus.Done).Count() + "/" + UserActivities.Count();
+            private async Task UpdateColoumnFooter()
+            {
+                UserActivitiesKanbanShowing.Where(i => i.HabitId == 0 && i.Status == ActivityStatus.Todo).FirstOrDefault().Description = UserActivities.Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + UserActivities.Count();
+                UserActivitiesKanbanShowing.Where(i => i.HabitId == 0 && i.Status == ActivityStatus.Doing).FirstOrDefault().Description = UserActivities.Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + UserActivities.Count();
+                UserActivitiesKanbanShowing.Where(i => i.HabitId == 0 && i.Status == ActivityStatus.Done).FirstOrDefault().Description = UserActivities.Where(i => i.Status == ActivityStatus.Done).Count() + "/" + UserActivities.Count();
 
-    }
+            }
 
-    string title = "New Activity";
-    bool _ModalVisible = false;
+            string title = "New Habit";
+            bool _ModalVisible = false;
 
-    private async Task HandleOk(MouseEventArgs e)
-    {
-        if (_edit)
-        {
-            await habitTrackerservice.UpdateActivityAsync(activity);
-            await UpdateUserActivities();
-            activity = new Activity();
-        }
-        else
-        {
+            private async Task ModalHandleOk(MouseEventArgs e)
+            {
+        habit.RequiredTomatoes = int.Parse(ntomatoes.ToString());
+                if (_edit)
+                {
+                    if (habitRepeatValueBeforeChanges == habit.RepeatValue)
+                    {
+                        await habitTrackerservice.UpdateHabitAsync(habit);
+                    }
+                    else
+                    {
+                        await habitTrackerservice.UpdateHabitOccasionsAsync(habit, startingdate);
+                    }
 
-            activity.Status = ActivityStatus.Todo;
-            activity.fkUsernName = username;
-            await habitTrackerservice.AddActivityAsync(activity);
-            await UpdateUserActivities();
-            activity = new Activity();
-        }
-        _ModalVisible = false;
-        _edit = false;
-    }
+                    await UpdateUserActivities();
+                    habit = new Habit();
+                }
+                else
+                {
+                    habit.fkUserName = username;
+                    await habitTrackerservice.AddHabitAsync(habit, startingdate);
+                    await UpdateUserActivities();
+                    habit = new Habit();
+                }
+                _ModalVisible = false;
+                _edit = false;
+            }
 
-    private void HandleCancel(MouseEventArgs e)
-    {
-        _ModalVisible = false;
+            private void ModalHandleCancel(MouseEventArgs e)
+            {
+                _ModalVisible = false;
 
-    }
-
-    private Activity activity = new Activity();
+            }
 
 
 
-    RenderFragment<RateItemRenderContext> TomatoCharacter = (builder) =>
+
+
+            RenderFragment<RateItemRenderContext> TomatoCharacter = (builder) =>
     @<Template>
         O
     </Template>;
 
 RenderFragment actionEdit(Action clickAction) =>@<Icon Type="edit" OnClick="@clickAction" />;
 RenderFragment actionDelete(Action clickAction) =>@<Icon Type="delete" OnClick="@clickAction" />;
+private HabitRepeatValue habitRepeatValueBeforeChanges;
 
-    void OnClick(Activity SelectedActivity)
-    {
-        activity = SelectedActivity;
-        _ModalVisible = true;
-        _edit = true;
-    }
-
-
-    bool _edit = false;
-
-    private void OnClickDelete(Activity SelectedAtivity)
-    {
-        activity = SelectedAtivity;
-        ShowDeleteConfirm();
-
-    }
+private async Task OnClickEdit(HabitOccasion SelectedHabitOccasion)
+{
+habit = await habitTrackerservice.GetHabitAsync(SelectedHabitOccasion.HabitId);
+habitRepeatValueBeforeChanges = habit.RepeatValue;
+        ntomatoes = habit.RequiredTomatoes;
+_ModalVisible = true;
+_edit = true;
+StateHasChanged();
+}
 
 
-    Func<ModalClosingEventArgs, Task> onOk = (e) =>
-    {
-        return Task.CompletedTask;
-    };
-    Func<ModalClosingEventArgs, Task> onCancel = (e) =>
-    {
-        return Task.CompletedTask;
-    };
-    RenderFragment icon = @<Icon Type="exclamation-circle" Theme="outline"></Icon>;
-private void ShowDeleteConfirm()
+
+private async Task OnClickDelete(HabitOccasion SelectedHabitOccasion)
+{
+
+var habitDelete = await habitTrackerservice.GetHabitAsync(SelectedHabitOccasion.HabitId);
+await habitTrackerservice.RemoveAllHabitOccasions(habitDelete);
+await UpdateUserActivities();
+
+StateHasChanged();
+
+}
+private static bool confirmdelete = false;
+
+Func<ModalClosingEventArgs, Task> onOk = (e) =>
+{
+confirmdelete = true;
+return Task.CompletedTask;
+};
+Func<ModalClosingEventArgs, Task> onCancel = (e) =>
+{
+confirmdelete = false;
+return Task.CompletedTask;
+};
+RenderFragment icon = @<Icon Type="exclamation-circle" Theme="outline"></Icon>;
+private async Task ShowDeleteConfirm()
 {
 _modalService.Confirm(new ConfirmOptions()
 {
@@ -267,25 +300,56 @@ OkType = "danger",
 
 
 //Notification
-RenderFragment customIcon = @<Icon Type="smile" Theme="outline" Style="color:#108ee9;"></Icon>;
 
-RenderFragment notificationContent =@<Progress Type=ProgressType.Circle Percent=timer.Interval Size=ProgressSize.Small />;
-public static Timer timer;
 
-private async Task HandleNotification()
+RenderFragment notificationContent =@<Progress Type=ProgressType.Circle Percent="tomatopercentage" Size=ProgressSize.Small  />;
+    private static int tomatopercentage = 0;
+    public static Timer timer;
+
+    private async Task HandleNotification()
+    {
+        OrigTime = 1500;
+        timer = new Timer(1000); //1500000
+        timer.Enabled = true;
+        timer.Start();
+        timer.Elapsed += timeX_Tick;
+        await _notice.Open(new NotificationConfig()
+        {
+            Message = "Tomato Timer",
+            Description = timerValue,
+        });
+
+    }
+    private Func<double, string> _fortmat1 = (p) => $"{p}";
+    string timerValue;
+
+    int OrigTime = 1500;
+    void timeX_Tick(object sender, EventArgs e)
+    {
+        OrigTime--;
+        timerValue = OrigTime / 60 + ":" + ((OrigTime % 60) >= 10 ? (OrigTime % 60).ToString() : "0" + OrigTime % 60);
+        //     tomatopercentage = OrigTime / 60 + ":" + ((OrigTime % 60) >= 10 ? (OrigTime % 60).ToString() : "0" + OrigTime % 60);
+    }
+
+    private Dictionary<string, string> _gradients = new()
+    {
+        { "0%", "#108ee9" },
+        { "100%", "#87d068" }
+    };
+
+    RenderFragment customIconWellDone =@<Icon Type="smile" Theme="outline" Style="color:#108ee9;"></Icon>;
+
+
+private async Task SendWellDoneNotification()
 {
-timer = new Timer(1000); //1500000
-timer.Start();
-//timer. += OnClick();
 await _notice.Open(new NotificationConfig()
 {
-Message = "title",
-Description = notificationContent
+Message = "Well done!",
+Description = "Keep it up!",
+Icon = customIconWellDone
 });
 }
-private Dictionary<string, string> _gradients = new()
-{
-            { "0%", "#108ee9" },
-            { "100%", "#87d068" }
-        };
+
+
+
 }

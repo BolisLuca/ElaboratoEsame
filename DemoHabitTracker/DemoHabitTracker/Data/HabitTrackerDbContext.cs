@@ -9,7 +9,8 @@ namespace DemoHabitTracker.Data
         {
         }
 
-        public DbSet<Activity> Activities { get; set; }
+        public DbSet<Occasion> Occasions { get; set; }
+        public DbSet<Habit> Habits { get; set; }
         public DbSet<UserScore> UserScores { get; set; }
     }
 }

@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/HvhdkXbDTtlzG4BENeBs+AnGIPeG+IFwsqPIiO4PkOH+vGMqqRiIOsCpXIbugZn11YnJUU19M2Y+SK3k+l9bA==",
+  "dgSpecHash": "Hxf4zo75iWVl2sMv5txabkxbMCNJHhSUGiAEvbT4vQPoy93nWaFFZ6hJPm36UqkRA9wmovSnrfCJb+psSI2oHg==",
   "success": true,
   "projectFilePath": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hp\\.nuget\\packages\\antdesign\\0.8.0\\antdesign.0.8.0.nupkg.sha512",
+    "C:\\Users\\hp\\.nuget\\packages\\antdesign.charts\\0.2.1\\antdesign.charts.0.2.1.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\blazor-dragdrop\\2.3.0\\blazor-dragdrop.2.3.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\google.apis\\1.51.0\\google.apis.1.51.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\google.apis.auth\\1.51.0\\google.apis.auth.1.51.0.nupkg.sha512",
