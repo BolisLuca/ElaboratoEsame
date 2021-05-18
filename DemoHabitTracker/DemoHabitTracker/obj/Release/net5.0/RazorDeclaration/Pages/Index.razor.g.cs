@@ -13,105 +13,105 @@ namespace DemoHabitTracker.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 1 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 2 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 4 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 5 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 6 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 7 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 8 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 9 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 10 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 11 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 12 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using AntDesign;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 13 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Plk.Blazor.DragDrop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\_Imports.razor"
+#line 14 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 2 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 3 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
 using System.Timers;
 
 #line default
@@ -126,7 +126,7 @@ using System.Timers;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 167 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 167 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
       
             decimal ntomatoes;
             string username;
@@ -214,7 +214,7 @@ using System.Timers;
             __builder2.AddMarkupContent(0, "<Template>\r\n        O\r\n    </Template>");
         }
 #nullable restore
-#line 247 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 247 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                ;
 
 RenderFragment actionEdit(Action clickAction) =>
@@ -227,7 +227,7 @@ RenderFragment actionEdit(Action clickAction) =>
             __builder2.AddAttribute(2, "Type", "edit");
             __builder2.AddAttribute(3, "OnClick", 
 #nullable restore
-#line 249 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 249 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                              clickAction
 
 #line default
@@ -237,7 +237,7 @@ RenderFragment actionEdit(Action clickAction) =>
             __builder2.CloseElement();
         }
 #nullable restore
-#line 249 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 249 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                                             ;
 RenderFragment actionDelete(Action clickAction) =>
 
@@ -249,7 +249,7 @@ RenderFragment actionDelete(Action clickAction) =>
             __builder2.AddAttribute(5, "Type", "delete");
             __builder2.AddAttribute(6, "OnClick", 
 #nullable restore
-#line 250 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 250 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                                  clickAction
 
 #line default
@@ -259,7 +259,7 @@ RenderFragment actionDelete(Action clickAction) =>
             __builder2.CloseElement();
         }
 #nullable restore
-#line 250 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 250 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                                                 ;
 private HabitRepeatValue habitRepeatValueBeforeChanges;
 
@@ -306,7 +306,7 @@ RenderFragment icon =
             __builder2.AddMarkupContent(7, "<Icon Type=\"exclamation-circle\" Theme=\"outline\"></Icon>");
         }
 #nullable restore
-#line 287 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 287 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                               ;
 private async Task ShowDeleteConfirm()
 {
@@ -334,35 +334,52 @@ RenderFragment notificationContent =
             __builder2.AddMarkupContent(8, "<Progress Type=\"ProgressType.Circle\" Percent=\"tomatopercentage\" Size=\"ProgressSize.Small\"></Progress>");
         }
 #nullable restore
-#line 305 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 305 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                                                                               ;
     private static int tomatopercentage = 0;
     public static Timer timer;
 
     private async Task HandleNotification()
     {
-        OrigTime = 1500;
+        int OrigTime = 1500;
+        string key = $"open{DateTime.Now}";
         timer = new Timer(1000); //1500000
         timer.Enabled = true;
         timer.Start();
-        timer.Elapsed += timeX_Tick;
+        timer.Elapsed += (sender, e) => MyElapsedMethod(sender, e, key,ref OrigTime );
+
         await _notice.Open(new NotificationConfig()
         {
             Message = "Tomato Timer",
-            Description = timerValue,
-        });
+            Key = key,
+            Duration = 0,
+            Description = timerValue
+        }) ;
+
+    }
+    static void a(object sender, ElapsedEventArgs e)
+    {
 
     }
     private Func<double, string> _fortmat1 = (p) => $"{p}";
     string timerValue;
 
-    int OrigTime = 1500;
-    void timeX_Tick(object sender, EventArgs e)
+
+
+    void MyElapsedMethod(object sender, ElapsedEventArgs e, string key, ref int OrigTime)
     {
-        OrigTime--;
+        OrigTime=OrigTime-1;
         timerValue = OrigTime / 60 + ":" + ((OrigTime % 60) >= 10 ? (OrigTime % 60).ToString() : "0" + OrigTime % 60);
+        _notice.Open(new NotificationConfig()
+        {
+            Message = "Tomato Timer",
+            Key = key,
+            Description = timerValue,
+            Duration = 0,
+        });
         //     tomatopercentage = OrigTime / 60 + ":" + ((OrigTime % 60) >= 10 ? (OrigTime % 60).ToString() : "0" + OrigTime % 60);
     }
+
 
     private Dictionary<string, string> _gradients = new()
     {
@@ -379,7 +396,7 @@ RenderFragment notificationContent =
             __builder2.AddMarkupContent(9, "<Icon Type=\"smile\" Theme=\"outline\" Style=\"color:#108ee9;\"></Icon>");
         }
 #nullable restore
-#line 340 "c:\users\hp\source\repos\elaboratoesame\demohabittracker\DemoHabitTracker\Pages\Index.razor"
+#line 357 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                                                          ;
 
 

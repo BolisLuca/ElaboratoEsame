@@ -1,24 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj": {}
+    "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj": {
+    "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj",
         "projectName": "TestOAuth",
-        "projectPath": "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj",
-        "packagesPath": "C:\\Users\\Bolis.16123\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bolis.16123\\source\\repos\\BolisLuca\\ElaboratoEsame\\TestOAuth\\TestOAuth\\obj\\",
+        "projectPath": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\TestOAuth\\TestOAuth\\TestOAuth.csproj",
+        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\TestOAuth\\TestOAuth\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Bolis.16123\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -86,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

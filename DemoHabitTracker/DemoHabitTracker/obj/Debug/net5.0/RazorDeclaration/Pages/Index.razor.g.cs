@@ -341,28 +341,45 @@ RenderFragment notificationContent =
 
     private async Task HandleNotification()
     {
-        OrigTime = 1500;
+        int OrigTime = 1500;
+        string key = $"open{DateTime.Now}";
         timer = new Timer(1000); //1500000
         timer.Enabled = true;
         timer.Start();
-        timer.Elapsed += timeX_Tick;
+        timer.Elapsed += (sender, e) => MyElapsedMethod(sender, e, key,ref OrigTime );
+
         await _notice.Open(new NotificationConfig()
         {
             Message = "Tomato Timer",
-            Description = timerValue,
-        });
+            Key = key,
+            Duration = 0,
+            Description = timerValue
+        }) ;
+
+    }
+    static void a(object sender, ElapsedEventArgs e)
+    {
 
     }
     private Func<double, string> _fortmat1 = (p) => $"{p}";
     string timerValue;
 
-    int OrigTime = 1500;
-    void timeX_Tick(object sender, EventArgs e)
+
+
+    void MyElapsedMethod(object sender, ElapsedEventArgs e, string key, ref int OrigTime)
     {
-        OrigTime--;
+        OrigTime=OrigTime-1;
         timerValue = OrigTime / 60 + ":" + ((OrigTime % 60) >= 10 ? (OrigTime % 60).ToString() : "0" + OrigTime % 60);
+        _notice.Open(new NotificationConfig()
+        {
+            Message = "Tomato Timer",
+            Key = key,
+            Description = timerValue,
+            Duration = 0,
+        });
         //     tomatopercentage = OrigTime / 60 + ":" + ((OrigTime % 60) >= 10 ? (OrigTime % 60).ToString() : "0" + OrigTime % 60);
     }
+
 
     private Dictionary<string, string> _gradients = new()
     {
@@ -379,7 +396,7 @@ RenderFragment notificationContent =
             __builder2.AddMarkupContent(9, "<Icon Type=\"smile\" Theme=\"outline\" Style=\"color:#108ee9;\"></Icon>");
         }
 #nullable restore
-#line 340 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 357 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                                                          ;
 
 

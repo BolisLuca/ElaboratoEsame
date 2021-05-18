@@ -6012,24 +6012,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bolis.16123\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\hp\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\Google\\TestCalendar\\WebApplication7\\WebApplication7.csproj",
+      "projectUniqueName": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\Google\\TestCalendar\\WebApplication7\\WebApplication7.csproj",
       "projectName": "WebApplication7",
-      "projectPath": "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\Google\\TestCalendar\\WebApplication7\\WebApplication7.csproj",
-      "packagesPath": "C:\\Users\\Bolis.16123\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bolis.16123\\Source\\Repos\\BolisLuca\\ElaboratoEsame\\Google\\TestCalendar\\WebApplication7\\obj\\",
+      "projectPath": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\Google\\TestCalendar\\WebApplication7\\WebApplication7.csproj",
+      "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\Google\\TestCalendar\\WebApplication7\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Bolis.16123\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -6101,7 +6105,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

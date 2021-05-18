@@ -23,6 +23,7 @@
     <TabPane Key="3">
         <Tab>Monthly</Tab>
         <ChildContent>
+            <AntDesign.Charts.Column Data="dataColumn" Config="configColumn" />
         </ChildContent>
     </TabPane>
 </Tabs>
@@ -72,11 +73,20 @@
             dataDaybyDay.Add(objEx);
             firstday = firstday.AddDays(1);
         }
+        dataColumn = new List<object>();
+        firstday = AllHabitOccasions.Min(i => i.ScheduledDate);
+        while (firstday.Month < DateTime.Today.Month)
+        {
+            var obj = new { type = firstday.Month.ToString() , value = AllHabitOccasions.Where(i => i.ScheduledDate.Month == firstday.Month).Where(i => i.Status == ActivityStatus.Done).Count() };
+            dataColumn.Add(obj);
+            firstday = firstday.AddMonths(1);
+        }
     }
 
 
     #region Rose
     List<object> dataRose;
+    List<object> dataColumn;
 
 
     readonly RoseConfig configRose = new RoseConfig
@@ -148,12 +158,12 @@
         Title = new Title
         {
             Visible = true,
-            Text = "Day by Day Analysys"
+            Text = "Day by Day Analysis"
         },
         Description = new Description
         {
             Visible = true,
-            Text = "Youa are watching the number of activities you completed every day"
+            Text = "You are watching the number of activities you completed every day"
         },
         Padding = "auto",
         ForceFit = true,
@@ -170,5 +180,43 @@
         SeriesField = "type"
         @*responsive = true,*@
     };
+    ColumnConfig configColumn = new ColumnConfig
+    {
+        Title = new Title
+        {
+            Visible = true,
+            Text = "Month - Activities "
+        },
+        Description = new Description
+        {
+            Visible = true,
+            Text = "You are watching the number of activities that you completed each month.",
+        },
+        ForceFit = true,
+        Padding = "auto",
+        XField = "type",
+        YField = "sales",
+        Meta = new
+        {
+            Type = new
+            {
+                Alias = "Months"
+            },
+            Sales = new
+            {
+                Alias = "Activities"
+            }
+        },
+        Label = new ColumnViewConfigLabel
+        {
+            Visible = true,
+            Style = new TextStyle
+            {
+                FontSize = 12,
+                FontWeight = 600,
+                Opacity = 0.6,
+            }
 
+        }
+    };
 }
