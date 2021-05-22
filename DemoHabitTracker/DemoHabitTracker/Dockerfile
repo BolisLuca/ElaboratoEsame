@@ -7,7 +7,6 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["DemoHabitTracker/DemoHabitTracker.csproj", "DemoHabitTracker/"]
 RUN dotnet restore "DemoHabitTracker/DemoHabitTracker.csproj"
 COPY . .
 WORKDIR "/src/DemoHabitTracker"

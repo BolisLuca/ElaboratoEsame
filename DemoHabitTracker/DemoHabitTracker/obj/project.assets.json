@@ -10014,11 +10014,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+      "projectUniqueName": "C:\\Users\\hp\\Source\\Repos\\ElaboratoEsame2\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
       "projectName": "DemoHabitTracker",
-      "projectPath": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+      "projectPath": "C:\\Users\\hp\\Source\\Repos\\ElaboratoEsame2\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
       "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\obj\\",
+      "outputPath": "C:\\Users\\hp\\Source\\Repos\\ElaboratoEsame2\\DemoHabitTracker\\DemoHabitTracker\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
