@@ -192,6 +192,8 @@ using System.Timers;
                 }
                 _ModalVisible = false;
                 _edit = false;
+        StateHasChanged();
+
             }
 
             private void ModalHandleCancel(MouseEventArgs e)
@@ -211,10 +213,10 @@ using System.Timers;
 #line hidden
 #nullable disable
         (__builder2) => {
-            __builder2.AddMarkupContent(0, "<Template>\r\n        O\r\n    </Template>");
+            __builder2.AddMarkupContent(0, "<Template>\n        O\n    </Template>");
         }
 #nullable restore
-#line 247 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 249 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                ;
 
 RenderFragment actionEdit(Action clickAction) =>
@@ -227,7 +229,7 @@ RenderFragment actionEdit(Action clickAction) =>
             __builder2.AddAttribute(2, "Type", "edit");
             __builder2.AddAttribute(3, "OnClick", 
 #nullable restore
-#line 249 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 251 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                              clickAction
 
 #line default
@@ -237,7 +239,7 @@ RenderFragment actionEdit(Action clickAction) =>
             __builder2.CloseElement();
         }
 #nullable restore
-#line 249 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 251 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                                             ;
 RenderFragment actionDelete(Action clickAction) =>
 
@@ -249,7 +251,7 @@ RenderFragment actionDelete(Action clickAction) =>
             __builder2.AddAttribute(5, "Type", "delete");
             __builder2.AddAttribute(6, "OnClick", 
 #nullable restore
-#line 250 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 252 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                                  clickAction
 
 #line default
@@ -259,7 +261,7 @@ RenderFragment actionDelete(Action clickAction) =>
             __builder2.CloseElement();
         }
 #nullable restore
-#line 250 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 252 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                                                 ;
 private HabitRepeatValue habitRepeatValueBeforeChanges;
 
@@ -279,7 +281,7 @@ private async Task OnClickDelete(HabitOccasion SelectedHabitOccasion)
 {
 
 var habitDelete = await habitTrackerservice.GetHabitAsync(SelectedHabitOccasion.HabitId);
-await habitTrackerservice.RemoveAllHabitOccasions(habitDelete);
+await habitTrackerservice.DeleteHabitAsync(habitDelete);
 await UpdateUserActivities();
 
 StateHasChanged();
@@ -306,7 +308,7 @@ RenderFragment icon =
             __builder2.AddMarkupContent(7, "<Icon Type=\"exclamation-circle\" Theme=\"outline\"></Icon>");
         }
 #nullable restore
-#line 287 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 289 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                               ;
 private async Task ShowDeleteConfirm()
 {
@@ -334,7 +336,7 @@ RenderFragment notificationContent =
             __builder2.AddMarkupContent(8, "<Progress Type=\"ProgressType.Circle\" Percent=\"tomatopercentage\" Size=\"ProgressSize.Small\"></Progress>");
         }
 #nullable restore
-#line 305 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 307 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                                                                               ;
     private static int tomatopercentage = 0;
     public static Timer timer;
@@ -396,7 +398,7 @@ RenderFragment notificationContent =
             __builder2.AddMarkupContent(9, "<Icon Type=\"smile\" Theme=\"outline\" Style=\"color:#108ee9;\"></Icon>");
         }
 #nullable restore
-#line 357 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 359 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
                                                                                                          ;
 
 

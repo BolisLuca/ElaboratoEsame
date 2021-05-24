@@ -118,7 +118,7 @@ using DemoHabitTracker.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 29 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Shared\MainLayout.razor"
+#line 61 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Shared\MainLayout.razor"
  
     private void OnPanelChange(DateTime value, string mode)
     {

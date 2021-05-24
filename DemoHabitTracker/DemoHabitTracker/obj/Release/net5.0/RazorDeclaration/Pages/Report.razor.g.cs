@@ -133,10 +133,11 @@ using Title = AntDesign.Charts.Title;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 31 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
+#line 41 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
       
+
+    [CascadingParameter(Name = "Userhabits")] List<Habit> habits { get; set; }
     string username;
-    List<Habit> habits;
     List<HabitOccasion> AllHabitOccasions;
 
     protected override async Task OnInitializedAsync()
@@ -144,48 +145,67 @@ using Title = AntDesign.Charts.Title;
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         username = authState.User.Identity.Name;
         habits = await habitTrackerservice.GetAllUserHabits(username);
-        AllHabitOccasions = habitTrackerservice.GetAllUserOccasions(username);
-        dataRose = new List<object>();
-        int i = 0;
-        foreach (var habit in habits)
+        if (habits.Count() != 0)
         {
-            if(habit.RepeatValue != HabitRepeatValue.Never)
+            AllHabitOccasions = habitTrackerservice.GetAllUserOccasions(username);
+            dataRose = new List<object>();
+            int i = 0;
+            int others = 0;
+            foreach (var habit in habits)
             {
-                if(habit.RepeatValue == HabitRepeatValue.Weekly)
+                if (AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() < 10)
                 {
-                    var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() *4 };
-                    dataRose.Add(obj);
-
+                    others++;
                 }
                 else
                 {
-                    var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() };
-                    dataRose.Add(obj);
+                    if (habit.RepeatValue == HabitRepeatValue.Never)
+                    {
+                        others++;
+                    }
+                    else
+                    {
+                        if (habit.RepeatValue == HabitRepeatValue.Weekly)
+                        {
+                            var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() * 4 };
+                            dataRose.Add(obj);
 
+                        }
+                        else
+                        {
+                            var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() };
+                            dataRose.Add(obj);
+
+                        }
+
+                    }
                 }
-
             }
 
-        }
-
-        dataDaybyDay = new List<object>();
-        AllHabitOccasions.OrderBy(i => i.ScheduledDate);
-        var firstday = AllHabitOccasions.Min(i => i.ScheduledDate);
-        while (firstday < DateTime.Today)
-        {
-            var objEx = new { date = firstday.ToShortDateString(), type = "Expected", value = AllHabitOccasions.Where(i => i.ScheduledDate == firstday).Count() };
-            var obj = new { date = firstday.ToShortDateString(), type = "Completed", value = AllHabitOccasions.Where(i => i.ScheduledDate == firstday).Where(i=> i.Status == ActivityStatus.Done).Count() };
-            dataDaybyDay.Add(obj);
-            dataDaybyDay.Add(objEx);
-            firstday = firstday.AddDays(1);
-        }
-        dataColumn = new List<object>();
-        firstday = AllHabitOccasions.Min(i => i.ScheduledDate);
-        while (firstday.Month < DateTime.Today.Month)
-        {
-            var obj = new { type = firstday.Month.ToString() , value = AllHabitOccasions.Where(i => i.ScheduledDate.Month == firstday.Month).Where(i => i.Status == ActivityStatus.Done).Count() };
-            dataColumn.Add(obj);
-            firstday = firstday.AddMonths(1);
+            if(others != 0)
+            {
+                var objothers = new { type = "Others", value = others * 50 };
+                dataRose.Add(objothers);
+            }
+            dataDaybyDay = new List<object>();
+            AllHabitOccasions.OrderBy(i => i.ScheduledDate);
+            var firstday = AllHabitOccasions.Min(i => i.ScheduledDate);
+            while (firstday < DateTime.Today)
+            {
+                var objEx = new { date = firstday.ToShortDateString(), type = "Expected", value = AllHabitOccasions.Where(i => i.ScheduledDate == firstday).Count() };
+                var obj = new { date = firstday.ToShortDateString(), type = "Completed", value = AllHabitOccasions.Where(i => i.ScheduledDate == firstday).Where(i => i.Status == ActivityStatus.Done).Count() };
+                dataDaybyDay.Add(obj);
+                dataDaybyDay.Add(objEx);
+                firstday = firstday.AddDays(1);
+            }
+            dataColumn = new List<object>();
+            firstday = AllHabitOccasions.Min(i => i.ScheduledDate);
+            while (firstday.Month < DateTime.Today.Month)
+            {
+                var obj = new { type = firstday.Month.ToString(), value = AllHabitOccasions.Where(i => i.ScheduledDate.Month == firstday.Month).Where(i => i.Status == ActivityStatus.Done).Count() };
+                dataColumn.Add(obj);
+                firstday = firstday.AddMonths(1);
+            }
         }
     }
 
@@ -223,7 +243,7 @@ using Title = AntDesign.Charts.Title;
 #line hidden
 #nullable disable
 #nullable restore
-#line 114 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
+#line 144 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
                                               
         }
     };
@@ -231,7 +251,7 @@ using Title = AntDesign.Charts.Title;
     #endregion Rose
     List<object> dataDaybyDay;
 
- 
+
 
     readonly ColumnLineConfig config2 = new ColumnLineConfig
     {
@@ -253,7 +273,7 @@ using Title = AntDesign.Charts.Title;
         },
         LineConfig = new LineConfig
         {
-            Color  = "#29cae4",
+            Color = "#29cae4",
             Point = new LineViewConfigPoint
             {
                 Visible = true,
@@ -297,7 +317,7 @@ using Title = AntDesign.Charts.Title;
 #line hidden
 #nullable disable
 #nullable restore
-#line 181 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
+#line 211 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
                               
     };
     ColumnConfig configColumn = new ColumnConfig

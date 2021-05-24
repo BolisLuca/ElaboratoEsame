@@ -41,7 +41,9 @@
           "Microsoft.AspNetCore.Identity.UI": "5.0.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.6",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.6",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.10.13",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.2",
+          "SendGrid": "9.23.2",
           "blazor-dragdrop": "2.3.0",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
@@ -1223,6 +1225,7 @@
       "Microsoft.JSInterop/5.0.0": {},
       "Microsoft.NETCore.Platforms/3.1.0": {},
       "Microsoft.NETCore.Targets/1.1.3": {},
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.13": {},
       "Microsoft.VisualStudio.Web.CodeGeneration/5.0.2": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "5.0.1",
@@ -1496,6 +1499,32 @@
       "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
+      "SendGrid/9.23.2": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "starkbank-ecdsa": "1.3.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SendGrid.dll": {
+            "assemblyVersion": "9.23.2.0",
+            "fileVersion": "9.23.2.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/SendGrid.dll": {}
+        }
+      },
+      "starkbank-ecdsa/1.3.1": {
+        "runtime": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -4559,6 +4588,13 @@
       "path": "microsoft.netcore.targets/1.1.3",
       "hashPath": "microsoft.netcore.targets.1.1.3.nupkg.sha512"
     },
+    "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HWRH5pClal37WMKb0kV2JtnNKUEyQk8kJDdBz0M0fn9hKeU2KW8wdxkxeBNaumGQzHibZqSRofkeeayfpsMaKA==",
+      "path": "microsoft.visualstudio.azure.containers.tools.targets/1.10.13",
+      "hashPath": "microsoft.visualstudio.azure.containers.tools.targets.1.10.13.nupkg.sha512"
+    },
     "Microsoft.VisualStudio.Web.CodeGeneration/5.0.2": {
       "type": "package",
       "serviceable": true,
@@ -4768,6 +4804,20 @@
       "sha512": "sha512-VB5cn/7OzUfzdnC8tqAIMQciVLiq2epm2NrAm1E9OjNRyG4lVhfR61SMcLizejzQP8R8Uf/0l5qOIbUEi+RdEg==",
       "path": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "hashPath": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512"
+    },
+    "SendGrid/9.23.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AeZGbA17e0HApT6zK6fMxuS+HNfqL3Mm5sOML8qEjb1Sl2Qjgr3gXIXpOP5VkK8sO5zRynViOPxl66f7nRkTAQ==",
+      "path": "sendgrid/9.23.2",
+      "hashPath": "sendgrid.9.23.2.nupkg.sha512"
+    },
+    "starkbank-ecdsa/1.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YV20cpN7WgEiaIuIv8ZQPgkDVximP6gHCMCTgy6+IwArDHmuDVQLJ15Qwwmgd5woETnogquD+gu4SXDZW/ffog==",
+      "path": "starkbank-ecdsa/1.3.1",
+      "hashPath": "starkbank-ecdsa.1.3.1.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",

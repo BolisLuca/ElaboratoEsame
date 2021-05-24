@@ -142,10 +142,10 @@ using DemoHabitTracker.Data;
 #nullable disable
         (__builder2) => {
             __builder2.OpenElement(0, "Template");
-            __builder2.AddMarkupContent(1, "\r\n                   ");
+            __builder2.AddMarkupContent(1, "\n                   ");
             __builder2.OpenElement(2, "ul");
             __builder2.AddAttribute(3, "class", "events");
-            __builder2.AddMarkupContent(4, "\r\n");
+            __builder2.AddMarkupContent(4, "\n");
 #nullable restore
 #line 73 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
                         foreach (var activity in DailyActivities)
@@ -167,7 +167,7 @@ using DemoHabitTracker.Data;
 #line hidden
 #nullable disable
             );
-            __builder2.AddMarkupContent(8, "\r\n");
+            __builder2.AddMarkupContent(8, "\n");
 #nullable restore
 #line 78 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
                                     if (activity.Status == ActivityStatus.Done)
@@ -205,9 +205,9 @@ using DemoHabitTracker.Data;
 #nullable disable
             );
             __builder2.CloseElement();
-            __builder2.AddMarkupContent(13, "\r\n                               ");
+            __builder2.AddMarkupContent(13, "\n                               ");
             __builder2.CloseElement();
-            __builder2.AddMarkupContent(14, "\r\n");
+            __builder2.AddMarkupContent(14, "\n");
 #nullable restore
 #line 83 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
                     }
@@ -228,7 +228,7 @@ using DemoHabitTracker.Data;
 #line hidden
 #nullable disable
             );
-            __builder2.AddMarkupContent(18, "\r\n                       ");
+            __builder2.AddMarkupContent(18, "\n                       ");
             __builder2.OpenElement(19, "Badge");
             __builder2.AddAttribute(20, "Text", 
 #nullable restore
@@ -240,9 +240,9 @@ using DemoHabitTracker.Data;
 #nullable disable
             );
             __builder2.CloseElement();
-            __builder2.AddMarkupContent(21, "\r\n                   ");
+            __builder2.AddMarkupContent(21, "\n                   ");
             __builder2.CloseElement();
-            __builder2.AddMarkupContent(22, "\r\n");
+            __builder2.AddMarkupContent(22, "\n");
 #nullable restore
 #line 89 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
                     }
@@ -254,7 +254,7 @@ using DemoHabitTracker.Data;
 #nullable disable
             __builder2.AddContent(23, "                   ");
             __builder2.CloseElement();
-            __builder2.AddMarkupContent(24, "\r\n    ");
+            __builder2.AddMarkupContent(24, "\n    ");
             __builder2.CloseElement();
         }
 #nullable restore
@@ -287,10 +287,13 @@ using DemoHabitTracker.Data;
         habit.RequiredTomatoes = int.Parse(ntomatoes.ToString());
         habit.fkUserName = username;
         await habitTrackerservice.AddHabitAsync(habit, startingdate);
-        await UpdateUserActivities();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        username = authState.User.Identity.Name;
+        UserActivities = habitTrackerservice.GetAllUserOccasions(username);
         habit = new Habit();
 
         _ModalVisible = false;
+        StateHasChanged();
     }
 
     private void ModalHandleCancel(MouseEventArgs e)
@@ -312,20 +315,16 @@ using DemoHabitTracker.Data;
 
     }
 
-    private async Task UpdateUserActivities()
-    {
-        UserActivities = habitTrackerservice.GetAllTodaysUserHabits(username);
-    }
     RenderFragment<RateItemRenderContext> TomatoCharacter = (builder) =>
 
 #line default
 #line hidden
 #nullable disable
         (__builder2) => {
-            __builder2.AddMarkupContent(25, "<Template>\r\n    O\r\n</Template>");
+            __builder2.AddMarkupContent(25, "<Template>\n    O\n</Template>");
         }
 #nullable restore
-#line 153 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+#line 152 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
            ;
 
 

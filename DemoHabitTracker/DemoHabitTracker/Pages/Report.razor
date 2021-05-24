@@ -5,32 +5,43 @@
 @using Title = AntDesign.Charts.Title
 
 <h3>Report</h3>
-<Tabs>
-    <TabPane Key="1">
-        <Tab>My Habits</Tab>
-        <ChildContent>
-            <Rose Data="dataRose" Config="configRose" />
-        </ChildContent>
-    </TabPane>
+@if (habits.Count() == 0)
+{
+    <Result Status="404"
+            Title="No Data"
+            SubTitle="Here you will be able to see your progress over time. Complete your habits and comeback tomorrow!" />
+}
+else
+{
+    <Tabs>
+        <TabPane Key="1">
+            <Tab>My Habits</Tab>
+            <ChildContent>
+                <Rose Data="dataRose" Config="configRose" />
+            </ChildContent>
+        </TabPane>
 
-    <TabPane Key="2">
-        <Tab>Day by Day</Tab>
-        <ChildContent>
-            <AntDesign.Charts.Line Data="dataDaybyDay" Config="configDaybyDay" />
-        </ChildContent>
-    </TabPane>
+        <TabPane Key="2">
+            <Tab>Day by Day</Tab>
+            <ChildContent>
+                <AntDesign.Charts.Line Data="dataDaybyDay" Config="configDaybyDay" />
+            </ChildContent>
+        </TabPane>
 
-    <TabPane Key="3">
-        <Tab>Monthly</Tab>
-        <ChildContent>
-            <AntDesign.Charts.Column Data="dataColumn" Config="configColumn" />
-        </ChildContent>
-    </TabPane>
-</Tabs>
+        <TabPane Key="3">
+            <Tab>Monthly</Tab>
+            <ChildContent>
+                <AntDesign.Charts.Column Data="dataColumn" Config="configColumn" />
+            </ChildContent>
+        </TabPane>
+    </Tabs>
+
+}
 
 @code{
+
+    [CascadingParameter(Name = "Userhabits")] List<Habit> habits { get; set; }
     string username;
-    List<Habit> habits;
     List<HabitOccasion> AllHabitOccasions;
 
     protected override async Task OnInitializedAsync()
@@ -38,48 +49,67 @@
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         username = authState.User.Identity.Name;
         habits = await habitTrackerservice.GetAllUserHabits(username);
-        AllHabitOccasions = habitTrackerservice.GetAllUserOccasions(username);
-        dataRose = new List<object>();
-        int i = 0;
-        foreach (var habit in habits)
+        if (habits.Count() != 0)
         {
-            if(habit.RepeatValue != HabitRepeatValue.Never)
+            AllHabitOccasions = habitTrackerservice.GetAllUserOccasions(username);
+            dataRose = new List<object>();
+            int i = 0;
+            int others = 0;
+            foreach (var habit in habits)
             {
-                if(habit.RepeatValue == HabitRepeatValue.Weekly)
+                if (AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() < 10)
                 {
-                    var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() *4 };
-                    dataRose.Add(obj);
-
+                    others++;
                 }
                 else
                 {
-                    var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() };
-                    dataRose.Add(obj);
+                    if (habit.RepeatValue == HabitRepeatValue.Never)
+                    {
+                        others++;
+                    }
+                    else
+                    {
+                        if (habit.RepeatValue == HabitRepeatValue.Weekly)
+                        {
+                            var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() * 4 };
+                            dataRose.Add(obj);
 
+                        }
+                        else
+                        {
+                            var obj = new { type = habit.Title, value = AllHabitOccasions.Where(i => i.HabitId == habit.HabitId).Count() };
+                            dataRose.Add(obj);
+
+                        }
+
+                    }
                 }
-
             }
 
-        }
-
-        dataDaybyDay = new List<object>();
-        AllHabitOccasions.OrderBy(i => i.ScheduledDate);
-        var firstday = AllHabitOccasions.Min(i => i.ScheduledDate);
-        while (firstday < DateTime.Today)
-        {
-            var objEx = new { date = firstday.ToShortDateString(), type = "Expected", value = AllHabitOccasions.Where(i => i.ScheduledDate == firstday).Count() };
-            var obj = new { date = firstday.ToShortDateString(), type = "Completed", value = AllHabitOccasions.Where(i => i.ScheduledDate == firstday).Where(i=> i.Status == ActivityStatus.Done).Count() };
-            dataDaybyDay.Add(obj);
-            dataDaybyDay.Add(objEx);
-            firstday = firstday.AddDays(1);
-        }
-        dataColumn = new List<object>();
-        firstday = AllHabitOccasions.Min(i => i.ScheduledDate);
-        while (firstday.Month < DateTime.Today.Month)
-        {
-            var obj = new { type = firstday.Month.ToString() , value = AllHabitOccasions.Where(i => i.ScheduledDate.Month == firstday.Month).Where(i => i.Status == ActivityStatus.Done).Count() };
-            dataColumn.Add(obj);
-            firstday = firstday.AddMonths(1);
+            if(others != 0)
+            {
+                var objothers = new { type = "Others", value = others * 50 };
+                dataRose.Add(objothers);
+            }
+            dataDaybyDay = new List<object>();
+            AllHabitOccasions.OrderBy(i => i.ScheduledDate);
+            var firstday = AllHabitOccasions.Min(i => i.ScheduledDate);
+            while (firstday < DateTime.Today)
+            {
+                var objEx = new { date = firstday.ToShortDateString(), type = "Expected", value = AllHabitOccasions.Where(i => i.ScheduledDate == firstday).Count() };
+                var obj = new { date = firstday.ToShortDateString(), type = "Completed", value = AllHabitOccasions.Where(i => i.ScheduledDate == firstday).Where(i => i.Status == ActivityStatus.Done).Count() };
+                dataDaybyDay.Add(obj);
+                dataDaybyDay.Add(objEx);
+                firstday = firstday.AddDays(1);
+            }
+            dataColumn = new List<object>();
+            firstday = AllHabitOccasions.Min(i => i.ScheduledDate);
+            while (firstday.Month < DateTime.Today.Month)
+            {
+                var obj = new { type = firstday.Month.ToString(), value = AllHabitOccasions.Where(i => i.ScheduledDate.Month == firstday.Month).Where(i => i.Status == ActivityStatus.Done).Count() };
+                dataColumn.Add(obj);
+                firstday = firstday.AddMonths(1);
+            }
         }
     }
 
@@ -118,7 +148,7 @@
     #endregion Rose
     List<object> dataDaybyDay;
 
- 
+
 
     readonly ColumnLineConfig config2 = new ColumnLineConfig
     {
@@ -140,7 +170,7 @@
         },
         LineConfig = new LineConfig
         {
-            Color  = "#29cae4",
+            Color = "#29cae4",
             Point = new LineViewConfigPoint
             {
                 Visible = true,

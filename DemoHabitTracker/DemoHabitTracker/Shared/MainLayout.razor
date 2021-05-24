@@ -20,8 +20,40 @@
         </Layout>
     </Authorized>
     <NotAuthorized>
-        <p>Please sign in.</p> //Qui ci andranno i componenti che espongono i contenuti del sito, la pagina di presntazione
-        <LoginDisplay></LoginDisplay>
+        <Layout>
+            <Header Class="header">
+                <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Horizontal">
+                    <MenuItem  Key="1"><b>HabitTracker</b></MenuItem>
+                    <LoginDisplay></LoginDisplay>
+                </Menu>
+            </Header>
+            <Content Style="padding: 0 50px">
+                    <h1> HABIT TRACKER</h1>
+
+                    <div class="row">
+                        <p> <b>HabitTracker nacse per aiutare gli utenti a costruire abitudini positive e diventare così la versione migliore di se stessi.</b></p>
+                        <img src="/calendar.jpg" asp-append-version="true" width="300px" />
+                    </div>
+                    
+                    <p>
+                        <b>
+                            HabitTracker prende tutti i concetti chiave del Habit tracking,
+                            pratica molto diffusa in diverse discipline, e li condensa in un unica Web App semplice,
+                            gratuita e accessibile da qualunque dispositivo.
+                        </b>
+                    </p>
+                    <br />
+                    <br />
+
+                     <p>
+                        L'idea del Habit tracking  nasce dal bisogno degli utenti di visualizzare istantaneamente 
+                         i loro progressi in attività che invece mostrano i loro risultati sul lungo termine, implementando 
+                         così un meccanismo di "Don't Break the chain".
+                    </p>
+                
+            </Content>
+            <Footer Style="text-align: center; ">Ant Design ©2018 Created by Ant UED</Footer>
+        </Layout>
     </NotAuthorized>
 </AuthorizeView>
 

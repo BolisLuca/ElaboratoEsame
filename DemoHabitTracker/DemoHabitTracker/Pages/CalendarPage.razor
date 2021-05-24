@@ -118,10 +118,13 @@
         habit.RequiredTomatoes = int.Parse(ntomatoes.ToString());
         habit.fkUserName = username;
         await habitTrackerservice.AddHabitAsync(habit, startingdate);
-        await UpdateUserActivities();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        username = authState.User.Identity.Name;
+        UserActivities = habitTrackerservice.GetAllUserOccasions(username);
         habit = new Habit();
 
         _ModalVisible = false;
+        StateHasChanged();
     }
 
     private void ModalHandleCancel(MouseEventArgs e)
@@ -143,10 +146,6 @@
 
     }
 
-    private async Task UpdateUserActivities()
-    {
-        UserActivities = habitTrackerservice.GetAllTodaysUserHabits(username);
-    }
     RenderFragment<RateItemRenderContext> TomatoCharacter = (builder) =>
 @<Template>
     O

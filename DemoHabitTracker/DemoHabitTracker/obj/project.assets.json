@@ -1448,6 +1448,28 @@
           }
         }
       },
+      "SendGrid/9.23.2": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "9.0.1",
+          "starkbank-ecdsa": "[1.3.1, 2.0.0)"
+        },
+        "compile": {
+          "lib/netstandard2.0/SendGrid.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SendGrid.dll": {}
+        }
+      },
+      "starkbank-ecdsa/1.3.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -5671,6 +5693,45 @@
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
+      ]
+    },
+    "SendGrid/9.23.2": {
+      "sha512": "AeZGbA17e0HApT6zK6fMxuS+HNfqL3Mm5sOML8qEjb1Sl2Qjgr3gXIXpOP5VkK8sO5zRynViOPxl66f7nRkTAQ==",
+      "type": "package",
+      "path": "sendgrid/9.23.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/SendGrid.dll",
+        "lib/net40/SendGrid.pdb",
+        "lib/net40/SendGrid.xml",
+        "lib/net452/SendGrid.dll",
+        "lib/net452/SendGrid.pdb",
+        "lib/net452/SendGrid.xml",
+        "lib/netstandard1.3/SendGrid.dll",
+        "lib/netstandard1.3/SendGrid.pdb",
+        "lib/netstandard1.3/SendGrid.xml",
+        "lib/netstandard2.0/SendGrid.dll",
+        "lib/netstandard2.0/SendGrid.pdb",
+        "lib/netstandard2.0/SendGrid.xml",
+        "sendgrid.9.23.2.nupkg.sha512",
+        "sendgrid.nuspec"
+      ]
+    },
+    "starkbank-ecdsa/1.3.1": {
+      "sha512": "YV20cpN7WgEiaIuIv8ZQPgkDVximP6gHCMCTgy6+IwArDHmuDVQLJ15Qwwmgd5woETnogquD+gu4SXDZW/ffog==",
+      "type": "package",
+      "path": "starkbank-ecdsa/1.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/StarkbankEcdsa.dll",
+        "lib/net452/StarkbankEcdsa.dll",
+        "lib/netstandard1.3/StarkbankEcdsa.dll",
+        "lib/netstandard2.0/StarkbankEcdsa.dll",
+        "lib/netstandard2.1/StarkbankEcdsa.dll",
+        "starkbank-ecdsa.1.3.1.nupkg.sha512",
+        "starkbank-ecdsa.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -10003,6 +10064,7 @@
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.6",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.13",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2",
+      "SendGrid >= 9.23.2",
       "blazor-dragdrop >= 2.3.0"
     ]
   },
@@ -10014,11 +10076,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+      "projectUniqueName": "C:\\Users\\hp\\Downloads\\ElaboratoEsame-main (1)\\ElaboratoEsame-main\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
       "projectName": "DemoHabitTracker",
-      "projectPath": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+      "projectPath": "C:\\Users\\hp\\Downloads\\ElaboratoEsame-main (1)\\ElaboratoEsame-main\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
       "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hp\\source\\repos\\ElaboratoEsame\\DemoHabitTracker\\DemoHabitTracker\\obj\\",
+      "outputPath": "C:\\Users\\hp\\Downloads\\ElaboratoEsame-main (1)\\ElaboratoEsame-main\\DemoHabitTracker\\DemoHabitTracker\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -10094,6 +10156,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[5.0.2, )"
+          },
+          "SendGrid": {
+            "target": "Package",
+            "version": "[9.23.2, )"
           },
           "blazor-dragdrop": {
             "target": "Package",

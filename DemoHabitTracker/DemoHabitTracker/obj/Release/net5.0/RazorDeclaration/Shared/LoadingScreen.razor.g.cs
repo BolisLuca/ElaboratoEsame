@@ -118,11 +118,12 @@ using DemoHabitTracker.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 17 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Shared\LoadingScreen.razor"
+#line 19 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Shared\LoadingScreen.razor"
        
     bool isLoaded;
     public List<HabitOccasion> UserActivities = new List<HabitOccasion>();
-    public List<HabitOccasion> UserActivitiesKanbanShowing;
+    public List<HabitOccasion> UserActivitiesKanbanShowing; 
+    public List<Habit> Userhabits;
 
 
     [Parameter]
@@ -137,6 +138,7 @@ using DemoHabitTracker.Data;
         UserActivitiesKanbanShowing.Add(new HabitOccasion() { HabitId = 0, Status = ActivityStatus.Todo, Description = UserActivities.Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + UserActivities.Count() });
         UserActivitiesKanbanShowing.Add(new HabitOccasion() { HabitId = 0, Status = ActivityStatus.Doing, Description = UserActivities.Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + UserActivities.Count() });
         UserActivitiesKanbanShowing.Add(new HabitOccasion() { HabitId = 0, Status = ActivityStatus.Done, Description = UserActivities.Where(i => i.Status == ActivityStatus.Done).Count() + "/" + UserActivities.Count() });
+        Userhabits = await habitTrackerservice.GetAllUserHabits(username);
         isLoaded = true;
     }
 

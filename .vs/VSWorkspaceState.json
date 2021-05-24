@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\DemoHabitTracker"
+    "\\Google",
+    "\\TestOAuth"
   ],
-  "SelectedNode": "\\DemoHabitTracker\\DemoHabitTracker.sln",
+  "SelectedNode": "\\TestOAuth",
   "PreviewInSolutionExplorer": false
 }

@@ -229,6 +229,8 @@ else
                 }
                 _ModalVisible = false;
                 _edit = false;
+        StateHasChanged();
+
             }
 
             private void ModalHandleCancel(MouseEventArgs e)
@@ -266,7 +268,7 @@ private async Task OnClickDelete(HabitOccasion SelectedHabitOccasion)
 {
 
 var habitDelete = await habitTrackerservice.GetHabitAsync(SelectedHabitOccasion.HabitId);
-await habitTrackerservice.RemoveAllHabitOccasions(habitDelete);
+await habitTrackerservice.DeleteHabitAsync(habitDelete);
 await UpdateUserActivities();
 
 StateHasChanged();

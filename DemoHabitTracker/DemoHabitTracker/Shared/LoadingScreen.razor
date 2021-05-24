@@ -4,7 +4,9 @@
 {
 <CascadingValue Value="UserActivitiesKanbanShowing" Name="KanbanUserActivities">
     <CascadingValue Value="UserActivities" Name="UserActivities">
+       <CascadingValue Value="Userhabits" Name="Userhabits">
         @ChildContent
+    </CascadingValue>
     </CascadingValue>
 </CascadingValue>
 
@@ -17,7 +19,8 @@ else
 @code {
     bool isLoaded;
     public List<HabitOccasion> UserActivities = new List<HabitOccasion>();
-    public List<HabitOccasion> UserActivitiesKanbanShowing;
+    public List<HabitOccasion> UserActivitiesKanbanShowing; 
+    public List<Habit> Userhabits;
 
 
     [Parameter]
@@ -32,6 +35,7 @@ else
         UserActivitiesKanbanShowing.Add(new HabitOccasion() { HabitId = 0, Status = ActivityStatus.Todo, Description = UserActivities.Where(i => i.Status == ActivityStatus.Todo).Count() + "/" + UserActivities.Count() });
         UserActivitiesKanbanShowing.Add(new HabitOccasion() { HabitId = 0, Status = ActivityStatus.Doing, Description = UserActivities.Where(i => i.Status == ActivityStatus.Doing).Count() + "/" + UserActivities.Count() });
         UserActivitiesKanbanShowing.Add(new HabitOccasion() { HabitId = 0, Status = ActivityStatus.Done, Description = UserActivities.Where(i => i.Status == ActivityStatus.Done).Count() + "/" + UserActivities.Count() });
+        Userhabits = await habitTrackerservice.GetAllUserHabits(username);
         isLoaded = true;
     }
 }
