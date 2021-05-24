@@ -13,98 +13,154 @@ namespace DemoHabitTracker.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
+<<<<<<< HEAD
 #line 1 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+=======
+#line 1 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
+<<<<<<< HEAD
 #line 2 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+=======
+#line 2 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
+<<<<<<< HEAD
 #line 3 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+=======
+#line 3 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
+<<<<<<< HEAD
 #line 4 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+=======
+#line 4 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
+<<<<<<< HEAD
 #line 5 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+=======
+#line 5 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
+<<<<<<< HEAD
 #line 6 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+=======
+#line 6 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
+<<<<<<< HEAD
 #line 7 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+=======
+#line 7 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
+<<<<<<< HEAD
 #line 8 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+=======
+#line 8 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
+<<<<<<< HEAD
 #line 9 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+=======
+#line 9 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
 using DemoHabitTracker;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
+<<<<<<< HEAD
 #line 10 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+=======
+#line 10 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
 using DemoHabitTracker.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
+<<<<<<< HEAD
 #line 11 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+=======
+#line 11 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
 using DemoHabitTracker.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
+<<<<<<< HEAD
 #line 12 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+=======
+#line 12 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
 using AntDesign;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
+<<<<<<< HEAD
 #line 13 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+=======
+#line 13 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
 using Plk.Blazor.DragDrop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
+<<<<<<< HEAD
 #line 14 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+=======
+#line 14 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
 using DemoHabitTracker.Data;
 
 #line default
@@ -119,7 +175,11 @@ using DemoHabitTracker.Data;
         }
         #pragma warning restore 1998
 #nullable restore
+<<<<<<< HEAD
 #line 56 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+=======
+#line 56 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
  
     string username;
     private List<HabitOccasion> UserActivities { get; set; }
@@ -147,7 +207,11 @@ using DemoHabitTracker.Data;
             __builder2.AddAttribute(3, "class", "events");
             __builder2.AddMarkupContent(4, "\n");
 #nullable restore
+<<<<<<< HEAD
 #line 73 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+=======
+#line 73 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                         foreach (var activity in DailyActivities)
                        {
                            if (activity.ScheduledDate <= DateTime.Today)
@@ -160,7 +224,11 @@ using DemoHabitTracker.Data;
             __builder2.OpenElement(6, "li");
             __builder2.AddAttribute(7, "key", 
 #nullable restore
+<<<<<<< HEAD
 #line 77 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+=======
+#line 77 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                                          activity.HabitId
 
 #line default
@@ -169,7 +237,11 @@ using DemoHabitTracker.Data;
             );
             __builder2.AddMarkupContent(8, "\n");
 #nullable restore
+<<<<<<< HEAD
 #line 78 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+=======
+#line 78 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                                     if (activity.Status == ActivityStatus.Done)
                                    {
 
@@ -178,7 +250,11 @@ using DemoHabitTracker.Data;
 #nullable disable
             __builder2.AddMarkupContent(9, "<Icon Type=\"check\" Theme=\"outline\" Style=\"color:green\"></Icon>");
 #nullable restore
+<<<<<<< HEAD
 #line 79 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+=======
+#line 79 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                                                                                              }
                                    else
                                    {
@@ -188,7 +264,11 @@ using DemoHabitTracker.Data;
 #nullable disable
             __builder2.AddMarkupContent(10, " <Icon Type=\"close\" Theme=\"outline\" Style=\"color:red\"></Icon>");
 #nullable restore
+<<<<<<< HEAD
 #line 81 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+=======
+#line 81 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                                                                                             }
 
 #line default
@@ -197,7 +277,11 @@ using DemoHabitTracker.Data;
             __builder2.OpenElement(11, "Badge");
             __builder2.AddAttribute(12, "Text", 
 #nullable restore
+<<<<<<< HEAD
 #line 81 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+=======
+#line 81 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                                                                                                            activity.Title
 
 #line default
@@ -209,7 +293,11 @@ using DemoHabitTracker.Data;
             __builder2.CloseElement();
             __builder2.AddMarkupContent(14, "\n");
 #nullable restore
+<<<<<<< HEAD
 #line 83 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+=======
+#line 83 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                     }
                     else
                     {
@@ -221,7 +309,11 @@ using DemoHabitTracker.Data;
             __builder2.OpenElement(16, "li");
             __builder2.AddAttribute(17, "key", 
 #nullable restore
+<<<<<<< HEAD
 #line 86 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+=======
+#line 86 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                              activity.HabitId
 
 #line default
@@ -232,7 +324,11 @@ using DemoHabitTracker.Data;
             __builder2.OpenElement(19, "Badge");
             __builder2.AddAttribute(20, "Text", 
 #nullable restore
+<<<<<<< HEAD
 #line 87 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+=======
+#line 87 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                                      activity.Title
 
 #line default
@@ -244,7 +340,11 @@ using DemoHabitTracker.Data;
             __builder2.CloseElement();
             __builder2.AddMarkupContent(22, "\n");
 #nullable restore
+<<<<<<< HEAD
 #line 89 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+=======
+#line 89 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                     }
 
                        }
@@ -258,7 +358,11 @@ using DemoHabitTracker.Data;
             __builder2.CloseElement();
         }
 #nullable restore
+<<<<<<< HEAD
 #line 93 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+=======
+#line 93 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                ;
     }
 
@@ -324,7 +428,11 @@ using DemoHabitTracker.Data;
             __builder2.AddMarkupContent(25, "<Template>\n    O\n</Template>");
         }
 #nullable restore
+<<<<<<< HEAD
 #line 152 "C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+=======
+#line 153 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\CalendarPage.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
            ;
 
 

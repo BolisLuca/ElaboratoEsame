@@ -13,105 +13,105 @@ namespace DemoHabitTracker.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 1 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 2 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 4 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 5 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 6 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 7 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 8 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 9 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 10 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 11 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 12 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using AntDesign;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 13 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Plk.Blazor.DragDrop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 14 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 2 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 3 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
 using System.Timers;
 
 #line default
@@ -126,7 +126,7 @@ using System.Timers;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 167 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+#line 167 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
       
             decimal ntomatoes;
             string username;
@@ -216,7 +216,11 @@ using System.Timers;
             __builder2.AddMarkupContent(0, "<Template>\n        O\n    </Template>");
         }
 #nullable restore
+<<<<<<< HEAD
 #line 249 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+=======
+#line 247 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                ;
 
 RenderFragment actionEdit(Action clickAction) =>
@@ -229,7 +233,11 @@ RenderFragment actionEdit(Action clickAction) =>
             __builder2.AddAttribute(2, "Type", "edit");
             __builder2.AddAttribute(3, "OnClick", 
 #nullable restore
+<<<<<<< HEAD
 #line 251 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+=======
+#line 249 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                                                                              clickAction
 
 #line default
@@ -239,7 +247,11 @@ RenderFragment actionEdit(Action clickAction) =>
             __builder2.CloseElement();
         }
 #nullable restore
+<<<<<<< HEAD
 #line 251 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+=======
+#line 249 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                                                                                             ;
 RenderFragment actionDelete(Action clickAction) =>
 
@@ -251,7 +263,11 @@ RenderFragment actionDelete(Action clickAction) =>
             __builder2.AddAttribute(5, "Type", "delete");
             __builder2.AddAttribute(6, "OnClick", 
 #nullable restore
+<<<<<<< HEAD
 #line 252 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+=======
+#line 250 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                                                                                  clickAction
 
 #line default
@@ -261,7 +277,11 @@ RenderFragment actionDelete(Action clickAction) =>
             __builder2.CloseElement();
         }
 #nullable restore
+<<<<<<< HEAD
 #line 252 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+=======
+#line 250 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                                                                                                 ;
 private HabitRepeatValue habitRepeatValueBeforeChanges;
 
@@ -308,7 +328,11 @@ RenderFragment icon =
             __builder2.AddMarkupContent(7, "<Icon Type=\"exclamation-circle\" Theme=\"outline\"></Icon>");
         }
 #nullable restore
+<<<<<<< HEAD
 #line 289 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+=======
+#line 287 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                                                                               ;
 private async Task ShowDeleteConfirm()
 {
@@ -336,7 +360,11 @@ RenderFragment notificationContent =
             __builder2.AddMarkupContent(8, "<Progress Type=\"ProgressType.Circle\" Percent=\"tomatopercentage\" Size=\"ProgressSize.Small\"></Progress>");
         }
 #nullable restore
+<<<<<<< HEAD
 #line 307 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+=======
+#line 305 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                                                                                                                               ;
     private static int tomatopercentage = 0;
     public static Timer timer;
@@ -398,7 +426,11 @@ RenderFragment notificationContent =
             __builder2.AddMarkupContent(9, "<Icon Type=\"smile\" Theme=\"outline\" Style=\"color:#108ee9;\"></Icon>");
         }
 #nullable restore
+<<<<<<< HEAD
 #line 359 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+=======
+#line 357 "C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\Pages\Index.razor"
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
                                                                                                          ;
 
 

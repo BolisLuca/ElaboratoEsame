@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\hp\\Downloads\\ElaboratoEsame-main (1)\\ElaboratoEsame-main\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Users\\hp\\Downloads\\ElaboratoEsame-main (1)\\ElaboratoEsame-main\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\hp\\Downloads\\ElaboratoEsame-main (1)\\ElaboratoEsame-main\\DemoHabitTracker\\DemoHabitTracker\\obj\\",
+=======
+    "C:\\Users\\hp\\Source\\Repos\\ElaboratoEsame2\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\hp\\Source\\Repos\\ElaboratoEsame2\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hp\\Source\\Repos\\ElaboratoEsame2\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+        "projectName": "DemoHabitTracker",
+        "projectPath": "C:\\Users\\hp\\Source\\Repos\\ElaboratoEsame2\\DemoHabitTracker\\DemoHabitTracker\\DemoHabitTracker.csproj",
+        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hp\\Source\\Repos\\ElaboratoEsame2\\DemoHabitTracker\\DemoHabitTracker\\obj\\",
+>>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
