@@ -1,9 +1,5 @@
 ﻿<StaticWebAssets Version="1.0">
-<<<<<<< HEAD
   <ContentRoot BasePath="/" Path="C:\Users\hp\Downloads\ElaboratoEsame-main (1)\ElaboratoEsame-main\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\scopedcss\bundle\" />
-=======
-  <ContentRoot BasePath="/" Path="C:\Users\hp\Source\Repos\ElaboratoEsame2\DemoHabitTracker\DemoHabitTracker\obj\Debug\net5.0\scopedcss\bundle\" />
->>>>>>> 82552b391a5191da4109fbaceb0a38c8d764b233
   <ContentRoot BasePath="/Identity" Path="C:\Users\hp\.nuget\packages\microsoft.aspnetcore.identity.ui\5.0.6\staticwebassets\V4\" />
   <ContentRoot BasePath="_content/AntDesign" Path="C:\Users\hp\.nuget\packages\antdesign\0.8.0\build\..\staticwebassets\" />
   <ContentRoot BasePath="_content/AntDesign.Charts" Path="C:\Users\hp\.nuget\packages\antdesign.charts\0.2.1\build\..\staticwebassets\" />
