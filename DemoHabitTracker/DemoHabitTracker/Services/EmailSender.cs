@@ -21,7 +21,7 @@ namespace DemoHabitTracker.Services
 
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            return Execute("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", subject, message, email);
+            return Execute("Key", subject, message, email);
         }
 
         public Task Execute(string apiKey, string subject, string message, string email)
