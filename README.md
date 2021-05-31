@@ -1,17 +1,17 @@
 # ElaboratoEsame
-Backgroung worker link:
+Una demo del progetto è disponibile a questo Link:
+https://habittracker2.herokuapp.com/
 
-Microsoft:
-https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-5.0&tabs=visual-studio
+HabitTracker è una Web App che aiuta l'utente ad aumentare la propria produttività.
 
-Esempio:
-https://dzone.com/articles/blazor-how-tos-status-from-a-background-task
+HabitTracker nasce per aiutare gli utenti a costruire abitudini positive e diventare così la versione migliore di se stessi.
 
-Migliore: https://makolyte.com/aspdotnet-how-to-use-a-backgroundservice-for-long-running-and-periodic-tasks/
+                                       “How Might we help a User build a positive habit and reach its goals?”
+                                       
+HabitTracker prende tutti i concetti chiave del Habit tracking, pratica molto diffusa in diverse discipline, e li condensa in un unica Web App semplice, gratuita e accessibile da qualunque dispositivo.
 
-Il Backround service resta attivo e attende la fine della giornata per "iniziare ad aggiornare gli score del giorno" --> come aspetta un determinatto orario? istanzia un timer ed aspetta fino a quando non è l'oraio designato a cui iniziare
+L'idea del Habit tracking nasce dal bisogno degli utenti di visualizzare istantaneamente i loro progressi in attività che invece mostrano i loro risultati sul lungo termine, implementando così un meccanismo di "Don't Break the chain".
 
-Link: https://stackoverflow.com/questions/18611226/c-how-to-start-a-thread-at-a-specific-time
+Nella maggior parte dei casi quando si cerca di costruire una nuova abitudine la si abbandona perché non si riesce a vedere risultati concreti nel breve periodo.
+Habit Tracker supera questa problematica offrendo un riscontro immediato del proprio duro lavoro.
 
-
-Link Per OAuth2 con WebApplication: https://developers.google.com/api-client-library/dotnet/guide/aaa_oauth#use-the-user-credential-to-access-google-apis-on-their-behalf
