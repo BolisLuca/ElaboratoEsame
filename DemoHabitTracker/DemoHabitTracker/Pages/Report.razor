@@ -39,6 +39,7 @@ else
 }
 
 @code{
+    #region Initzialize
 
     [CascadingParameter(Name = "Userhabits")] List<Habit> habits { get; set; }
     string username;
@@ -113,10 +114,11 @@ else
         }
     }
 
+    #endregion
 
     #region Rose
     List<object> dataRose;
-    List<object> dataColumn;
+ 
 
 
     readonly RoseConfig configRose = new RoseConfig
@@ -146,43 +148,9 @@ else
     };
 
     #endregion Rose
+    #region DaybyDay
+
     List<object> dataDaybyDay;
-
-
-
-    readonly ColumnLineConfig config2 = new ColumnLineConfig
-    {
-        Title = new Title
-        {
-            Visible = true,
-            Text = "柱线混合图"
-        },
-        Description = new Description
-        {
-            Visible = true,
-            Text = "自定义图形细节"
-        },
-        XField = "time",
-        YField = new[] { "value", "count" },
-        ColumnConfig = new ColumnConfig
-        {
-            Color = "#586bce"
-        },
-        LineConfig = new LineConfig
-        {
-            Color = "#29cae4",
-            Point = new LineViewConfigPoint
-            {
-                Visible = true,
-            },
-            Label = new Label
-            {
-                Visible = true,
-            }
-        }
-
-    };
-
     LineConfig configDaybyDay = new LineConfig
     {
         Title = new Title
@@ -210,6 +178,9 @@ else
         SeriesField = "type"
         @*responsive = true,*@
     };
+    #endregion
+    #region Coloumn
+    List<object> dataColumn;
     ColumnConfig configColumn = new ColumnConfig
     {
         Title = new Title
@@ -249,4 +220,5 @@ else
 
         }
     };
+    #endregion
 }

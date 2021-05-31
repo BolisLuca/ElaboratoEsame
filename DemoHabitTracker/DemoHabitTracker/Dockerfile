@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["DemoHabitTracker/DemoHabitTracker.csproj", "DemoHabitTracker/"]
-RUN dotnet restore "DemoHabitTracker/DemoHabitTracker.csproj"
+COPY "DemoHabitTracker.csproj" .
+RUN dotnet restore "DemoHabitTracker.csproj"
 COPY . .
-WORKDIR "/src/DemoHabitTracker"
+WORKDIR .
 RUN dotnet build "DemoHabitTracker.csproj" -c Release -o /app/build
 
 FROM build AS publish

@@ -12,22 +12,25 @@
     <Col Span="18" Offset="3">
     <Calendar DefaultValue="DateTime.Today" DateCellRender="DateCellRender" Value="@value" OnSelect="OnSelect" OnPanelChange="OnPanelChange" />
     </Col>
-</Row> <Modal Title="@title"
+</Row>
+<Modal Title="@title"
        Visible="@_ModalVisible"
        OnOk="@ModalHandleOk"
        OnCancel="@ModalHandleCancel">
 
 
-    <Form Model="@habit"
+    <Form @ref="form"
+          Model="@habit"
           LabelColSpan="8"
           WrapperColSpan="16"
-          Size="@AntSizeLDSType.Default">
+          Size="@AntSizeLDSType.Default"
+          ValidateOnChange=true>
 
         <FormItem Label="Title">
-            <Input @bind-Value="@context.Title" />
+            <Input @bind-Value="@context.Title" DebounceMilliseconds="750" />
         </FormItem>
         <FormItem Label="Description">
-            <TextArea @bind-Value="@context.Description" />
+            <TextArea @bind-Value="@context.Description" DebounceMilliseconds="750" />
         </FormItem>
         <FormItem Label="Repeat">
             <Select @bind-Value="@context.RepeatValue"
@@ -46,14 +49,12 @@
         <FormItem Label="Tomatoes">
             <Rate @bind-Value="ntomatoes" Character="@TomatoCharacter" DefaultValue="3" />
         </FormItem>
-
-
     </Form>
-
-
 </Modal>
+
 @code
 {
+    #region Initzialize
     string username;
     private List<HabitOccasion> UserActivities { get; set; }
 
@@ -63,37 +64,45 @@
         username = authState.User.Identity.Name;
         UserActivities = habitTrackerservice.GetAllUserOccasions(username);
     }
+    #endregion
+    #region Calendar
 
     private RenderFragment DateCellRender(DateTime value)
     {
         var DailyActivities = UserActivities.Where(i => i.ScheduledDate == value).ToList();
 
         return@<Template>
-                   <ul class="events">
-                       @foreach (var activity in DailyActivities)
-                       {
-                           if (activity.ScheduledDate <= DateTime.Today)
-                           {
-                               <li key="@activity.HabitId">
-                                   @if (activity.Status == ActivityStatus.Done)
-                                   {<Icon Type="check" Theme="outline" Style="color:green" />}
-                                   else
-                                   { <Icon Type="close" Theme="outline" Style="color:red" />}<Badge Text="@activity.Title" />
-                               </li>
-                    }
-                    else
-                    {
-                   <li key="@activity.HabitId">
-                       <Badge Text="@activity.Title" />
-                   </li>
-                    }
+        <ul class="events">
+            @foreach (var activity in DailyActivities)
+            {
+                if (activity.ScheduledDate <= DateTime.Today)
+                {
+                    <li key="@activity.HabitId">
+                        @if (activity.Status == ActivityStatus.Done)
+                        {<Icon Type="check" Theme="outline" Style="color:green" />}
+                        else
+                        { <Icon Type="close" Theme="outline" Style="color:red" />}<Badge Text="@activity.Title" />
+                    </li>
+                }
+                else
+                {
+                    <li key="@activity.HabitId">
+                        <Badge Text="@activity.Title" />
+                    </li>
+                }
 
-                       }
-                   </ul>
+            }
+        </ul>
     </Template>;
-    }
+            }
+            #endregion
 
-
+   #region ModalCalendar
+   private Habit habit = new Habit();
+   RenderFragment<RateItemRenderContext> TomatoCharacter = (builder) =>
+            @<Template>
+                O
+            </Template>;
     private DateTime value = DateTime.Today;
     string title = "New Habit";
     bool _ModalVisible = false;
@@ -115,16 +124,17 @@
 
     private async Task ModalHandleOk(MouseEventArgs e)
     {
-        habit.RequiredTomatoes = int.Parse(ntomatoes.ToString());
         habit.fkUserName = username;
-        await habitTrackerservice.AddHabitAsync(habit, startingdate);
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        username = authState.User.Identity.Name;
-        UserActivities = habitTrackerservice.GetAllUserOccasions(username);
-        habit = new Habit();
+        if (form.Validate())
+        {
+            habit.RequiredTomatoes = int.Parse(ntomatoes.ToString());
 
-        _ModalVisible = false;
-        StateHasChanged();
+            await habitTrackerservice.AddHabitAsync(habit, startingdate);
+            habit = new Habit();
+            _ModalVisible = false;
+            UserActivities = habitTrackerservice.GetAllUserOccasions(username);
+            StateHasChanged();
+        }
     }
 
     private void ModalHandleCancel(MouseEventArgs e)
@@ -134,22 +144,11 @@
     }
 
 
-    private Habit habit = new Habit();
-
-    private void OnFinish(EditContext editContext)
+    AntDesign.Form<Habit> form;
+    public void OnValidate()
     {
-
+        form.Validate();
     }
-
-    private void OnFinishFailed(EditContext editContext)
-    {
-
-    }
-
-    RenderFragment<RateItemRenderContext> TomatoCharacter = (builder) =>
-@<Template>
-    O
-</Template>;
-
+    #endregion
 
 }

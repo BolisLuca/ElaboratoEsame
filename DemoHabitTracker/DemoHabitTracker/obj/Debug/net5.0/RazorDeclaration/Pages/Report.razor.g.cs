@@ -13,112 +13,112 @@ namespace DemoHabitTracker.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 1 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 2 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 3 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 4 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 5 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 6 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 7 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 8 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 9 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 10 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 11 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 12 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using AntDesign;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 13 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using Plk.Blazor.DragDrop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
+#line 14 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\_Imports.razor"
 using DemoHabitTracker.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
+#line 4 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
 using AntDesign.Charts;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
+#line 5 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
 using Title = AntDesign.Charts.Title;
 
 #line default
@@ -133,8 +133,9 @@ using Title = AntDesign.Charts.Title;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 41 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
+#line 41 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
       
+    #region Initzialize
 
     [CascadingParameter(Name = "Userhabits")] List<Habit> habits { get; set; }
     string username;
@@ -209,10 +210,11 @@ using Title = AntDesign.Charts.Title;
         }
     }
 
+    #endregion
 
     #region Rose
     List<object> dataRose;
-    List<object> dataColumn;
+ 
 
 
     readonly RoseConfig configRose = new RoseConfig
@@ -243,49 +245,15 @@ using Title = AntDesign.Charts.Title;
 #line hidden
 #nullable disable
 #nullable restore
-#line 144 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
+#line 146 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
                                               
         }
     };
 
     #endregion Rose
+    #region DaybyDay
+
     List<object> dataDaybyDay;
-
-
-
-    readonly ColumnLineConfig config2 = new ColumnLineConfig
-    {
-        Title = new Title
-        {
-            Visible = true,
-            Text = "柱线混合图"
-        },
-        Description = new Description
-        {
-            Visible = true,
-            Text = "自定义图形细节"
-        },
-        XField = "time",
-        YField = new[] { "value", "count" },
-        ColumnConfig = new ColumnConfig
-        {
-            Color = "#586bce"
-        },
-        LineConfig = new LineConfig
-        {
-            Color = "#29cae4",
-            Point = new LineViewConfigPoint
-            {
-                Visible = true,
-            },
-            Label = new Label
-            {
-                Visible = true,
-            }
-        }
-
-    };
-
     LineConfig configDaybyDay = new LineConfig
     {
         Title = new Title
@@ -317,9 +285,12 @@ using Title = AntDesign.Charts.Title;
 #line hidden
 #nullable disable
 #nullable restore
-#line 211 "C:\Users\hp\source\repos\ElaboratoEsame\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
+#line 179 "C:\Users\hp\Source\Repos\ElaboratoEsame3\DemoHabitTracker\DemoHabitTracker\Pages\Report.razor"
                               
     };
+    #endregion
+    #region Coloumn
+    List<object> dataColumn;
     ColumnConfig configColumn = new ColumnConfig
     {
         Title = new Title
@@ -359,6 +330,7 @@ using Title = AntDesign.Charts.Title;
 
         }
     };
+    #endregion
 
 #line default
 #line hidden

@@ -1,6 +1,8 @@
 ﻿<AuthorizeView>
     <Authorized>
-        <a href="Identity/Account/Manage">Hello, @context.User.Identity.Name!</a>
+        <a href="Identity/Account/Manage">
+            <Avatar Icon="user" />
+        </a>
     </Authorized>
     <NotAuthorized>
         <a href="Identity/Account/Register">Register</a>

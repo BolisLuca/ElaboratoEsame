@@ -71,7 +71,7 @@ namespace DemoHabitTracker.Data
             await _context.Habits.AddAsync(habit);
             await _context.SaveChangesAsync();
 
-            
+
             switch (habit.RepeatValue)
             {
                 case HabitRepeatValue.Never:
@@ -92,7 +92,7 @@ namespace DemoHabitTracker.Data
                             Occasion Dailyoccasion = new Occasion() { HabitId = habit.HabitId, Status = ActivityStatus.Todo, ScheduledDate = startingdate.AddDays(i) };
                             Dailyoccasions.Add(Dailyoccasion);
                         }
-                        
+
                     }
 
                     await _context.AddRangeAsync(Dailyoccasions);
@@ -111,7 +111,7 @@ namespace DemoHabitTracker.Data
                             Occasion Weeklyoccasion = new Occasion() { HabitId = habit.HabitId, Status = ActivityStatus.Todo, ScheduledDate = startingdate.AddDays(i * 7) };
                             Weeklyoccasions.Add(Weeklyoccasion);
                         }
-                      
+
                     }
                     await _context.AddRangeAsync(Weeklyoccasions);
                     break;
@@ -154,52 +154,59 @@ namespace DemoHabitTracker.Data
 
         public async Task<bool> UpdateHabitAsync(Habit habit)
         {
-            _context.Update(habit);
+            try
+            {
+                _context.Update(habit);
+            }
+            catch (Exception)
+            {
+                await AddHabitAsync(habit, DateTime.Today);
+            }
             await _context.SaveChangesAsync();
             return true;
         }
-            public async Task<bool> UpdateHabitOccasionsAsync(Habit habit, DateTime startingdate)
+        public async Task<bool> UpdateHabitOccasionsAsync(Habit habit, DateTime startingdate)
         {
-                var occasions = await RemoveFutureHabitOccasions(habit);
-                switch (habit.RepeatValue)
-                {
-                    case HabitRepeatValue.Never:
-                        break;
-                    case HabitRepeatValue.Daily:
-                        List<Occasion> Dailyoccasions = new List<Occasion>();
-                        for (int i = 1; i < 1000; i++)
-                        {
-                                Occasion Dailyoccasion = new Occasion() { HabitId = habit.HabitId, Status = ActivityStatus.Todo, ScheduledDate = startingdate.AddDays(i) };
-                                Dailyoccasions.Add(Dailyoccasion);
-                            
+            var occasions = await RemoveFutureHabitOccasions(habit);
+            switch (habit.RepeatValue)
+            {
+                case HabitRepeatValue.Never:
+                    break;
+                case HabitRepeatValue.Daily:
+                    List<Occasion> Dailyoccasions = new List<Occasion>();
+                    for (int i = 1; i < 1000; i++)
+                    {
+                        Occasion Dailyoccasion = new Occasion() { HabitId = habit.HabitId, Status = ActivityStatus.Todo, ScheduledDate = startingdate.AddDays(i) };
+                        Dailyoccasions.Add(Dailyoccasion);
 
-                        }
 
-                        await _context.AddRangeAsync(Dailyoccasions);
-                        break;
-                    case HabitRepeatValue.Weekly:
-                        List<Occasion> Weeklyoccasions = new List<Occasion>();
-                        for (int i = 1; i < 143; i++)
-                        {
-                                Occasion Weeklyoccasion = new Occasion() { HabitId = habit.HabitId, Status = ActivityStatus.Todo, ScheduledDate = startingdate.AddDays(i * 7) };
-                                Weeklyoccasions.Add(Weeklyoccasion);
-                        }
-                        await _context.AddRangeAsync(Weeklyoccasions);
-                        break;
-                    case HabitRepeatValue.Monthly:
-                        List<Occasion> Monthlyoccasions = new List<Occasion>();
-                        for (int i = 1; i < 32; i++)
-                        {
-                                Occasion Weeklyoccasion = new Occasion() { HabitId = habit.HabitId, Status = ActivityStatus.Todo, ScheduledDate = startingdate.AddMonths(i) };
-                                Monthlyoccasions.Add(Weeklyoccasion);
-                        }
-                        await _context.AddRangeAsync(Monthlyoccasions);
-                        break;
+                    }
 
-                }
+                    await _context.AddRangeAsync(Dailyoccasions);
+                    break;
+                case HabitRepeatValue.Weekly:
+                    List<Occasion> Weeklyoccasions = new List<Occasion>();
+                    for (int i = 1; i < 143; i++)
+                    {
+                        Occasion Weeklyoccasion = new Occasion() { HabitId = habit.HabitId, Status = ActivityStatus.Todo, ScheduledDate = startingdate.AddDays(i * 7) };
+                        Weeklyoccasions.Add(Weeklyoccasion);
+                    }
+                    await _context.AddRangeAsync(Weeklyoccasions);
+                    break;
+                case HabitRepeatValue.Monthly:
+                    List<Occasion> Monthlyoccasions = new List<Occasion>();
+                    for (int i = 1; i < 32; i++)
+                    {
+                        Occasion Weeklyoccasion = new Occasion() { HabitId = habit.HabitId, Status = ActivityStatus.Todo, ScheduledDate = startingdate.AddMonths(i) };
+                        Monthlyoccasions.Add(Weeklyoccasion);
+                    }
+                    await _context.AddRangeAsync(Monthlyoccasions);
+                    break;
 
-                _context.Update(habit);
-            
+            }
+
+            _context.Update(habit);
+
             await _context.SaveChangesAsync();
             return true;
         }

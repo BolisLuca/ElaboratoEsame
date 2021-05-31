@@ -124,11 +124,11 @@ namespace DemoHabitTracker.Data
                         }
                         );
 
-                        
+
 
                     for (int i = 0; i < 1000; i++)
                     {
-                        context.Occasions.Add(new Occasion() {Status = ActivityStatus.Todo, ScheduledDate = DateTime.Today.AddDays(i), HabitId = 1 });
+                        context.Occasions.Add(new Occasion() { Status = ActivityStatus.Todo, ScheduledDate = DateTime.Today.AddDays(i), HabitId = 1 });
                     }
                     for (int i = 1000; i < 2000; i++)
                     {
@@ -136,7 +136,7 @@ namespace DemoHabitTracker.Data
                     }
                     for (int i = 2000; i < 3000; i++)
                     {
-                        context.Occasions.Add(new Occasion() {Status = ActivityStatus.Todo, ScheduledDate = DateTime.Today.AddDays(i), HabitId = 3 });
+                        context.Occasions.Add(new Occasion() { Status = ActivityStatus.Todo, ScheduledDate = DateTime.Today.AddDays(i), HabitId = 3 });
                     }
                     for (int i = 0; i < 100; i++)
                     {
@@ -144,24 +144,7 @@ namespace DemoHabitTracker.Data
                     }
                 }
                 await context.SaveChangesAsync();
-                if (!(context.UserScores.Any()))
-                {
-                    context.UserScores.AddRange(
-                        new UserScore()
-                        {
-                            fkUserName = "beta@beta.it",
-                            MaxScore = 10,
-                            Score = 1
-                        },
 
-                        new UserScore()
-                        {
-                            fkUserName = "alpha@alpha.it",
-                            MaxScore = 15,
-                            Score = 0
-                        }
-                        );
-                }
 
 
             }

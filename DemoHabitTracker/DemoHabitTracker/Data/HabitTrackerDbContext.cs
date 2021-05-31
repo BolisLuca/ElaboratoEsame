@@ -11,6 +11,9 @@ namespace DemoHabitTracker.Data
 
         public DbSet<Occasion> Occasions { get; set; }
         public DbSet<Habit> Habits { get; set; }
-        public DbSet<UserScore> UserScores { get; set; }
+
+        // The following configures EF to create a postgres database on heroku.
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+            => options.UseNpgsql(HabitDB.GetConnectionStringFromHerokuEnv(1));
     }
 }

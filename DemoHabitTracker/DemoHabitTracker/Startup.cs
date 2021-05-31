@@ -1,9 +1,11 @@
 using DemoHabitTracker.Areas.Identity;
 using DemoHabitTracker.Data;
+using DemoHabitTracker.Models;
 using DemoHabitTracker.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
@@ -27,11 +29,11 @@ namespace DemoHabitTracker
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(
+                   HabitDB.GetConnectionStringFromHerokuEnv(0)));
             services.AddDbContext<HabitTrackerDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("ConnectionHabitTracker")));
+                options.UseNpgsql(
+                   HabitDB.GetConnectionStringFromHerokuEnv(1)));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             // requires
@@ -39,6 +41,15 @@ namespace DemoHabitTracker
             // using WebPWrecover.Services;
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential 
+                // cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                // requires using Microsoft.AspNetCore.Http;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddAntDesign();
@@ -66,6 +77,7 @@ namespace DemoHabitTracker
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseCookiePolicy();
             app.UseRouting();
 
             app.UseAuthentication();
