@@ -6,7 +6,7 @@ HabitTracker è una Web App che aiuta l'utente ad aumentare la propria produttiv
 
 HabitTracker nasce per aiutare gli utenti a costruire abitudini positive e diventare così la versione migliore di se stessi.
 
-                                       “How Might we help a User build a positive habit and reach its goals?”
+              “How Might we help a User build a positive habit and reach its goals?”
                                        
 HabitTracker prende tutti i concetti chiave del Habit tracking, pratica molto diffusa in diverse discipline, e li condensa in un unica Web App semplice, gratuita e accessibile da qualunque dispositivo.
 
